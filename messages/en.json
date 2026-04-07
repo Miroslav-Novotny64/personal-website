@@ -1,0 +1,25 @@
+{
+  "Home": {
+    "title": "osobní-web",
+    "description": "A minimalist space built with Tailwind v4.",
+    "hero": "Clean and intentional by design.",
+    "heroDescription": "This project has been purified to its core components. All unnecessary decorations have been removed to focus on content and typography. Using <primary>next-themes</primary> for a seamless dark-mode experience.",
+    "getStarted": "Get Started",
+    "docs": "Documentation",
+    "features": {
+      "modular": {
+        "title": "Modular",
+        "description": "Built with reusable components and a strict design system."
+      },
+      "adaptive": {
+        "title": "Adaptive",
+        "description": "Automatically adjusts to your system preference and device context."
+      },
+      "focused": {
+        "title": "Focused",
+        "description": "Prioritizes legibility and core functionality above all else."
+      }
+    },
+    "footer": "Purified project structure."
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "Home": {
+    "title": "osobní-web",
+    "description": "Minimalistický prostor vytvořený pomocí Tailwind v4.",
+    "hero": "Čistý a promyšlený design.",
+    "heroDescription": "Tento projekt byl očištěn na své základní komponenty. Všechny zbytečné dekorace byly odstraněny, aby se zaměřily na obsah a typografii. Používá se <primary>next-themes</primary> pro plynulý zážitek v tmavém režimu.",
+    "getStarted": "Začít",
+    "docs": "Dokumentace",
+    "features": {
+      "modular": {
+        "title": "Modulární",
+        "description": "Postaveno s opakovaně použitelnými komponentami a přísným designovým systémem."
+      },
+      "adaptive": {
+        "title": "Adaptivní",
+        "description": "Automaticky se přizpůsobuje vašim systémovým preferencím a kontextu zařízení."
+      },
+      "focused": {
+        "title": "Zaměřený",
+        "description": "Upřednostňuje čitelnost a základní funkce nade vše ostatní."
+      }
+    },
+    "footer": "Vyčištěná struktura projektu."
+  }
+}
