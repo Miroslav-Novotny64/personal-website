@@ -75,6 +75,10 @@
   --color-bg: var(--background);
   --color-text: var(--foreground);
 
+  --font-sans: var(--font-funnel-display), Arial, sans-serif;
+  --font-mono: var(--font-funnel-display), Arial, sans-serif;
+  --font-funnel: var(--font-funnel-display), Arial, sans-serif;
+
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
@@ -83,6 +87,9 @@
 @layer base {
   * {
     border-color: var(--border);
+  }
+  html {
+    font-family: var(--font-funnel-display), Arial, sans-serif;
   }
   body {
     background-color: var(--background);
