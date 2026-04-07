@@ -1,82 +1,117 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { LangToggle } from "@/components/lang-toggle";
-import { 
-  Cpu, 
-  Terminal, 
-} from "lucide-react";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ProjectTile } from "@/components/project-tile";
+import { TechStack } from "@/components/tech-stack";
+import { TimelineSection } from "@/components/timeline-section";
 
 export default function Home() {
   const t = useTranslations("Home");
 
   return (
-    <div className="min-h-screen bg-bg text-text transition-colors duration-300 font-sans selection:bg-primary selection:text-primary-foreground relative overflow-x-hidden">
-      {/* Technical Background Elements */}
-      <div className="fixed inset-1 bg-halftone-grid opacity-40 pointer-events-none" />
-      
-      {/* Branding - Top Left */}
-      <header className="fixed top-8 left-8 z-50 mix-blend-difference">
-        <h1 className="text-2xl font-black tracking-tighter uppercase leading-none">
-          {t("name")}
+    <main className="relative min-h-screen overflow-x-hidden">
+
+      {/* ── HERO ── */}
+      <section className="pt-36 lg:px-24">
+        <h1 className="text-[clamp(4rem,13vw,9rem)] font-black tracking-tighter uppercase leading-[0.6]">
+          {t("name").split(" ")[0]}
+          <br />
+          <span className="text-primary">{t("name").split(" ")[1]}</span>
         </h1>
-        <div className="h-px w-full bg-primary mt-1 origin-left animate-in fade-in slide-in-from-left duration-1000" />
-      </header>
 
-      {/* Controls - Top Right */}
-      <div className="fixed top-8 right-8 z-50 flex gap-4">
-        <LangToggle />
-        <ThemeToggle />
-      </div>
+        <div className="mt-10 flex items-start justify-between gap-8 pl-2">
+          <p className="text-sm text-muted-foreground font-medium tracking-tight shrink-0 max-w-xs text-right">
+            {t("role")}
+          </p>
+        </div>
+      </section>
 
-      <main className="relative pt-32 pb-20 px-8 max-w-7xl mx-auto">
-        {/* Scattered Hero Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-32">
-          <div className="lg:col-span-7 flex flex-col gap-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary text-xs font-bold tracking-widest uppercase mb-4 animate-in fade-in zoom-in duration-500">
-              <Terminal size={14} />
-              <span>Full-stack Systems Architecture</span>
-            </div>
-            
-            <p className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1]">
-              {t("bio")}
-            </p>
-            
-            <div className="h-24 w-px bg-border hidden lg:block ml-4 my-4" />
-            
-            <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
-              {t("about")}
-            </p>
-          </div>
-
-          <div className="lg:col-span-5 flex flex-col gap-8 lg:mt-24">
-            <div className="tech-card p-6 rounded-lg tech-border transform lg:translate-x-12 animate-in fade-in slide-in-from-right duration-700">
-              <div className="flex items-center gap-3 mb-4">
-                <Cpu className="text-primary" size={20} />
-                <span className="text-xs font-bold tracking-widest uppercase opacity-60">Status: Successful Solver</span>
-              </div>
-              <p className="text-sm font-medium leading-relaxed">
-                {t("fiks")}
-              </p>
-            </div>
+      {/* ── BIO + CTA — right-offset, spacious ── */}
+      <section className="mt-24 px-10 lg:px-24 flex justify-end">
+        <div className="flex flex-col gap-6 max-w-sm">
+          <p className="text-sm text-muted-foreground leading-relaxed">
+            {t("bio")}
+          </p>
+          <div className="flex items-center gap-3">
+            <button className="group flex items-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-bold uppercase tracking-widest text-xs rounded-sm transition-all duration-200 hover:shadow-[0_0_30px_rgba(244,34,114,0.25)]">
+              {t("cta")}
+              <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </button>
+            <a
+              href="https://github.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-3 border border-border/40 rounded-sm text-xs font-mono text-muted-foreground hover:border-primary/40 hover:text-foreground transition-all duration-200"
+            >
+              <ExternalLink size={12} />
+              GitHub
+            </a>
           </div>
         </div>
-      </main>
+      </section>
 
-      {/* Footer outside main to cover dots fully */}
-      <footer className="relative z-20 bg-background border-t border-border mt-20">
-        <div className="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground text-sm font-medium tracking-tight">
-          <div className="flex items-center gap-6">
-            <span className="hover:text-primary transition-colors cursor-pointer">GitHub</span>
-            <span className="hover:text-primary transition-colors cursor-pointer">LinkedIn</span>
+      {/* ── TECH STACK ── */}
+      <section className="mt-28 px-10 lg:px-24 border-t border-border/30 pt-8">
+        <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-muted-foreground/40 mb-6">
+          Stack
+        </p>
+        <TechStack />
+      </section>
+
+      {/* ── TIMELINE ── */}
+      <section className="mt-28 border-t border-border/30 pt-8 px-10 lg:px-24">
+        <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-muted-foreground/40 mb-8">
+          Timeline
+        </p>
+        <TimelineSection />
+      </section>
+
+      {/* ── PROJECTS — centered bento ── */}
+      <section className="mt-36 px-10 lg:px-24 mb-40">
+        <div
+          className="mx-auto"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1.5fr",
+            gridTemplateRows: "auto auto",
+            gap: "6px",
+            maxWidth: "700px",
+          }}
+        >
+          <div style={{ gridRow: "1", gridColumn: "1" }}>
+            <ProjectTile
+              index="01"
+              title={t("projects.expertov.title")}
+              description={t("projects.expertov.description")}
+              size="medium"
+              tags={["Next.js", "tRPC", "PostgreSQL", "Docker"]}
+            />
           </div>
-          <div className="flex items-center gap-2">
-             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-             <span>{t("footer")}</span>
+
+          <div style={{ gridRow: "1 / 3", gridColumn: "2" }}>
+            <ProjectTile
+              index="02"
+              title={t("projects.flashscore.title")}
+              description={t("projects.flashscore.description")}
+              size="large"
+              tags={["API", "Scraping"]}
+              className="h-full"
+            />
+          </div>
+
+          <div style={{ gridRow: "2", gridColumn: "1" }}>
+            <ProjectTile
+              index="03"
+              title={t("projects.impostor.title")}
+              description={t("projects.impostor.description")}
+              size="small"
+              tags={["React", "PWA"]}
+            />
           </div>
         </div>
-      </footer>
-    </div>
+      </section>
+
+    </main>
   );
 }
