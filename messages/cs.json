@@ -1,25 +1,34 @@
 {
   "Home": {
-    "title": "osobní-web",
-    "description": "Minimalistický prostor vytvořený pomocí Tailwind v4.",
-    "hero": "Čistý a promyšlený design.",
-    "heroDescription": "Tento projekt byl očištěn na své základní komponenty. Všechny zbytečné dekorace byly odstraněny, aby se zaměřily na obsah a typografii. Používá se <primary>next-themes</primary> pro plynulý zážitek v tmavém režimu.",
-    "getStarted": "Začít",
-    "docs": "Dokumentace",
-    "features": {
-      "modular": {
-        "title": "Modulární",
-        "description": "Postaveno s opakovaně použitelnými komponentami a přísným designovým systémem."
+    "name": "Miroslav Novotný",
+    "role": "Full-stack Developer & Student",
+    "bio": "Soustředím se na vývoj komplexních webových aplikací v ekosystému React a Next.js s důrazem na typovou bezpečnost a efektivní infrastrukturu.",
+    "about": "V květnu 2026 maturuji na SOŠ Educanet Praha (obor IT) a jsem přijatý ke studiu na FIT ČVUT (Počítačové inženýrství). Jsem aktivním uživatelem Arch Linuxu btw🤓.",
+    "fiks": "FIKS (12. ročník): Úspěšný řešitel (90.5 bodů).",
+    "projects": {
+      "title": "Projekty",
+      "expertov": {
+        "title": "Expertov",
+        "description": "Produkční full-stack platforma (SaaS) vyvíjená jako maturitní práce. Next.js 15, TypeScript, tRPC, Docker, Cloudflare Tunnels, PostgreSQL, Redis."
       },
-      "adaptive": {
-        "title": "Adaptivní",
-        "description": "Automaticky se přizpůsobuje vašim systémovým preferencím a kontextu zařízení."
+      "flashscore": {
+        "title": "Flashscore API Service",
+        "description": "JSON API scraper s vysokou efektivitou (snížení počtu požadavků o 80%)."
       },
-      "focused": {
-        "title": "Zaměřený",
-        "description": "Upřednostňuje čitelnost a základní funkce nade vše ostatní."
+      "impostor": {
+        "title": "Simple Impostor Game",
+        "description": "Progresivní webová aplikace (PWA) v Reactu se zaměřením na mobilní UX a offline režim."
       }
     },
-    "footer": "Vyčištěná struktura projektu."
+    "stack": {
+      "title": "Tech Stack",
+      "frontend": "React, Next.js, TypeScript",
+      "backend": "Node.js, tRPC, Drizzle ORM",
+      "database": "PostgreSQL, Redis, MySQL",
+      "devops": "Linux (Arch), Docker, GH Actions, Cloudflare",
+      "lowlevel": "C, Java, Python"
+    },
+    "cta": "Kontakt / GitHub",
+    "footer": "Miroslav Novotný 2026"
   }
 }

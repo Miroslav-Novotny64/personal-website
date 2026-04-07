@@ -3,96 +3,80 @@
 import { useTranslations } from "next-intl";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LangToggle } from "@/components/lang-toggle";
+import { 
+  Cpu, 
+  Terminal, 
+} from "lucide-react";
 
 export default function Home() {
   const t = useTranslations("Home");
 
   return (
-    <div className="min-h-screen bg-bg text-text transition-colors duration-300 font-sans selection:bg-primary selection:text-primary-foreground">
-      <main className="max-w-4xl mx-auto p-8 sm:p-20 flex flex-col gap-16 text-foreground">
-        {/* Header */}
-        <header className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8 border-b border-border pb-12">
-          <div className="flex flex-col gap-3">
-            <h1 className="text-6xl font-black tracking-tighter text-primary uppercase">
-              {t("title")}
-            </h1>
-            <p className="text-muted-foreground text-xl font-medium tracking-tight">
-              {t("description")}
+    <div className="min-h-screen bg-bg text-text transition-colors duration-300 font-sans selection:bg-primary selection:text-primary-foreground relative overflow-x-hidden">
+      {/* Technical Background Elements */}
+      <div className="fixed inset-1 bg-halftone-grid opacity-40 pointer-events-none" />
+      
+      {/* Branding - Top Left */}
+      <header className="fixed top-8 left-8 z-50 mix-blend-difference">
+        <h1 className="text-2xl font-black tracking-tighter uppercase leading-none">
+          {t("name")}
+        </h1>
+        <div className="h-px w-full bg-primary mt-1 origin-left animate-in fade-in slide-in-from-left duration-1000" />
+      </header>
+
+      {/* Controls - Top Right */}
+      <div className="fixed top-8 right-8 z-50 flex gap-4">
+        <LangToggle />
+        <ThemeToggle />
+      </div>
+
+      <main className="relative pt-32 pb-20 px-8 max-w-7xl mx-auto">
+        {/* Scattered Hero Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-32">
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary text-xs font-bold tracking-widest uppercase mb-4 animate-in fade-in zoom-in duration-500">
+              <Terminal size={14} />
+              <span>Full-stack Systems Architecture</span>
+            </div>
+            
+            <p className="text-4xl md:text-6xl font-bold tracking-tight leading-[1.1]">
+              {t("bio")}
+            </p>
+            
+            <div className="h-24 w-px bg-border hidden lg:block ml-4 my-4" />
+            
+            <p className="max-w-xl text-lg text-muted-foreground leading-relaxed">
+              {t("about")}
             </p>
           </div>
-          
-          <div className="flex gap-4">
-            <LangToggle />
-            <ThemeToggle />
-          </div>
-        </header>
 
-        {/* Hero / About Section */}
-        <section className="flex flex-col gap-8 max-w-2xl px-2">
-          <h2 className="text-3xl font-bold text-foreground">
-            {t("hero")}
-          </h2>
-          <p className="text-muted-foreground leading-relaxed text-lg lg:text-xl">
-            {t.rich("heroDescription", {
-              primary: (chunks) => <span className="text-primary font-bold">{chunks}</span>
-            })}
-          </p>
-          
-          <div className="flex flex-wrap gap-5 pt-4">
-            <button className="px-10 py-4 rounded-xl bg-primary text-primary-foreground font-bold hover:opacity-90 active:scale-95 transition-all cursor-pointer shadow-lg shadow-primary/10">
-              {t("getStarted")}
-            </button>
-            <button className="px-10 py-4 rounded-xl bg-secondary text-secondary-foreground font-bold border border-border hover:bg-secondary/80 transition-all cursor-pointer">
-              {t("docs")}
-            </button>
-          </div>
-        </section>
-
-        {/* Feature Grid */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="group p-8 rounded-2xl border border-border bg-card/10 hover:border-primary/50 transition-all duration-500">
-            <div className="mb-6 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-widest text-primary uppercase">01</span>
-              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+          <div className="lg:col-span-5 flex flex-col gap-8 lg:mt-24">
+            <div className="tech-card p-6 rounded-lg tech-border transform lg:translate-x-12 animate-in fade-in slide-in-from-right duration-700">
+              <div className="flex items-center gap-3 mb-4">
+                <Cpu className="text-primary" size={20} />
+                <span className="text-xs font-bold tracking-widest uppercase opacity-60">Status: Successful Solver</span>
+              </div>
+              <p className="text-sm font-medium leading-relaxed">
+                {t("fiks")}
+              </p>
             </div>
-            <h4 className="font-bold text-xl mb-3">{t("features.modular.title")}</h4>
-            <p className="text-muted-foreground text-sm leading-relaxed">{t("features.modular.description")}</p>
           </div>
-          
-          <div className="group p-8 rounded-2xl border border-border bg-card/10 hover:border-primary/50 transition-all duration-500">
-            <div className="mb-6 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-widest text-primary uppercase">02</span>
-              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-            </div>
-            <h4 className="font-bold text-xl mb-3">{t("features.adaptive.title")}</h4>
-            <p className="text-muted-foreground text-sm leading-relaxed">{t("features.adaptive.description")}</p>
-          </div>
-
-          <div className="group p-8 rounded-2xl border border-border bg-card/10 hover:border-primary/50 transition-all duration-500">
-            <div className="mb-6 flex items-center justify-between">
-              <span className="text-xs font-bold tracking-widest text-primary uppercase">03</span>
-              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-            </div>
-            <h4 className="font-bold text-xl mb-3">{t("features.focused.title")}</h4>
-            <p className="text-muted-foreground text-sm leading-relaxed">{t("features.focused.description")}</p>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="text-muted-foreground text-sm pt-20 pb-8 flex flex-col sm:flex-row justify-between items-center gap-6 opacity-60">
-          <div className="flex gap-8 font-semibold tracking-tight">
-            <span>Tailwind v4</span>
-            <span>Next.js 16</span>
-            <span>Shadcn Logic</span>
-          </div>
-          <p>© 2026 {t("footer")}</p>
-        </footer>
+        </div>
       </main>
+
+      {/* Footer outside main to cover dots fully */}
+      <footer className="relative z-20 bg-background border-t border-border mt-20">
+        <div className="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-8 text-muted-foreground text-sm font-medium tracking-tight">
+          <div className="flex items-center gap-6">
+            <span className="hover:text-primary transition-colors cursor-pointer">GitHub</span>
+            <span className="hover:text-primary transition-colors cursor-pointer">LinkedIn</span>
+          </div>
+          <div className="flex items-center gap-2">
+             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+             <span>{t("footer")}</span>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
-
-
-
-
-

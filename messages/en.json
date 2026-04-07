@@ -1,25 +1,34 @@
 {
   "Home": {
-    "title": "osobní-web",
-    "description": "A minimalist space built with Tailwind v4.",
-    "hero": "Clean and intentional by design.",
-    "heroDescription": "This project has been purified to its core components. All unnecessary decorations have been removed to focus on content and typography. Using <primary>next-themes</primary> for a seamless dark-mode experience.",
-    "getStarted": "Get Started",
-    "docs": "Documentation",
-    "features": {
-      "modular": {
-        "title": "Modular",
-        "description": "Built with reusable components and a strict design system."
+    "name": "Miroslav Novotný",
+    "role": "Full-stack Developer & Student",
+    "bio": "Specializing in complex web applications within the React and Next.js ecosystem, with a focus on type safety and efficient infrastructure.",
+    "about": "Graduating May 2026 from Educanet Praha (IT focus) and admitted to FIT ČVUT (Computer Engineering). Active Arch Linux user btw🤓.",
+    "fiks": "FIKS (12th year): Successful solver (90.5 points).",
+    "projects": {
+      "title": "Projects",
+      "expertov": {
+        "title": "Expertov",
+        "description": "Production full-stack platform (SaaS) built as a graduation thesis. Next.js 15, TypeScript, tRPC, Docker, Cloudflare Tunnels, PostgreSQL, Redis."
       },
-      "adaptive": {
-        "title": "Adaptive",
-        "description": "Automatically adjusts to your system preference and device context."
+      "flashscore": {
+        "title": "Flashscore API Service",
+        "description": "Highly efficient JSON API scraper (request reduction by 80%)."
       },
-      "focused": {
-        "title": "Focused",
-        "description": "Prioritizes legibility and core functionality above all else."
+      "impostor": {
+        "title": "Simple Impostor Game",
+        "description": "Progressive Web App (PWA) in React focused on mobile UX and offline functionality."
       }
     },
-    "footer": "Purified project structure."
+    "stack": {
+      "title": "Tech Stack",
+      "frontend": "React, Next.js, TypeScript",
+      "backend": "Node.js, tRPC, Drizzle ORM",
+      "database": "PostgreSQL, Redis, MySQL",
+      "devops": "Linux (Arch), Docker, GH Actions, Cloudflare",
+      "lowlevel": "C, Java, Python"
+    },
+    "cta": "Contact / GitHub",
+    "footer": "Miroslav Novotný 2026"
   }
 }
