@@ -13,7 +13,7 @@ export default function Home() {
     <main className="relative min-h-screen overflow-x-hidden">
 
       {/* ── HERO ── */}
-      <section className="pt-36 lg:px-24">
+      <section className="pt-28 lg:px-24">
         <h1 className="text-[clamp(4rem,13vw,9rem)] font-black tracking-tighter uppercase leading-[0.6]">
           {t("name").split(" ")[0]}
           <br />

@@ -23,7 +23,7 @@ export function LangToggle() {
       onClick={toggleLanguage}
       disabled={isPending}
       variant="outline"
-      size="icon"
+      className="h-8 px-3 font-mono text-xs tracking-widest"
       aria-label="Toggle language"
     >
       {locale === "en" ? "CS" : "EN"}
