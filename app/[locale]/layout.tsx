@@ -29,10 +29,12 @@ export default async function RootLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <DotBackground />
-      <SiteHeader />
-      {children}
-      <SiteFooter />
+      <div className="relative min-h-screen">
+        <DotBackground />
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </div>
     </NextIntlClientProvider>
   );
 }

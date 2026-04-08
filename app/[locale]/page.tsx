@@ -1,9 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink, ArrowDown } from "lucide-react";
 import { ProjectTile } from "@/components/project-tile";
-import { TechStack } from "@/components/tech-stack";
 import { TimelineSection } from "@/components/timeline-section";
 
 export default function Home() {
@@ -27,36 +26,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── BIO + CTA — right-offset, spacious ── */}
-      <section className="mt-24 px-10 lg:px-24 flex justify-end">
-        <div className="flex flex-col gap-6 max-w-sm">
-          <p className="text-sm text-muted-foreground leading-relaxed">
-            {t("bio")}
-          </p>
-          <div className="flex items-center gap-3">
-            <button className="group flex items-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-bold uppercase tracking-widest text-xs rounded-sm transition-all duration-200 hover:shadow-[0_0_30px_rgba(244,34,114,0.25)]">
-              {t("cta")}
-              <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </button>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-3 border border-border/40 rounded-sm text-xs font-mono text-muted-foreground hover:border-primary/40 hover:text-foreground transition-all duration-200"
-            >
-              <ExternalLink size={12} />
-              GitHub
-            </a>
+      {/* ── BIO + CTA — balanced layout ── */}
+      <section className="mt-24 px-10 lg:px-24 flex flex-col lg:flex-row items-start lg:items-end justify-between gap-12">
+        <button 
+          onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+          className="group flex flex-col items-start gap-4 transition-all duration-300 cursor-pointer"
+        >
+          <span className="font-mono text-[10px] tracking-[0.4em] uppercase opacity-30 group-hover:opacity-100 transition-opacity">
+            Mé projekty
+          </span>
+          <ArrowDown className="w-16 h-16 stroke-[0.5px] text-muted-foreground/20 group-hover:text-primary group-hover:translate-y-2 transition-all duration-500" />
+        </button>
+        
+        <div className="relative max-w-sm w-full">
+
+          {/* Fat pink corner — top-left */}
+          <div className="absolute -top-px -left-px w-10 h-[2px] bg-primary" />
+          <div className="absolute -top-px -left-px w-[2px] h-10 bg-primary" />
+
+          {/* Fat pink corner — bottom-right */}
+          <div className="absolute -bottom-px -right-px w-10 h-[2px] bg-primary" />
+          <div className="absolute -bottom-px -right-px w-[2px] h-10 bg-primary" />
+
+          <div className="border border-dashed border-border/40 p-6 flex flex-col gap-6">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {t("bio")}
+            </p>
+            <div className="flex items-center gap-3">
+              <button className="group flex items-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-bold uppercase tracking-widest text-xs rounded-sm transition-all duration-200 hover:shadow-[0_0_30px_rgba(244,34,114,0.25)]">
+                {t("cta")}
+                <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </button>
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-4 py-3 border border-border/40 rounded-sm text-xs font-mono text-muted-foreground hover:border-primary/40 hover:text-foreground transition-all duration-200"
+              >
+                <ExternalLink size={12} />
+                GitHub
+              </a>
+            </div>
           </div>
         </div>
-      </section>
-
-      {/* ── TECH STACK ── */}
-      <section className="mt-28 px-10 lg:px-24 border-t border-border/30 pt-8">
-        <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-muted-foreground/40 mb-6">
-          Stack
-        </p>
-        <TechStack />
       </section>
 
       {/* ── TIMELINE ── */}
@@ -68,7 +80,7 @@ export default function Home() {
       </section>
 
       {/* ── PROJECTS — centered bento ── */}
-      <section className="mt-36 px-10 lg:px-24 mb-40">
+      <section id="projects" className="mt-36 px-10 lg:px-24 mb-40">
         <div
           className="mx-auto"
           style={{
