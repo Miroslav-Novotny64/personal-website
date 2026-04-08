@@ -7,6 +7,7 @@
     "fiks": "FIKS (12. ročník): Úspěšný řešitel (90.5 bodů).",
     "projects": {
       "title": "Projekty",
+      "view_all": "Zobrazit všechny projekty",
       "expertov": {
         "title": "Expertov",
         "description": "Produkční full-stack platforma (SaaS) vyvíjená jako maturitní práce. Next.js 15, TypeScript, tRPC, Docker, Cloudflare Tunnels, PostgreSQL, Redis."
@@ -18,6 +19,10 @@
       "impostor": {
         "title": "Simple Impostor Game",
         "description": "Progresivní webová aplikace (PWA) v Reactu se zaměřením na mobilní UX a offline režim."
+      },
+      "placeholder": {
+        "title": "Další projekt ve vývoji",
+        "description": "Aktuálně pracuji na novém řešení, které brzy doplní mé portfolio. Zůstaňte naladěni."
       }
     },
     "stack": {
@@ -29,6 +34,7 @@
       "lowlevel": "C, Java, Python"
     },
     "cta": "Kontakt / GitHub",
+    "see_cv": "Zobrazit CV",
     "footer": "Miroslav Novotný 2026"
   }
 }

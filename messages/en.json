@@ -7,6 +7,7 @@
     "fiks": "FIKS (12th year): Successful solver (90.5 points).",
     "projects": {
       "title": "Projects",
+      "view_all": "View all projects",
       "expertov": {
         "title": "Expertov",
         "description": "Production full-stack platform (SaaS) built as a graduation thesis. Next.js 15, TypeScript, tRPC, Docker, Cloudflare Tunnels, PostgreSQL, Redis."
@@ -18,6 +19,10 @@
       "impostor": {
         "title": "Simple Impostor Game",
         "description": "Progressive Web App (PWA) in React focused on mobile UX and offline functionality."
+      },
+      "placeholder": {
+        "title": "Next Project in Development",
+        "description": "I am currently working on a new solution that will soon join my portfolio. Stay tuned."
       }
     },
     "stack": {
@@ -29,6 +34,7 @@
       "lowlevel": "C, Java, Python"
     },
     "cta": "Contact / GitHub",
+    "see_cv": "See CV",
     "footer": "Miroslav Novotný 2026"
   }
 }
