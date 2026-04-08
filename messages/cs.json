@@ -2,6 +2,7 @@
   "Home": {
     "name": "Miroslav Novotný",
     "role": "Full-stack Developer & Student",
+    "intro": "Student IT směřující na ČVUT FIT s praxí ve full-stack vývoji. Specializuji se na Next.js a Javu (Spring Boot). Ovládám také práci s relačními databázemi (SQL), Redisem a administraci Linuxu.",
     "bio": "Soustředím se na vývoj komplexních webových aplikací v ekosystému React a Next.js s důrazem na typovou bezpečnost a efektivní infrastrukturu.",
     "about": "V květnu 2026 maturuji na SOŠ Educanet Praha (obor IT) a jsem přijatý ke studiu na FIT ČVUT (Počítačové inženýrství). Jsem aktivním uživatelem Arch Linuxu btw🤓.",
     "fiks": "FIKS (12. ročník): Úspěšný řešitel (90.5 bodů).",
