@@ -26,6 +26,7 @@ export default async function RootLayout({
   return (
     <html
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${funnelDisplay.variable} h-full antialiased transition-colors duration-300`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">

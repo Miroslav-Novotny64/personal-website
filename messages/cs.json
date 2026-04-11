@@ -36,6 +36,88 @@
     },
     "cta": "Kontakt / GitHub",
     "see_cv": "Zobrazit CV",
+    "timeline": {
+      "title": "Moje cesta",
+      "categories": {
+        "jobs": "Práce & Stáže",
+        "freelance": "Freelance",
+        "education": "Vzdělání"
+      },
+      "tags": {
+        "intern": "STÁŽ",
+        "freelance": "FREELANCE"
+      },
+      "educanet": {
+        "title": "SPŠ EDUCANET Praha",
+        "subtitle": "Obor IT",
+        "date": "Září 2022 – Květen 2026",
+        "description": "Zaměření na vývoj software, tvorbu webů a počítačové sítě. Studium zakončuji maturitní prací Expertov."
+      },
+      "cvut": {
+        "title": "ČVUT FIT",
+        "subtitle": "Vysokoškolské studium",
+        "date": "Září 2026 – Budoucnost",
+        "description": "Bakalářské studium zaměřené na softwarové inženýrství, moderní architekturu a efektivní algoritmy."
+      },
+      "referee": {
+        "title": "Rozhodčí",
+        "org": "Český florbal",
+        "type": "Na částečný úvazek",
+        "date": "Září 2023 – Současnost",
+        "description": "Rozhodování v ligových soutěžích Českého florbalu, asertivita, komunikace a bleskové rozhodování pod tlakem."
+      },
+      "e55": {
+        "title": "Full stack developer",
+        "org": "E55 - Samuel Kodýtek",
+        "type": "Stáž",
+        "date": "Prosinec 2025 (2 týdny)",
+        "description": "Vývoj firemních systémů v React/Next.js s využitím moderních best-practices a optimalizací UI."
+      },
+      "eywo": {
+        "title": "Python Developer",
+        "org": "Eywo",
+        "type": "Stáž",
+        "date": "Květen 2025 (2 týdny)",
+        "description": "Práce na backendu v Pythonu, integrace pokročilých byznysových logik a stabilních API."
+      },
+      "itnetwork": {
+        "title": "Kouč vzdělávání",
+        "org": "ITnetwork s.r.o.",
+        "date": "Červen 2023 – Září 2024",
+        "description": "Mentorování stovek studentů v oblasti softwarového inženýrství, code-reviews a podpora."
+      },
+      "tretera": {
+        "title": "Frontend Developer",
+        "org": "Adam Tretera",
+        "type": "Stáž",
+        "date": "Květen 2024 (2 týdny)",
+        "description": "Návrh a implementace responzivních webových rozhraní a tvorba znovupoužitelných prvků."
+      },
+      "expertov": {
+        "title": "Expertov",
+        "org": "Freelance / SaaS",
+        "date": "Listopad 2024 – Současnost",
+        "description": "Komplexní produkční SaaS platforma s dokonalou typovou bezpečností spojující Next.js 15, PostgreSQL a tRPC."
+      },
+      "parot": {
+        "title": "Parot - parot.cz",
+        "org": "Párová a rodinná terapie",
+        "date": "Duben 2026",
+        "description": "Kompletní návrh a vývoj webu pro psychoterapeutickou praxi (Párová a rodinná terapie v Praze). Úkolem bylo přetavit jejich vizi bezpečného prostoru do čistého a rychlého UI."
+      },
+      "impostor": {
+        "title": "Impostor game",
+        "subtitle": "PWA Hra",
+        "date": "Březen 2026",
+        "description": "Moderní PWA aplikace / onlinovka navržená pro maximálně plynulé zážitky uživatele z mobilu."
+      },
+      "fiks": {
+        "title": "FIKS",
+        "subtitle": "100.5 bodů",
+        "date": "Duben 2026",
+        "description": "Soutěž korespondenčních algoritmických úloh od ČVUT. Tréning strukturovaného myšlení."
+      }
+    },
     "footer": "Miroslav Novotný 2026"
   }
 }

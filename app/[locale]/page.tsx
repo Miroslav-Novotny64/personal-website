@@ -10,8 +10,10 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const t = useTranslations("Home");
   const [time, setTime] = useState(new Date());
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
@@ -38,7 +40,7 @@ export default function Home() {
                 <span className="w-1 h-1 rounded-full bg-primary animate-pulse" />
                 <span>Location: Prague, Czechia</span>
               </div>
-              <div>{time.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}</div>
+              <div>{mounted ? time.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "••:••:••"}</div>
             </div>
 
             {/* Socials Block */}
@@ -114,10 +116,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── TIMELINE (between fold) ── */}
-      <section className="mt-[60vh] border-t border-border/30 pt-16 px-10 lg:px-24 mb-40">
+      {/* ── EXPERIENCES (between fold) ── */}
+      <section className="border-t border-border/30 pt-16 px-10 lg:px-24 mb-40">
         <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-muted-foreground/40 mb-8">
-          Timeline
+          Experiences
         </p>
         <TimelineSection />
       </section>

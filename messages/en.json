@@ -36,6 +36,88 @@
     },
     "cta": "Contact / GitHub",
     "see_cv": "See CV",
+    "timeline": {
+      "title": "My Journey",
+      "categories": {
+        "jobs": "Jobs & Internships",
+        "freelance": "Freelance",
+        "education": "Education"
+      },
+      "tags": {
+        "intern": "INTERN",
+        "freelance": "FREELANCE"
+      },
+      "educanet": {
+        "title": "SPŠ EDUCANET Prague",
+        "subtitle": "IT focus",
+        "date": "Sept 2022 – May 2026",
+        "description": "Focus on backend architecture, resilient web applications, graduation alongside Expertov."
+      },
+      "cvut": {
+        "title": "CTU FIT",
+        "subtitle": "University Studies",
+        "date": "Sept 2026 – Future",
+        "description": "Information Technology and Software Engineering bachelor's program focused on performance scalability."
+      },
+      "referee": {
+        "title": "Referee",
+        "org": "Czech Floorball",
+        "type": "Part-time",
+        "date": "Sept 2023 – Present",
+        "description": "Managing elite league games, solving crisis moments instantly under significant social pressure."
+      },
+      "e55": {
+        "title": "Full stack developer",
+        "org": "E55 - Samuel Kodýtek",
+        "type": "Internship",
+        "date": "Dec 2025 (2 weeks)",
+        "description": "Building interactive B2B services utilizing React and optimized APIs."
+      },
+      "eywo": {
+        "title": "Python Developer",
+        "org": "Eywo",
+        "type": "Internship",
+        "date": "May 2025 (2 weeks)",
+        "description": "Refactoring and maintaining large-scale Python backend processes and database logic."
+      },
+      "itnetwork": {
+        "title": "Education Coach",
+        "org": "ITnetwork s.r.o.",
+        "date": "June 2023 – Sept 2024",
+        "description": "Educating and mentoring hundreds of bootcamp developers in their SWE journeys focusing on proper tech habits."
+      },
+      "tretera": {
+        "title": "Frontend Developer",
+        "org": "Adam Tretera",
+        "type": "Internship",
+        "date": "May 2024 (2 weeks)",
+        "description": "Delivering crisp layout systems, reusable UI, and performant web elements."
+      },
+      "expertov": {
+        "title": "Expertov",
+        "org": "Freelance / SaaS",
+        "date": "Nov 2024 – Present",
+        "description": "Extensive TypeScript SaaS platform achieving perfect frontend-to-database type integrity."
+      },
+      "parot": {
+        "title": "Parot - parot.cz",
+        "org": "Couple & Family therapy",
+        "date": "April 2026",
+        "description": "End-to-end design and development for a psychotherapist practice (Couple & Family therapy in Prague). Translated their vision of a safe space into a clean, lightning-fast UI."
+      },
+      "impostor": {
+        "title": "Impostor game",
+        "subtitle": "PWA Game",
+        "date": "March 2026",
+        "description": "Highly responsive PWA gaming experience featuring offline caching and smooth interactions."
+      },
+      "fiks": {
+        "title": "FIKS",
+        "subtitle": "100.5 points",
+        "date": "April 2026",
+        "description": "CTU algorithmic competition. Extensive problem solving combined with competitive programming solutions."
+      }
+    },
     "footer": "Miroslav Novotný 2026"
   }
 }
