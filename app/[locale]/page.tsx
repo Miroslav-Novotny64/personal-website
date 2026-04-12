@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { ArrowUpRight, ExternalLink, ArrowDown } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { ProjectTile } from "@/components/project-tile";
-import { TimelineSection } from "@/components/timeline-section";
+import { ExperiencesSection } from "@/components/experiences-section";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] bg-size-[40px_40px]">
+    <main className="relative min-h-screen overflow-x-hidden">
 
       {/* ── CONSOLIDATED HERO + BIO ── */}
       <section className="min-h-[95vh] flex flex-col justify-between pt-28 lg:px-24 pb-12 relative">
@@ -121,63 +121,79 @@ export default function Home() {
         <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-muted-foreground/40 mb-8">
           Experiences
         </p>
-        <TimelineSection />
+        <ExperiencesSection />
       </section>
 
       {/* ── PROJECTS — 4 cards, asymmetric touching ── */}
       <section id="projects" className="mt-48 px-10 lg:px-24 mb-60">
-        <div className="max-w-5xl mx-auto flex flex-col items-center">
+        <div className="max-w-[1200px] mx-auto w-full">
           
-          <div className="flex w-full items-end -mb-px">
-            {/* Project 01 */}
-            <div className="w-[40%] -mr-px shrink-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Row 1 */}
+            <div className="lg:col-span-2 flex flex-col">
                <ProjectTile
                 index="01"
-                title={t("projects.expertov.title")}
-                description={t("projects.expertov.description")}
-                size="medium"
-                tags={["Next.js", "tRPC", "PostgreSQL", "Docker"]}
+                title={t("projects.vyhledavac-adres.title")}
+                description={t("projects.vyhledavac-adres.description")}
+                size="large"
+                slug="vyhledavac-adres"
+                tags={["Rust", "WebAssembly", "Leptos", "Database"]}
+                className="flex-1 h-full min-h-[350px]"
               />
             </div>
-            {/* Project 02 */}
-            <div className="w-[60%] shrink-0">
+            
+            <div className="lg:col-span-1 flex flex-col">
               <ProjectTile
                 index="02"
-                title={t("projects.flashscore.title")}
-                description={t("projects.flashscore.description")}
-                size="large"
-                tags={["API", "Scraping"]}
-                className="h-[400px]"
-              />
-            </div>
-          </div>
-
-          <div className="flex w-full items-start">
-            {/* Project 03 */}
-            <div className="w-[50%] -mr-px shrink-0 pl-[10%]">
-              <ProjectTile
-                index="03"
                 title={t("projects.impostor.title")}
                 description={t("projects.impostor.description")}
-                size="small"
-                tags={["React", "PWA"]}
-                className="h-[300px]"
+                size="medium"
+                slug="impostor"
+                image="/simple-importor-game.svg"
+                tags={["React", "Tailwind", "PWA"]}
+                className="flex-1 h-full min-h-[350px]"
               />
             </div>
-            {/* Project 04 - Active Preview */}
-            <div className="w-[40%] shrink-0">
+
+            {/* Row 2 */}
+            <div className="lg:col-span-1 flex flex-col">
+              <ProjectTile
+                index="03"
+                title={t("projects.fractal.title")}
+                description={t("projects.fractal.description")}
+                size="medium"
+                slug="fractal"
+                tags={["Rust", "Maths"]}
+                className="flex-1 h-full min-h-[300px]"
+              />
+            </div>
+
+            <div className="lg:col-span-1 flex flex-col">
               <ProjectTile
                 index="04"
-                title={t("projects.placeholder.title")}
-                description={t("projects.placeholder.description")}
-                size="small"
-                tags={["Upcoming"]}
-                className="h-[300px]"
+                title={t("projects.flashscore.title")}
+                description={t("projects.flashscore.description")}
+                size="medium"
+                slug="flashscore"
+                tags={["Node.js", "API", "Scraping"]}
+                className="flex-1 h-full min-h-[300px]"
+              />
+            </div>
+
+            <div className="lg:col-span-1 flex flex-col">
+              <ProjectTile
+                index="05"
+                title={t("projects.tree.title")}
+                description={t("projects.tree.description")}
+                size="medium"
+                slug="tree"
+                tags={["C", "CLI"]}
+                className="flex-1 h-full min-h-[300px]"
               />
             </div>
           </div>
 
-          <div className="mt-16">
+          <div className="mt-16 flex justify-center">
             <Link 
               href="/projects" 
               className="group flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground/50 hover:text-primary transition-all duration-300"

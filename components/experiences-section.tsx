@@ -1,9 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { GraduationCap, Briefcase, Code } from "lucide-react";
+import { GraduationCap, Briefcase, Code, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
 
 type Item = {
   id: string;
@@ -25,8 +26,8 @@ const ALL_ITEMS: Item[] = [
   { id: "educanet",  logo: "/educanet.jpg", type: "education" },
 ];
 
-export function TimelineSection() {
-  const t = useTranslations("Home.timeline");
+export function ExperiencesSection() {
+  const t = useTranslations("Home.experiences");
 
   const renderItem = (item: Item) => {
     const title = t(`${item.id}.title`);
@@ -39,11 +40,19 @@ export function TimelineSection() {
         : "";
     const description = t(`${item.id}.description`);
 
-    // Determine icon based on type
     const Icon = item.type === "education" ? GraduationCap : item.type === "freelance" ? Code : Briefcase;
+    const pathname = item.type === "education" ? "/education/[slug]" : "/experience/[slug]";
 
     return (
-      <div key={item.id} className="group relative flex flex-col gap-3 rounded-2xl border border-transparent hover:border-border/40 hover:bg-muted/10 p-5 transition-all duration-300">
+      <Link 
+        key={item.id} 
+        href={{ pathname: pathname as any, params: { slug: item.id } }} 
+        className="group relative flex flex-col gap-3 rounded-2xl border border-transparent hover:border-border/40 hover:bg-muted/10 p-5 transition-all duration-300"
+      >
+        <div className="absolute top-5 right-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">
+          <ArrowUpRight className="w-4 h-4 text-muted-foreground/30 group-hover:text-primary transition-colors duration-300" />
+        </div>
+
         <div className="flex items-start gap-4">
             {/* Logo */}
             <div className={cn("relative flex h-[46px] w-[46px] shrink-0 items-center justify-center bg-transparent overflow-hidden", item.id === "educanet" ? "rounded-full" : "rounded-xl")}>
@@ -87,7 +96,7 @@ export function TimelineSection() {
             {description}
             </p>
         </div>
-      </div>
+      </Link>
     );
   };
 

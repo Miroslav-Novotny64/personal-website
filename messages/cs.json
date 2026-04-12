@@ -9,21 +9,25 @@
     "projects": {
       "title": "Projekty",
       "view_all": "Zobrazit všechny projekty",
-      "expertov": {
-        "title": "Expertov",
-        "description": "Produkční full-stack platforma (SaaS) vyvíjená jako maturitní práce. Next.js 15, TypeScript, tRPC, Docker, Cloudflare Tunnels, PostgreSQL, Redis."
-      },
-      "flashscore": {
-        "title": "Flashscore API Service",
-        "description": "JSON API scraper s vysokou efektivitou (snížení počtu požadavků o 80%)."
+      "vyhledavac-adres": {
+        "title": "Vyhledávač Adres (RÚIAN)",
+        "description": "Bleskový lokální vyhledávač nad gigabajtovými daty RÚIAN s Full-text indexací. Kompletně vyvinuto v Rustu s využitím WebAssembly."
       },
       "impostor": {
         "title": "Simple Impostor Game",
-        "description": "Progresivní webová aplikace (PWA) v Reactu se zaměřením na mobilní UX a offline režim."
+        "description": "Moderní PWA implementace dedukční párty hry. Napsáno v Reactu s Tailwind CSS, optimalizováno pro mobily s podporou offline hraní."
       },
-      "placeholder": {
-        "title": "Další projekt ve vývoji",
-        "description": "Aktuálně pracuji na novém řešení, které brzy doplní mé portfolio. Zůstaňte naladěni."
+      "fractal": {
+        "title": "Generator fraktálů",
+        "description": "Projekt z předmětu Programování v Rustu určený pro bleskurychlé renderování matematického Barnsley fern s možností real-time zoomování."
+      },
+      "tree": {
+        "title": "Colorful Tree Utility",
+        "description": "Vizuálně vylepšená obdoba Unix utilities tree v čistém C s podporou barev z Nerd fontů a smart detekcí formátů."
+      },
+      "flashscore": {
+        "title": "Flashscore Scraper",
+        "description": "Vysoce optimalizovaná Node.js mikroslužba nahrazující lineární scraper systémem s O(2) spuštěním poskytující živá JSON data."
       }
     },
     "stack": {
@@ -36,7 +40,7 @@
     },
     "cta": "Kontakt / GitHub",
     "see_cv": "Zobrazit CV",
-    "timeline": {
+    "experiences": {
       "title": "Moje cesta",
       "categories": {
         "jobs": "Práce & Stáže",

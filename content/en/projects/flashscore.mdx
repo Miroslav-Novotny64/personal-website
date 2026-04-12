@@ -1,0 +1,27 @@
+---
+title: "Flashscore API Scraper"
+date: "Personal Project"
+tech: ["Node.js", "Javascript", "API", "Scraping"]
+---
+
+Tento projekt je modifikovaný fork původního scraperu FlashscoreScraping. Původní logika byla přepracována z lokálního skriptu generujícího soubory na samostatnou mikroslužbu poskytující data prostřednictvím JSON rozhraní.
+
+## Klíčové změny a vylepšení
+
+- **Transformace na API:** Server využívá nativní Node.js \`http\` modul pro poskytování dat přes endpoint \`/api/scrape\`.
+- **Optimalizace výkonu:** Původní implementace vyžadovala lineární počet požadavků v závislosti na počtu zápasů. Tato verze byla optimalizována na pevně konstantní počet paralelních požadavků (Paralelní sběr dat z indexů "results" a "fixtures"), což masivně snižuje čas celkové exekuce.
+
+## Technická specifikace API
+Endpoint: \`GET /api/scrape\`
+
+Služba očekává tři povinné query parametry pro sestavení validní adresy.
+
+**Parametry:**
+- \`sport\`: Typ sportu (např. \`hockey\`)
+- \`country\`: Země (např. \`world\`)
+- \`league\`: Název ligy (např. \`world-championship\`)
+
+Příklad volání pro zpracování MS v hokeji:
+\`\`\`bash
+GET /api/scrape?sport=hockey&country=world&league=world-championship
+\`\`\`

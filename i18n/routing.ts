@@ -9,11 +9,23 @@ export const routing = defineRouting({
       en: '/projects',
       cs: '/projekty',
     },
+    '/projects/[slug]': {
+      en: '/projects/[slug]',
+      cs: '/projekty/[slug]',
+    },
     '/cv': '/cv',
     '/blog': '/blog',
     '/contact': {
       en: '/contact',
       cs: '/kontakt',
+    },
+    '/experience/[slug]': {
+      en: '/experience/[slug]',
+      cs: '/zkusenosti/[slug]',
+    },
+    '/education/[slug]': {
+      en: '/education/[slug]',
+      cs: '/studium/[slug]',
     },
   }
 });

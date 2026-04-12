@@ -1,0 +1,51 @@
+---
+title: "Simple Impostor Game"
+date: "Personal Project"
+tech: ["React 18", "Vite", "Tailwind CSS", "Framer Motion", "PWA"]
+---
+
+Modern PWA implementation of the classic "Impostor" social deduction game. Didn't want to pay for an app, so I built my own.
+
+## Tech Stack
+
+- **Frontend:** React 18 + Vite
+- **Styling:** Tailwind CSS (Custom Cream & Yellow Theme)
+- **Animations:** Framer Motion (3D Card Flips & Micro-interactions)
+- **Icons:** Lucide React
+- **State:** React Hooks + LocalStorage Persistence
+
+## Functionalities
+
+- **Dark Mode:** Full support for dark mode with a native-feeling toggle.
+- **PWA Ready:** Installable on iOS and Android for a full-screen experience.
+- **Persistent State:** Your players and category selections stay saved between sessions.
+- **Modularity:** Easily extensible category system.
+- **Strategic Hints:** Unique hints for the impostor to keep the game balanced.
+
+## How to add custom words
+
+The game uses a modular category system. To contribute your own wordlists:
+
+**1. Locally:**
+Open \`src/data/categories/\`. Add a new \`.csv\` file or edit existing ones. Format: *Word,Hint* (e.g., Paris,Baguette). Open a pull request.
+
+**2. Suggest a New Wordlist:**
+If you have a great idea for a category but don't want to code, you can open a GitHub Issue and paste your words there. I'll be happy to add them to the official game!
+
+## Local Development
+
+\`\`\`bash
+# 1. Install dependencies
+npm install
+
+# 2. Run development server
+npm run dev
+
+# 3. Build for production
+npm run build
+\`\`\`
+
+## Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. Whether it's a bug fix, a new feature, or a new wordlist, feel free to open a Pull Request or an Issue.
+
+Built with passion by Miroslav Novotny.

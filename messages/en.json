@@ -9,21 +9,25 @@
     "projects": {
       "title": "Projects",
       "view_all": "View all projects",
-      "expertov": {
-        "title": "Expertov",
-        "description": "Production full-stack platform (SaaS) built as a graduation thesis. Next.js 15, TypeScript, tRPC, Docker, Cloudflare Tunnels, PostgreSQL, Redis."
-      },
-      "flashscore": {
-        "title": "Flashscore API Service",
-        "description": "Highly efficient JSON API scraper (request reduction by 80%)."
+      "vyhledavac-adres": {
+        "title": "RÚIAN Address Search",
+        "description": "Lighting fast local search engine for gigabytes of Czech real estate data. Entirely built in Rust with WebAssembly and Full-text indexes."
       },
       "impostor": {
         "title": "Simple Impostor Game",
-        "description": "Progressive Web App (PWA) in React focused on mobile UX and offline functionality."
+        "description": "Modern PWA implementation of the social deduction party game. Built with React and Tailwind CSS featuring offline mode and smooth animations."
       },
-      "placeholder": {
-        "title": "Next Project in Development",
-        "description": "I am currently working on a new solution that will soon join my portfolio. Stay tuned."
+      "fractal": {
+        "title": "Fractal Generator",
+        "description": "University-level Rust project focused on high-performance rendering of the Barnsley fern fractal with real-time zooming capabilities."
+      },
+      "tree": {
+        "title": "Colorful Tree Utility",
+        "description": "A visually enhanced C-based directory tree viewer featuring colorful nerd font icons, syntax highlighting and smart folder recognition."
+      },
+      "flashscore": {
+        "title": "Flashscore Scraper",
+        "description": "Highly optimized Node.js microservice replacing a linear scraping script with an O(2) parallel execution system."
       }
     },
     "stack": {
@@ -36,7 +40,7 @@
     },
     "cta": "Contact / GitHub",
     "see_cv": "See CV",
-    "timeline": {
+    "experiences": {
       "title": "My Journey",
       "categories": {
         "jobs": "Jobs & Internships",
