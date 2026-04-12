@@ -117,12 +117,14 @@ export default function Home() {
       </section>
 
       {/* ── EXPERIENCES (between fold) ── */}
-      <section className="pt-16 px-10 lg:px-24 mb-40">
-        <h2 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-12">
-          {t("experiences.title")}
-          <span className="text-primary">.</span>
-        </h2>
-        <ExperiencesSection />
+      <section className="pt-16 px-6 lg:px-24 mb-40">
+        <div className="max-w-[1400px] mx-auto w-full">
+          <h2 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-12">
+            {t("experiences.title")}
+            <span className="text-primary">.</span>
+          </h2>
+          <ExperiencesSection />
+        </div>
       </section>
 
       {/* ── PROJECTS — Massive Feature Cards ── */}
@@ -133,38 +135,40 @@ export default function Home() {
             <span className="text-primary">.</span>
           </h2>
 
-          <div className="flex flex-col gap-16 lg:gap-24">
-          <ProjectTile
-            index="01"
-            title={t("projects.vyhledavac-adres.title")}
-            description={t("projects.vyhledavac-adres.description")}
-            slug="vyhledavac-adres"
-            video="/videos/vyhledavac-adres_preview.mp4"
-            tags={["Rust", "WebAssembly", "Leptos", "Database"]}
-            className="h-auto"
-          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <ProjectTile
+              index="01"
+              title={t("projects.vyhledavac-adres.title")}
+              description={t("projects.vyhledavac-adres.description")}
+              slug="vyhledavac-adres"
+              video="/videos/vyhledavac-adres_preview.mp4"
+              tags={["Rust", "WebAssembly", "Leptos", "Database"]}
+              variant="grid"
+            />
 
-          <ProjectTile
-            index="02"
-            title={t("projects.impostor.title")}
-            description={t("projects.impostor.description")}
-            slug="impostor"
-            video="/videos/impostor-game_preview.mp4"
-            tags={["React", "Tailwind", "PWA"]}
-            className="h-auto"
-          />
+            <ProjectTile
+              index="02"
+              title={t("projects.impostor.title")}
+              description={t("projects.impostor.description")}
+              slug="impostor"
+              video="/videos/impostor-game_preview.mp4"
+              tags={["React", "Tailwind", "PWA"]}
+              variant="grid"
+            />
 
-          <ProjectTile
-            index="03"
-            title={t("projects.fractal.title")}
-            description={t("projects.fractal.description")}
-            slug="fractal"
-            video="/videos/fractals_preview.mp4"
-            tags={["Rust", "Maths"]}
-            className="h-auto"
-          />
+            <ProjectTile
+              index="03"
+              title={t("projects.fractal.title")}
+              description={t("projects.fractal.description")}
+              slug="fractal"
+              video="/videos/fractals_preview.mp4"
+              tags={["Rust", "Maths"]}
+              variant="grid"
+            />
 
-          <div className="mt-8 flex justify-center">
+          </div>
+
+          <div className="mt-16 flex justify-center">
             <Link 
               href="/projects" 
               className="group flex items-center gap-3 font-mono text-[11px] md:text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-all duration-300 border border-border/40 bg-card/10 hover:border-primary/40 px-8 py-5 rounded-full backdrop-blur-sm"
@@ -172,7 +176,6 @@ export default function Home() {
               {t("projects.view_all")}
               <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
-          </div>
           </div>
         </div>
       </section>

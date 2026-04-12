@@ -3,6 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 interface ProjectTileProps {
   title: string;
@@ -13,6 +14,7 @@ interface ProjectTileProps {
   image?: string;
   tags?: string[];
   className?: string; // e.g. "min-h-[500px]"
+  variant?: "featured" | "grid";
 }
 
 export function ProjectTile({
@@ -24,7 +26,10 @@ export function ProjectTile({
   image,
   tags = [],
   className = "",
+  variant = "featured",
 }: ProjectTileProps) {
+  const isGrid = variant === "grid";
+
   const commonClassName = [
     "group relative block overflow-hidden",
     "border border-border/70 bg-card/40",
@@ -39,9 +44,9 @@ export function ProjectTile({
       <span className="pointer-events-none absolute left-0 top-0 z-10 h-4 w-4 border-l-2 border-t-2 border-primary/90" />
       <span className="pointer-events-none absolute bottom-0 right-0 z-10 h-4 w-4 border-b-2 border-r-2 border-primary/90" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12">
-        {/* LEFT: video */}
-        <div className="relative lg:col-span-7">
+      <div className={cn("grid grid-cols-1", isGrid ? "flex flex-col" : "lg:grid-cols-12")}>
+        {/* MEDIA: Left in featured, Top in grid */}
+        <div className={cn("relative", isGrid ? "w-full" : "lg:col-span-7")}>
           <div className="relative w-full bg-muted">
             <div className="relative aspect-video w-full overflow-hidden">
               {video ? (
@@ -72,9 +77,12 @@ export function ProjectTile({
           </div>
         </div>
 
-        {/* RIGHT: text */}
-        <div className="relative lg:col-span-5">
-          <div className="flex h-full flex-col justify-between gap-5 p-5 sm:p-6 xl:p-8">
+        {/* TEXT: Right in featured, Bottom in grid */}
+        <div className={cn("relative", isGrid ? "flex-1" : "lg:col-span-5")}>
+          <div className={cn(
+            "flex h-full flex-col justify-between gap-5",
+            isGrid ? "p-6" : "p-5 sm:p-6 xl:p-8"
+          )}>
             <div className="space-y-4">
               <div className="flex items-center justify-between gap-3">
                 <p className="text-xs tracking-[0.35em] text-primary">
@@ -85,11 +93,17 @@ export function ProjectTile({
                 ) : null}
               </div>
 
-              <h3 className="text-2xl font-semibold leading-tight text-foreground xl:text-3xl">
+              <h3 className={cn(
+                "font-semibold leading-tight text-foreground",
+                isGrid ? "text-lg" : "text-2xl xl:text-3xl"
+              )}>
                 {title}
               </h3>
 
-              <p className="max-w-prose text-base leading-relaxed text-muted-foreground">
+              <p className={cn(
+                "max-w-prose text-muted-foreground leading-relaxed",
+                isGrid ? "text-[13px]" : "text-base"
+              )}>
                 {description}
               </p>
             </div>
