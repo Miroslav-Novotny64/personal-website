@@ -1,3 +1,5 @@
+"use client";
+
 import { Link } from "@/i18n/navigation";
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
@@ -7,78 +9,119 @@ interface ProjectTileProps {
   description: string;
   index: string;
   slug?: string;
+  video?: string;
   image?: string;
-  size?: "small" | "medium" | "large";
   tags?: string[];
-  className?: string;
+  className?: string; // e.g. "min-h-[500px]"
 }
 
-export function ProjectTile({ title, description, index, slug, image, size = "medium", tags = [], className }: ProjectTileProps) {
-  const sizeStyles = {
-    small: "p-5",
-    medium: "p-7",
-    large: "p-8",
-  };
+export function ProjectTile({
+  title,
+  description,
+  index,
+  slug,
+  video,
+  image,
+  tags = [],
+  className = "",
+}: ProjectTileProps) {
+  const commonClassName = [
+    "group relative block overflow-hidden",
+    "border border-border/70 bg-card/40",
+    "transition-all duration-300",
+    "hover:border-primary/50 hover:bg-card/60",
+    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    className,
+  ].join(" ");
 
-  const titleStyles = {
-    small: "text-base",
-    medium: "text-xl",
-    large: "text-2xl",
-  };
+  const content = (
+    <>
+      <span className="pointer-events-none absolute left-0 top-0 z-10 h-4 w-4 border-l-2 border-t-2 border-primary/90" />
+      <span className="pointer-events-none absolute bottom-0 right-0 z-10 h-4 w-4 border-b-2 border-r-2 border-primary/90" />
 
-  const Component = slug ? Link : "div";
-  const hrefProps = slug ? { href: { pathname: "/projects/[slug]" as any, params: { slug } } } : {};
-
-  return (
-    <Component {...hrefProps as any} className={`block group relative overflow-hidden border border-border/40 rounded-sm transition-all duration-300 hover:border-primary/40 hover:shadow-[0_0_40px_rgba(244,34,114,0.06)] bg-card/10 backdrop-blur-sm ${sizeStyles[size]} ${className}`}>
-      
-      {/* Background Image */}
-      {image && (
-        <div className="absolute inset-0 z-0 select-none pointer-events-none">
-          <Image src={image} fill alt={title} className="object-cover opacity-10 group-hover:opacity-30 transition-opacity duration-500" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
+      <div className="grid grid-cols-1 lg:grid-cols-12">
+        {/* LEFT: video */}
+        <div className="relative lg:col-span-7">
+          <div className="relative w-full bg-muted">
+            <div className="relative aspect-video w-full overflow-hidden">
+              {video ? (
+                <video
+                  src={video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  controls={false}
+                  className="h-full w-full object-cover"
+                />
+              ) : image ? (
+                <Image
+                  src={image}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-sm text-muted-foreground">
+                  No preview available
+                </div>
+              )}
+            </div>
+          </div>
         </div>
-      )}
 
-      {/* Corner bracket decoration */}
-      <div className="absolute z-10 top-0 left-0 w-4 h-4 pointer-events-none">
-        <div className="absolute top-0 left-0 w-4 h-px bg-primary/40 group-hover:bg-primary/70 transition-colors duration-300" />
-        <div className="absolute top-0 left-0 h-4 w-px bg-primary/40 group-hover:bg-primary/70 transition-colors duration-300" />
-      </div>
-      <div className="absolute z-10 bottom-0 right-0 w-4 h-4 pointer-events-none">
-        <div className="absolute bottom-0 right-0 w-4 h-px bg-border/40 group-hover:bg-primary/30 transition-colors duration-300" />
-        <div className="absolute bottom-0 right-0 h-4 w-px bg-border/40 group-hover:bg-primary/30 transition-colors duration-300" />
-      </div>
+        {/* RIGHT: text */}
+        <div className="relative lg:col-span-5">
+          <div className="flex h-full flex-col justify-between gap-5 p-5 sm:p-6 xl:p-8">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between gap-3">
+                <p className="text-xs tracking-[0.35em] text-primary">
+                  // {index} //
+                </p>
+                {slug ? (
+                  <ExternalLink className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+                ) : null}
+              </div>
 
-      {/* Index */}
-      <div className="relative z-10 font-mono text-[9px] tracking-widest text-primary/50 mb-3">
-        [{index}]
-      </div>
+              <h3 className="text-2xl font-semibold leading-tight text-foreground xl:text-3xl">
+                {title}
+              </h3>
 
-      {/* Title row */}
-      <div className="relative z-10 flex justify-between items-start mb-3">
-        <h3 className={`font-bold tracking-tight drop-shadow-sm ${titleStyles[size]}`}>{title}</h3>
-        <ExternalLink size={14} className="opacity-0 group-hover:opacity-50 transition-opacity text-primary mt-1 ml-4 shrink-0" />
-      </div>
+              <p className="max-w-prose text-base leading-relaxed text-muted-foreground">
+                {description}
+              </p>
+            </div>
 
-      {/* Description */}
-      <p className="relative z-10 text-sm text-muted-foreground leading-relaxed mb-4">
-        {description}
-      </p>
-
-      {/* Tags */}
-      {tags.length > 0 && (
-        <div className="relative z-10 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span
-              key={tag}
-              className="font-mono text-[9px] tracking-widest uppercase px-2 py-1 border border-border/30 text-muted-foreground/50 rounded-sm"
-            >
-              {tag}
-            </span>
-          ))}
+            {tags.length > 0 ? (
+              <div className="flex flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-border bg-background/40 px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-muted-foreground"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </div>
-      )}
-    </Component>
+      </div>
+    </>
   );
+
+  if (slug) {
+    return (
+      <Link
+        href={{ pathname: "/projects/[slug]" as any, params: { slug } }}
+        className={commonClassName}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return <div className={commonClassName}>{content}</div>;
 }

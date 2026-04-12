@@ -82,7 +82,7 @@ export default function Home() {
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
             className="group flex flex-col items-start gap-4 transition-all duration-300 cursor-pointer"
           >
-            <span className="font-mono text-xs tracking-[0.4em] uppercase text-primary font-bold group-hover:scale-105 transition-transform origin-left">
+            <span className="font-mono text-xs lg:block hidden tracking-[0.4em] uppercase text-primary font-bold group-hover:scale-105 transition-transform origin-left">
               MÉ PROJEKTY
             </span>
             <div className="relative">
@@ -117,92 +117,63 @@ export default function Home() {
       </section>
 
       {/* ── EXPERIENCES (between fold) ── */}
-      <section className="border-t border-border/30 pt-16 px-10 lg:px-24 mb-40">
-        <p className="font-mono text-[10px] tracking-[0.35em] uppercase text-muted-foreground/40 mb-8">
-          Experiences
-        </p>
+      <section className="pt-16 px-10 lg:px-24 mb-40">
+        <h2 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-12">
+          {t("experiences.title")}
+          <span className="text-primary">.</span>
+        </h2>
         <ExperiencesSection />
       </section>
 
-      {/* ── PROJECTS — 4 cards, asymmetric touching ── */}
-      <section id="projects" className="mt-48 px-10 lg:px-24 mb-60">
-        <div className="max-w-[1200px] mx-auto w-full">
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Row 1 */}
-            <div className="lg:col-span-2 flex flex-col">
-               <ProjectTile
-                index="01"
-                title={t("projects.vyhledavac-adres.title")}
-                description={t("projects.vyhledavac-adres.description")}
-                size="large"
-                slug="vyhledavac-adres"
-                tags={["Rust", "WebAssembly", "Leptos", "Database"]}
-                className="flex-1 h-full min-h-[350px]"
-              />
-            </div>
-            
-            <div className="lg:col-span-1 flex flex-col">
-              <ProjectTile
-                index="02"
-                title={t("projects.impostor.title")}
-                description={t("projects.impostor.description")}
-                size="medium"
-                slug="impostor"
-                image="/simple-importor-game.svg"
-                tags={["React", "Tailwind", "PWA"]}
-                className="flex-1 h-full min-h-[350px]"
-              />
-            </div>
+      {/* ── PROJECTS — Massive Feature Cards ── */}
+      <section id="projects" className="mt-48 px-6 lg:px-24 mb-60">
+        <div className="max-w-[1400px] mx-auto w-full">
+          <h2 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-12">
+            {t("projects.title")}
+            <span className="text-primary">.</span>
+          </h2>
 
-            {/* Row 2 */}
-            <div className="lg:col-span-1 flex flex-col">
-              <ProjectTile
-                index="03"
-                title={t("projects.fractal.title")}
-                description={t("projects.fractal.description")}
-                size="medium"
-                slug="fractal"
-                tags={["Rust", "Maths"]}
-                className="flex-1 h-full min-h-[300px]"
-              />
-            </div>
+          <div className="flex flex-col gap-16 lg:gap-24">
+          <ProjectTile
+            index="01"
+            title={t("projects.vyhledavac-adres.title")}
+            description={t("projects.vyhledavac-adres.description")}
+            slug="vyhledavac-adres"
+            video="/videos/vyhledavac-adres_preview.mp4"
+            tags={["Rust", "WebAssembly", "Leptos", "Database"]}
+            className="h-auto"
+          />
 
-            <div className="lg:col-span-1 flex flex-col">
-              <ProjectTile
-                index="04"
-                title={t("projects.flashscore.title")}
-                description={t("projects.flashscore.description")}
-                size="medium"
-                slug="flashscore"
-                tags={["Node.js", "API", "Scraping"]}
-                className="flex-1 h-full min-h-[300px]"
-              />
-            </div>
+          <ProjectTile
+            index="02"
+            title={t("projects.impostor.title")}
+            description={t("projects.impostor.description")}
+            slug="impostor"
+            video="/videos/impostor-game_preview.mp4"
+            tags={["React", "Tailwind", "PWA"]}
+            className="h-auto"
+          />
 
-            <div className="lg:col-span-1 flex flex-col">
-              <ProjectTile
-                index="05"
-                title={t("projects.tree.title")}
-                description={t("projects.tree.description")}
-                size="medium"
-                slug="tree"
-                tags={["C", "CLI"]}
-                className="flex-1 h-full min-h-[300px]"
-              />
-            </div>
-          </div>
+          <ProjectTile
+            index="03"
+            title={t("projects.fractal.title")}
+            description={t("projects.fractal.description")}
+            slug="fractal"
+            video="/videos/fractals_preview.mp4"
+            tags={["Rust", "Maths"]}
+            className="h-auto"
+          />
 
-          <div className="mt-16 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <Link 
               href="/projects" 
-              className="group flex items-center gap-3 font-mono text-[11px] tracking-[0.3em] uppercase text-muted-foreground/50 hover:text-primary transition-all duration-300"
+              className="group flex items-center gap-3 font-mono text-[11px] md:text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-all duration-300 border border-border/40 bg-card/10 hover:border-primary/40 px-8 py-5 rounded-full backdrop-blur-sm"
             >
               {t("projects.view_all")}
-              <ArrowUpRight size={14} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
           </div>
-
+          </div>
         </div>
       </section>
 
