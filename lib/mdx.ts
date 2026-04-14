@@ -15,6 +15,22 @@ export type MdxFrontmatter = {
   seo_description?: string;
 };
 
+export function parseSafeDate(dateStr: string): Date {
+  const date = new Date(dateStr);
+  if (!isNaN(date.getTime())) {
+    return date;
+  }
+
+  // Fallback for strings like "Sep 2022 – May 2026"
+  // Try to find the first 4-digit year
+  const yearMatch = dateStr.match(/\d{4}/);
+  if (yearMatch) {
+    return new Date(yearMatch[0]);
+  }
+
+  return new Date(0); // Epoch fallback
+}
+
 export async function getMdxContent(
   locale: string,
   type: "experience" | "education" | "projects" | "blog",
@@ -59,7 +75,11 @@ export async function getAllMdxContent(
       .filter(
         (post): post is MdxFrontmatter & { slug: string } => post !== null,
       )
-      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      .sort((a, b) => {
+        const dateA = parseSafeDate(a.date).getTime();
+        const dateB = parseSafeDate(b.date).getTime();
+        return dateB - dateA;
+      });
   } catch (_error) {
     return [];
   }

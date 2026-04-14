@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getAllMdxContent } from "@/lib/mdx";
+import { getAllMdxContent, parseSafeDate } from "@/lib/mdx";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const domain = "https://novotnymiroslav.cz";
@@ -35,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           const contents = await getAllMdxContent(locale, type);
           return contents.map((content) => ({
             url: `${domain}${locale === "cs" ? "" : `/${locale}`}/${type}/${content.slug}`,
-            lastModified: new Date(content.date),
+            lastModified: parseSafeDate(content.date),
             changeFrequency: "monthly" as any,
             priority: 0.6,
             alternates: {
