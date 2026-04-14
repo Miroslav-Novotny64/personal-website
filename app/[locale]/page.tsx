@@ -83,9 +83,9 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-12 px-10 lg:px-0">
           <button 
             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-            className="group flex flex-col items-start gap-4 transition-all duration-300 cursor-pointer"
+            className="group flex-col items-start gap-4 lg:flex hidden transition-all duration-300 cursor-pointer"
           >
-            <span className="font-mono text-xs lg:block hidden tracking-[0.4em] uppercase text-primary font-bold group-hover:scale-105 transition-transform origin-left">
+            <span className="font-mono text-xstracking-[0.4em] uppercase text-primary font-bold group-hover:scale-105 transition-transform origin-left">
               {t("sections.projects_label")}
             </span>
             <div className="relative">

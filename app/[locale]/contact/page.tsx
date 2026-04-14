@@ -1,5 +1,6 @@
-import { Mail, MessageSquare, ArrowUpRight } from "lucide-react";
+import { Mail, MessageSquare, ArrowUpRight, FileText, ExternalLink } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function ContactPage() {
   const t = useTranslations("Contact");
@@ -43,7 +44,7 @@ export default function ContactPage() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-0">
         
         {/* Header Section */}
-        <section className="mb-20">
+        <section className="mb-16">
           <div className="flex items-center gap-4 mb-6">
             <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary/60 font-bold">
               {t("subtitle")}
@@ -51,7 +52,7 @@ export default function ContactPage() {
             <span className="h-px w-20 bg-primary/30"></span>
           </div>
           
-          <h1 className="text-[clamp(3.5rem,10vw,7rem)] font-black tracking-tighter uppercase leading-[0.8] mb-10">
+          <h1 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-8">
             {t("title")}<span className="text-primary">.</span>
           </h1>
           
@@ -60,92 +61,117 @@ export default function ContactPage() {
           </p>
         </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Email / Direct Contact Section */}
-          <div className="lg:col-span-7 relative group">
-             <div className="absolute -top-10 -left-10 w-40 h-40 bg-primary/5 blur-[100px] rounded-full group-hover:bg-primary/10 transition-colors duration-700" />
-             
-             <div className="relative z-10 p-12 lg:p-16 border border-border/20 bg-card/5 backdrop-blur-sm rounded-sm flex flex-col items-start gap-10">
-                <div className="flex flex-col gap-4">
-                  <h2 className="font-mono text-xs uppercase tracking-[0.4em] text-primary font-bold">
-                    {t("socials.email")}
-                  </h2>
-                  <a 
-                    href={`mailto:${email}`}
-                    className="text-2xl md:text-4xl lg:text-5xl font-black tracking-tight hover:text-primary transition-all duration-300 break-all"
-                  >
-                    {email}
-                  </a>
-                </div>
+          {/* Main Contact Grid */}
+          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            {/* Email Card */}
+            <div className="md:col-span-2 relative group overflow-hidden">
+               <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-primary/10 transition-colors duration-700" />
+               
+               <div className="relative z-10 p-8 border border-border/20 bg-card/5 backdrop-blur-sm rounded-sm flex flex-col items-start gap-8">
+                  <div className="flex flex-col gap-2">
+                    <h2 className="font-mono text-[10px] uppercase tracking-[0.4em] text-primary font-bold">
+                      {t("socials.email")}
+                    </h2>
+                    <a 
+                      href={`mailto:${email}`}
+                      className="text-xl lg:text-3xl font-black tracking-tight hover:text-primary transition-all duration-300 break-all"
+                    >
+                      {email}
+                    </a>
+                  </div>
 
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href={`mailto:${email}`}
-                    className="group relative flex items-center justify-center gap-3 px-10 py-5 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-xs rounded-sm transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_50px_rgba(244,34,114,0.3)] overflow-hidden"
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                       NAPSAT E-MAIL
-                      <Mail size={16} />
+                  <div className="flex flex-wrap items-center gap-6 w-full justify-between mt-2">
+                    <a
+                      href={`mailto:${email}`}
+                      className="group relative flex items-center justify-center gap-3 px-6 py-3 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-[10px] rounded-sm transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(244,34,114,0.2)] overflow-hidden"
+                    >
+                      <span className="relative z-10 flex items-center gap-2 text-primary-foreground">
+                        NAPSAT E-MAIL
+                        <Mail size={14} />
+                      </span>
+                      <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                    </a>
+
+                    <p className="text-muted-foreground/40 font-mono text-[10px] uppercase tracking-widest leading-none hidden sm:block">
+                      {t("form_disclaimer")}
+                    </p>
+                  </div>
+               </div>
+            </div>
+
+            {SOCIALS.map((social) => (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-6 bg-card/5 border border-border/10 rounded-sm hover:border-primary/20 hover:bg-card/10 transition-all duration-300"
+              >
+                <div className="flex items-center gap-5">
+                  <div className={`text-muted-foreground group-hover:scale-110 transition-all duration-300 ${social.color}`}>
+                    {social.icon}
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground/40 group-hover:text-primary/60 transition-colors">
+                      {social.name}
                     </span>
-                    <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                  </a>
+                    <span className="text-sm font-medium">
+                      {social.label}
+                    </span>
+                  </div>
                 </div>
-
-                <p className="text-muted-foreground/60 font-mono text-[11px] uppercase tracking-widest leading-loose">
-                  {t("form_disclaimer")}
-                </p>
-             </div>
+                <ArrowUpRight size={18} className="text-muted-foreground/20 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+              </a>
+            ))}
           </div>
 
-          {/* Info & Socials Section */}
-          <div className="lg:col-span-5 flex flex-col gap-12">
+          {/* Sidebar: CV & Availability */}
+          <div className="lg:col-span-4 flex flex-col gap-6">
             
-            <div className="space-y-8">
-               <h2 className="font-mono text-xs uppercase tracking-[0.4em] text-primary font-bold">
-                 {t("socials.title")}
-               </h2>
-               
-               <div className="grid grid-cols-1 gap-4">
-                 {SOCIALS.map((social) => (
-                   <a
-                     key={social.name}
-                     href={social.href}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="group flex items-center justify-between p-6 bg-card/5 border border-border/10 rounded-sm hover:border-primary/20 hover:bg-card/10 transition-all duration-300"
-                   >
-                     <div className="flex items-center gap-5">
-                       <div className={`text-muted-foreground group-hover:scale-110 transition-all duration-300 ${social.color}`}>
-                         {social.icon}
-                       </div>
-                       <div className="flex flex-col">
-                         <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground/40 group-hover:text-primary/60 transition-colors">
-                           {social.name}
-                         </span>
-                         <span className="text-sm font-medium">
-                           {social.label}
-                         </span>
-                       </div>
-                     </div>
-                     <ArrowUpRight size={18} className="text-muted-foreground/20 group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
-                   </a>
-                 ))}
+            {/* View CV Card */}
+            <div className="p-8 border border-primary/20 bg-primary/5 relative overflow-hidden group rounded-sm">
+               <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/10 blur-3xl rounded-full group-hover:bg-primary/20 transition-colors" />
+               <div className="relative z-10 flex flex-col gap-6">
+                  <div className="flex items-center gap-3">
+                    <div className="p-3 bg-primary/10 rounded-sm text-primary">
+                      <FileText size={24} />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-primary font-bold">PROFESNÍ</span>
+                      <span className="text-sm font-bold uppercase tracking-tighter">Profil</span>
+                    </div>
+                  </div>
+                  
+                  <Link 
+                    href="/cv"
+                    className="group relative flex items-center justify-center gap-3 px-6 py-4 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-xs rounded-sm transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(244,34,114,0.3)] overflow-hidden"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                       {t("view_cv")}
+                      <ExternalLink size={16} />
+                    </span>
+                    <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                  </Link>
                </div>
             </div>
 
             {/* Availability Widget */}
-            <div className="p-8 border border-dashed border-border/40 bg-card/5 relative overflow-hidden group">
+            <div className="p-8 border border-dashed border-border/40 bg-card/5 relative overflow-hidden group rounded-sm">
                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-primary/10 transition-colors" />
                <div className="relative z-10 flex flex-col gap-4">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                     <span className="font-mono text-[10px] uppercase tracking-widest text-primary/80 font-bold">LOKACE</span>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    Praha, Česká republika<br />
-                    K dispozici pro remote i on-site spolupráci.
-                  </p>
+                  <div className="space-y-2">
+                    <p className="text-sm text-foreground font-bold uppercase tracking-tight">Praha, ČR</p>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      K dispozici pro remote i on-site spolupráci.
+                    </p>
+                  </div>
                </div>
             </div>
 
