@@ -1,0 +1,15 @@
+{
+  "Contact": {
+    "title": "Contact",
+    "subtitle": "LET'S COLLABORATE",
+    "intro": "Got an interesting project in mind, or looking for someone to join your team as a programme | software engineer?",
+    "form_disclaimer": "Let me know via email and I'll get back to you as soon as possible.",
+    "socials": {
+      "title": "Social Networks",
+      "email": "Send me an email",
+      "discord": "Find me on Discord",
+      "linkedin": "Connect with me on LinkedIn",
+      "github": "Follow my work on GitHub"
+    }
+  }
+}

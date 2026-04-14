@@ -1,0 +1,15 @@
+{
+  "Contact": {
+    "title": "Kontakt",
+    "subtitle": "POJĎME SPOLUPRACOVAT",
+    "intro": "Máte nějaký zajímavý projekt, nebo hledáte někoho do týmu na pozici programátora | softwarového inženýra?",
+    "form_disclaimer": "Dejte mi vědět pomocí emailu a já se vám co nejdříve ozvu.",
+    "socials": {
+      "title": "Sociální sítě",
+      "email": "Pošlete mi e-mail",
+      "discord": "Najdete mě na Discordu",
+      "linkedin": "Propojte se se mnou na LinkedInu",
+      "github": "Sledujte moji práci na GitHubu"
+    }
+  }
+}
