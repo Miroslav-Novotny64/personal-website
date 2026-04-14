@@ -9,16 +9,7 @@ import { DotBackground } from "@/components/dot-background";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { Funnel_Display } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
-
-const funnelDisplay = Funnel_Display({
-  variable: "--font-funnel-display",
-  subsets: ["latin"],
-  display: "swap",
-  fallback: ["Arial", "sans-serif"],
-});
 
 export async function generateMetadata({
   params,
@@ -118,30 +109,14 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html
-      suppressHydrationWarning
-      data-scroll-behavior="smooth"
-      lang={locale}
-      className={`${funnelDisplay.variable} h-full antialiased transition-colors duration-300`}
-    >
-      <body className="min-h-full flex flex-col bg-bg text-text">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextIntlClientProvider messages={messages}>
-            <div className="relative min-h-screen">
-              <JsonLd />
-              <DotBackground />
-              <SiteHeader />
-              {children}
-              <SiteFooter />
-            </div>
-          </NextIntlClientProvider>
-        </ThemeProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <div className="relative min-h-screen">
+        <JsonLd />
+        <DotBackground />
+        <SiteHeader />
+        {children}
+        <SiteFooter />
+      </div>
+    </NextIntlClientProvider>
   );
 }
