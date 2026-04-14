@@ -1,19 +1,24 @@
-import { setRequestLocale, getTranslations } from "next-intl/server";
-import { Link } from "@/i18n/navigation";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import { getMdxContent } from "@/lib/mdx";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
+import { Link } from "@/i18n/navigation";
+import { getMdxContent } from "@/lib/mdx";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
   const { locale, slug } = await params;
-  const data = await getMdxContent(locale, 'blog', slug);
+  const data = await getMdxContent(locale, "blog", slug);
   if (!data) return {};
 
   const title = data.frontmatter.seo_title || data.frontmatter.title;
-  const description = data.frontmatter.seo_description || data.frontmatter.description;
-  const image = data.frontmatter.thumbnail || '/og-image.png';
+  const description =
+    data.frontmatter.seo_description || data.frontmatter.description;
+  const image = data.frontmatter.thumbnail || "/og-image.png";
 
   return {
     title,
@@ -21,11 +26,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       title,
       description,
-      type: 'article',
+      type: "article",
       images: [{ url: image }],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title,
       description,
       images: [image],
@@ -33,11 +38,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+export default async function BlogPostPage({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const data = await getMdxContent(locale, 'blog', slug);
+  const data = await getMdxContent(locale, "blog", slug);
   if (!data) notFound();
 
   const { frontmatter, content } = data;
@@ -47,7 +56,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
   return (
     <>
-      <BreadcrumbsJsonLd 
+      <BreadcrumbsJsonLd
         items={[
           { name: tNav("home"), item: "/" },
           { name: tBlog("title"), item: "/blog" },
@@ -55,51 +64,56 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         ]}
       />
       <main className="min-h-screen pt-32 pb-24 px-8 lg:px-24">
-      <article className="max-w-[1000px] mx-auto w-full">
-        {/* Post Navigation */}
-        <Link 
-          href="/blog" 
-          className="inline-flex items-center gap-2 text-muted-foreground/60 hover:text-primary transition-colors mb-12 font-mono text-sm uppercase tracking-widest group"
-        >
-          <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
-          {tCommon("back")}
-        </Link>
-  
-        {/* Post Header */}
-        <header className="mb-16">
-          <div className="flex items-center gap-4 mb-8">
-            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary/60 font-bold">// post //</span>
-            <span className="h-px flex-1 bg-border/20"></span>
-          </div>
+        <article className="max-w-[1000px] mx-auto w-full">
+          {/* Post Navigation */}
+          <Link
+            href="/blog"
+            className="inline-flex items-center gap-2 text-muted-foreground/60 hover:text-primary transition-colors mb-12 font-mono text-sm uppercase tracking-widest group"
+          >
+            <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
+            {tCommon("back")}
+          </Link>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-10 leading-[0.9]">
-            {frontmatter.title}
-          </h1>
-
-          <div className="flex flex-wrap items-center gap-8 border-y border-border/10 py-8">
-            <div className="flex items-center gap-3 text-[11px] font-mono text-muted-foreground uppercase tracking-[0.2em] font-bold">
-              <Calendar size={14} className="text-primary" />
-              {new Date(frontmatter.date).toLocaleDateString(locale === 'cs' ? 'cs-CZ' : 'en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
-              })}
+          {/* Post Header */}
+          <header className="mb-16">
+            <div className="flex items-center gap-4 mb-8">
+              <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary/60 font-bold">
+                {"//"} post {"//"}
+              </span>
+              <span className="h-px flex-1 bg-border/20"></span>
             </div>
-            {frontmatter.readingTime && (
-              <div className="flex items-center gap-3 text-[11px] font-mono text-muted-foreground uppercase tracking-[0.2em] font-bold">
-                <Clock size={14} className="text-primary" />
-                {frontmatter.readingTime}
-              </div>
-            )}
-          </div>
-        </header>
 
-        {/* Post Content */}
-        <div className="prose prose-invert prose-p:text-muted-foreground prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter prose-a:text-primary hover:prose-a:opacity-80 transition-all max-w-none prose-lg">
-          <MDXRemote source={content} />
-        </div>
-      </article>
-    </main>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-10 leading-[0.9]">
+              {frontmatter.title}
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-8 border-y border-border/10 py-8">
+              <div className="flex items-center gap-3 text-[11px] font-mono text-muted-foreground uppercase tracking-[0.2em] font-bold">
+                <Calendar size={14} className="text-primary" />
+                {new Date(frontmatter.date).toLocaleDateString(
+                  locale === "cs" ? "cs-CZ" : "en-US",
+                  {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  },
+                )}
+              </div>
+              {frontmatter.readingTime && (
+                <div className="flex items-center gap-3 text-[11px] font-mono text-muted-foreground uppercase tracking-[0.2em] font-bold">
+                  <Clock size={14} className="text-primary" />
+                  {frontmatter.readingTime}
+                </div>
+              )}
+            </div>
+          </header>
+
+          {/* Post Content */}
+          <div className="prose prose-invert prose-p:text-muted-foreground prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter prose-a:text-primary hover:prose-a:opacity-80 transition-all max-w-none prose-lg">
+            <MDXRemote source={content} />
+          </div>
+        </article>
+      </main>
     </>
   );
 }

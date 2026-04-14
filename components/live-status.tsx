@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 
 export function LiveStatus() {
   const tStatus = useTranslations("Status");
@@ -21,7 +21,13 @@ export function LiveStatus() {
         <span>{tStatus("location")}</span>
       </p>
       <div className="text-primary/60">
-        {mounted ? time.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "••:••:••"}
+        {mounted
+          ? time.toLocaleTimeString("cs-CZ", {
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+            })
+          : "••:••:••"}
       </div>
     </div>
   );

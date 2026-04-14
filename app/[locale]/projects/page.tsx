@@ -1,24 +1,32 @@
-import { setRequestLocale, getTranslations } from "next-intl/server";
-import { ProjectTile } from "@/components/project-tile";
 import { ArrowLeft } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
+import { ProjectTile } from "@/components/project-tile";
+import { Link } from "@/i18n/navigation";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'Projects' });
+  const t = await getTranslations({ locale, namespace: "Projects" });
 
   return {
-    title: t('seo_title') || t('title'),
-    description: t('seo_description') || t('page_description'),
+    title: t("seo_title") || t("title"),
+    description: t("seo_description") || t("page_description"),
   };
 }
 
-export default async function ProjectsIndexPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function ProjectsIndexPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  const { getTranslations } = await import('next-intl/server');
+  const { getTranslations } = await import("next-intl/server");
   const t = await getTranslations("Projects");
   const tCommon = await getTranslations("Common");
   const tLinks = await getTranslations("Links");
@@ -26,18 +34,23 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
 
   return (
     <main className="min-h-screen pt-32 pb-20 px-6 lg:px-24 max-w-[1400px] mx-auto w-full">
-      <BreadcrumbsJsonLd 
+      <BreadcrumbsJsonLd
         items={[
           { name: tNav("home"), item: "/" },
           { name: t("title"), item: "/projects" },
         ]}
       />
       <div className="mb-24">
-        <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground/60 hover:text-foreground transition-colors mb-8 font-mono text-sm uppercase tracking-widest">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-muted-foreground/60 hover:text-foreground transition-colors mb-8 font-mono text-sm uppercase tracking-widest"
+        >
           <ArrowLeft className="w-4 h-4" />
           {tCommon("back")}
         </Link>
-        <h1 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-6">{t("title")}</h1>
+        <h1 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-6">
+          {t("title")}
+        </h1>
         <p className="text-muted-foreground text-lg leading-relaxed">
           {t("page_description")}
         </p>

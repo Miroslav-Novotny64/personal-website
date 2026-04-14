@@ -1,9 +1,9 @@
 "use client";
 
-import { Link } from "@/i18n/navigation";
 import { ArrowUpRight, Calendar, Clock } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { cn } from "@/lib/utils";
 
 interface BlogCardProps {
   title: string;
@@ -31,7 +31,7 @@ export function BlogCard({
       href={{ pathname: "/blog/[slug]" as any, params: { slug } }}
       className={cn(
         "group relative flex flex-col justify-between p-8 border border-border/50 bg-card/20 hover:border-primary/30 hover:bg-card/40 transition-all duration-500 rounded-sm overflow-hidden min-h-[320px]",
-        className
+        className,
       )}
     >
       {/* Background Decor */}
@@ -44,7 +44,7 @@ export function BlogCard({
       <div className="space-y-6 relative z-10">
         <div className="flex items-center gap-4">
           <p className="font-mono text-[10px] tracking-[0.3em] text-primary/80 uppercase">
-            // post_{index} //
+            {"//"} post_{index} {"//"}
           </p>
           <div className="h-px w-8 bg-border/20 group-hover:w-12 transition-all duration-500" />
         </div>
@@ -66,9 +66,9 @@ export function BlogCard({
           <div className="flex items-center gap-2 text-[10px] font-mono text-muted-foreground/60 uppercase tracking-widest">
             <Calendar size={12} className="text-primary/40" />
             {new Date(date).toLocaleDateString(undefined, {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric'
+              year: "numeric",
+              month: "short",
+              day: "numeric",
             })}
           </div>
           {readingTime && (
@@ -80,7 +80,9 @@ export function BlogCard({
         </div>
 
         <div className="flex items-center gap-2 text-primary opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
-          <span className="font-mono text-[9px] uppercase tracking-widest font-bold">{tCommon("details")}</span>
+          <span className="font-mono text-[9px] uppercase tracking-widest font-bold">
+            {tCommon("details")}
+          </span>
           <ArrowUpRight size={14} />
         </div>
       </div>

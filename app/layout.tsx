@@ -11,24 +11,29 @@ const funnelDisplay = Funnel_Display({
 
 export default async function RootLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+
   return (
     <html
       suppressHydrationWarning
       data-scroll-behavior="smooth"
+      lang={locale}
       className={`${funnelDisplay.variable} h-full antialiased transition-colors duration-300`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text">
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

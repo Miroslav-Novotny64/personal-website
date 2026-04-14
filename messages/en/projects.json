@@ -6,7 +6,7 @@
     "title": "Projects",
     "view_all": "View all projects",
     "items": {
-        "expertov": {
+      "expertov": {
         "title": "Expertov",
         "description": "Production SaaS platform developed based on client requirements developed in Next.js using Trpc, Drizzle ORM, PostgreSQL and Redis."
       },

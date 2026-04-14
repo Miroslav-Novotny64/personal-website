@@ -47,9 +47,6 @@
   --ring: #f42272;
 }
 
-
-
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -92,11 +89,19 @@
 
   .bg-crosshair-grid {
     background-image:
-      linear-gradient(to right, color-mix(in srgb, var(--border) 25%, transparent) 1px, transparent 1px),
-      linear-gradient(to bottom, color-mix(in srgb, var(--border) 25%, transparent) 1px, transparent 1px);
+      linear-gradient(
+        to right,
+        color-mix(in srgb, var(--border) 25%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in srgb, var(--border) 25%, transparent) 1px,
+        transparent 1px
+      );
     background-size: 80px 80px;
   }
-  
+
   .bg-halftone-grid {
     --dot-color: color-mix(in srgb, var(--foreground) 20%, transparent);
     background-image: radial-gradient(var(--dot-color) 1px, transparent 0);
@@ -106,8 +111,11 @@
   /* Improved subtle technical background inspired by the user's image */
   .bg-tech-pattern {
     background-color: var(--background);
-    background-image: 
-      radial-gradient(circle at 2px 2px, var(--border) 1px, transparent 0);
+    background-image: radial-gradient(
+      circle at 2px 2px,
+      var(--border) 1px,
+      transparent 0
+    );
     background-size: 24px 24px;
     mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 100%);
   }
@@ -144,7 +152,7 @@
   }
 
   .tech-border::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -164,7 +172,7 @@
 
   .border-dashed-lg {
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%23ffffff1a' stroke-width='4' stroke-dasharray='2%2c 10' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
-    border: none !important;
+    border: none;
   }
 
   .scrollbar-hide::-webkit-scrollbar {
@@ -190,6 +198,3 @@
     @apply selection:bg-primary selection:text-primary-foreground;
   }
 }
-
-
-

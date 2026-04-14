@@ -1,23 +1,24 @@
-import {getRequestConfig} from 'next-intl/server';
-import {hasLocale} from 'next-intl';
-import {routing} from './routing';
- 
-export default getRequestConfig(async ({requestLocale}) => {
+import { hasLocale } from "next-intl";
+import { getRequestConfig } from "next-intl/server";
+import { routing } from "./routing";
+
+export default getRequestConfig(async ({ requestLocale }) => {
   // Typically corresponds to the `[locale]` segment
   const requested = await requestLocale;
   const locale = hasLocale(routing.locales, requested)
     ? requested
     : routing.defaultLocale;
- 
-  const [common, home, projects, experiences, cv, contact, blog] = await Promise.all([
-    import(`../messages/${locale}/common.json`),
-    import(`../messages/${locale}/home.json`),
-    import(`../messages/${locale}/projects.json`),
-    import(`../messages/${locale}/experiences.json`),
-    import(`../messages/${locale}/cv.json`),
-    import(`../messages/${locale}/contact.json`),
-    import(`../messages/${locale}/blog.json`)
-  ]);
+
+  const [common, home, projects, experiences, cv, contact, blog] =
+    await Promise.all([
+      import(`../messages/${locale}/common.json`),
+      import(`../messages/${locale}/home.json`),
+      import(`../messages/${locale}/projects.json`),
+      import(`../messages/${locale}/experiences.json`),
+      import(`../messages/${locale}/cv.json`),
+      import(`../messages/${locale}/contact.json`),
+      import(`../messages/${locale}/blog.json`),
+    ]);
 
   return {
     locale,
@@ -28,7 +29,7 @@ export default getRequestConfig(async ({requestLocale}) => {
       ...experiences.default,
       ...cv.default,
       ...contact.default,
-      ...blog.default
-    }
+      ...blog.default,
+    },
   };
 });

@@ -1,10 +1,10 @@
-import fs from "fs/promises";
-import path from "path";
+import fs from "node:fs/promises";
+import path from "node:path";
 
 async function createPost() {
   const title = process.argv[2];
   if (!title) {
-    console.error("Please provide a title: bun scripts/new-post.ts \"My Title\"");
+    console.error('Please provide a title: bun scripts/new-post.ts "My Title"');
     process.exit(1);
   }
 
@@ -19,13 +19,13 @@ async function createPost() {
   const root = process.cwd();
 
   const locales = ["cs", "en"];
-  
+
   for (const locale of locales) {
     const dir = path.join(root, "content", locale, "blog");
     await fs.mkdir(dir, { recursive: true });
-    
+
     const filePath = path.join(dir, `${slug}.mdx`);
-    
+
     // Check if file already exists
     try {
       await fs.access(filePath);
@@ -37,7 +37,7 @@ async function createPost() {
 title: "${title}"
 date: "${date}"
 description: "Brief description of ${title}."
-readingTime: "5 min ${locale === 'cs' ? 'čtení' : 'read'}"
+readingTime: "5 min ${locale === "cs" ? "čtení" : "read"}"
 ---
 
 Write your content here in Markdown...

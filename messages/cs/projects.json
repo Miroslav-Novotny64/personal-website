@@ -6,7 +6,7 @@
     "title": "Projekty",
     "view_all": "Zobrazit všechny projekty",
     "items": {
-        "expertov": {
+      "expertov": {
         "title": "Expertov",
         "description": "Produkční SaaS platforma vypracovaná na základě požadavků klienta s důrazem na výkon a škálovatelnost. Vyvinuto v Next.js s využitím Trpc, Drizzle ORM, PostgreSQL a Redis."
       },

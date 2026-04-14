@@ -1,15 +1,19 @@
+import { ArrowLeft, ExternalLink, FileText, Mail, MapPin } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { ExperiencesSection } from "@/components/experiences-section";
-import { ArrowLeft, ExternalLink, FileText, Mail, MapPin } from "lucide-react";
-import { Link } from "@/i18n/navigation";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
+import { Link } from "@/i18n/navigation";
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'CV' });
+  const t = await getTranslations({ locale, namespace: "CV" });
   return {
-    title: t('seo_title') || t('title'),
-    description: t('seo_description') || t('subtitle'),
+    title: t("seo_title") || t("title"),
+    description: t("seo_description") || t("subtitle"),
   };
 }
 
@@ -22,29 +26,33 @@ export default async function CVPage() {
 
   return (
     <main className="min-h-screen pt-24 pb-20 px-6 lg:px-24">
-      <BreadcrumbsJsonLd 
+      <BreadcrumbsJsonLd
         items={[
           { name: tNav("home"), item: "/" },
           { name: t("title"), item: "/cv" },
         ]}
       />
       <div className="max-w-4xl mx-auto space-y-16">
-        
         {/* --- Header & Navigation --- */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-4">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors mb-8"
             >
-              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft
+                size={14}
+                className="group-hover:-translate-x-1 transition-transform"
+              />
               {t("back_to_home")}
             </Link>
-            
+
             <h1 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase">
               {tHome("name").split(" ")[0]}
               <br />
-              <span className="text-primary">{tHome("name").split(" ")[1]}</span>
+              <span className="text-primary">
+                {tHome("name").split(" ")[1]}
+              </span>
             </h1>
             <p className="text-xl text-muted-foreground font-medium max-w-md">
               {tHome("role")}
@@ -52,10 +60,11 @@ export default async function CVPage() {
           </div>
 
           <div className="flex flex-col gap-4">
-            <a 
-              href="/Miroslav%20Novotn%C3%BD%20CV%20-%20Student%20IT.pdf" 
-              target="_blank" 
+            <a
+              href="/Miroslav%20Novotn%C3%BD%20CV%20-%20Student%20IT.pdf"
+              target="_blank"
               className="group flex items-center justify-center gap-3 px-6 py-4 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-xs rounded-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(244,34,114,0.2)]"
+              rel="noopener"
             >
               <FileText size={16} />
               {t("view_pdf")}
@@ -64,7 +73,7 @@ export default async function CVPage() {
 
             <div className="grid grid-cols-1 gap-3">
               <a
-                href={`mailto:${tLinks("email")}`} 
+                href={`mailto:${tLinks("email")}`}
                 className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors"
               >
                 <Mail size={16} className="text-primary/50" />
@@ -75,12 +84,38 @@ export default async function CVPage() {
                 Praha, Česká republika
               </div>
               <div className="flex flex-wrap items-center gap-6 mt-2">
-                <a href={tLinks("github")} target="_blank" className="flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>
+                <a
+                  href={tLinks("github")}
+                  target="_blank"
+                  className="flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    role="img"
+                  >
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                  </svg>
                   {tCommon("github")}
                 </a>
-                <a href={tLinks("linkedin")} target="_blank" className="flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451c.98 0 1.771-.773 1.771-1.729V1.729C24 .774 23.205 0 22.225 0z" /></svg>
+                <a
+                  href={tLinks("linkedin")}
+                  target="_blank"
+                  className="flex items-center gap-2 text-sm font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    role="img"
+                  >
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451c.98 0 1.771-.773 1.771-1.729V1.729C24 .774 23.205 0 22.225 0z" />
+                  </svg>
                   {tCommon("linkedin")}
                 </a>
               </div>
@@ -91,7 +126,9 @@ export default async function CVPage() {
         {/* --- Profile --- */}
         <section className="space-y-6">
           <div className="flex items-center gap-4">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-primary">{t("profile")}</h2>
+            <h2 className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-primary">
+              {t("profile")}
+            </h2>
             <div className="h-px flex-1 bg-border/20"></div>
           </div>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
@@ -102,38 +139,70 @@ export default async function CVPage() {
         {/* --- Skills --- */}
         <section className="space-y-8">
           <div className="flex items-center gap-4">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-primary">{t("skills.title")}</h2>
+            <h2 className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-primary">
+              {t("skills.title")}
+            </h2>
             <div className="h-px flex-1 bg-border/20"></div>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <div className="space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-foreground/80">{t("skills.categories.frontend")}</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-foreground/80">
+                {t("skills.categories.frontend")}
+              </h3>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Next.js</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">React</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Tailwind CSS</span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Next.js
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  React
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Tailwind CSS
+                </span>
               </div>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-foreground/80">{t("skills.categories.backend")}</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-foreground/80">
+                {t("skills.categories.backend")}
+              </h3>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Java</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Spring Boot</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">SQL</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Python</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Node.js</span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Java
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Spring Boot
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  SQL
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Python
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Node.js
+                </span>
               </div>
             </div>
 
             <div className="space-y-4">
-              <h3 className="text-sm font-bold uppercase tracking-wider text-foreground/80">{t("skills.categories.other")}</h3>
+              <h3 className="text-sm font-bold uppercase tracking-wider text-foreground/80">
+                {t("skills.categories.other")}
+              </h3>
               <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Linux</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Git</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">Docker</span>
-                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">AI</span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Linux
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Git
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  Docker
+                </span>
+                <span className="px-3 py-1 bg-muted/50 border border-border/40 rounded-full text-xs font-medium">
+                  AI
+                </span>
               </div>
             </div>
           </div>
@@ -141,13 +210,14 @@ export default async function CVPage() {
 
         <section className="space-y-12">
           <div className="flex items-center gap-4">
-            <h2 className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-primary">{t("history")}</h2>
+            <h2 className="text-xs font-mono font-bold uppercase tracking-[0.4em] text-primary">
+              {t("history")}
+            </h2>
             <div className="h-px flex-1 bg-border/20"></div>
           </div>
-          
+
           <ExperiencesSection />
         </section>
-
       </div>
     </main>
   );
