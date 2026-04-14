@@ -24,14 +24,17 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
         </p>
       </div>
 
-      <div className="flex flex-col gap-24 lg:gap-32">
+      <div className="flex flex-col gap-24">
         <ProjectTile
           index="01"
           title={t("items.expertov.title")}
           description={t("items.expertov.description")}
           slug="expertov"
+          fileUrl="/maturitni-prace.pdf"
           tags={["Next.js", "SaaS", "Full-stack"]}
+          image="/expertov-lg.png"
           className="min-h-0"
+          priority={true}
         />
 
         {/* All projects stacked */}
