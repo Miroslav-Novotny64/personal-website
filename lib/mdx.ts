@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 
 export type MdxFrontmatter = {
   title: string;
+  description?: string;
   date: string;
   tech?: string[];
   role?: string;

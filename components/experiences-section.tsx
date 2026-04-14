@@ -107,16 +107,16 @@ export function ExperiencesSection() {
   return (
     <div className="flex w-full flex-col lg:flex-row gap-10 lg:gap-8 xl:gap-12">
       
-      {/* Column 1: Freelance */}
+      {/* Column 1: Education */}
       <div className="flex-1 space-y-4">
         <div className="flex items-center gap-3 px-2 mb-6">
-          <Code className="w-4 h-4 text-emerald-500" />
+          <GraduationCap className="w-4 h-4 text-primary" />
           <h2 className="text-[13px] font-mono font-bold uppercase tracking-[0.2em] text-foreground/80">
-            {t("categories.freelance")}
+            {t("categories.education")}
           </h2>
         </div>
         <div className="flex flex-col gap-2">
-          {freelance.map((item) => renderItem(item))}
+          {education.map((item) => renderItem(item))}
         </div>
       </div>
 
@@ -133,16 +133,16 @@ export function ExperiencesSection() {
         </div>
       </div>
 
-      {/* Column 3: Education */}
+      {/* Column 2: Freelance */}
       <div className="flex-1 space-y-4">
         <div className="flex items-center gap-3 px-2 mb-6">
-          <GraduationCap className="w-4 h-4 text-primary" />
+          <Code className="w-4 h-4 text-emerald-500" />
           <h2 className="text-[13px] font-mono font-bold uppercase tracking-[0.2em] text-foreground/80">
-            {t("categories.education")}
+            {t("categories.freelance")}
           </h2>
         </div>
         <div className="flex flex-col gap-2">
-          {education.map((item) => renderItem(item))}
+          {freelance.map((item) => renderItem(item))}
         </div>
       </div>
 

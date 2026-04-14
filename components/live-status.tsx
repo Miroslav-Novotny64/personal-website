@@ -4,50 +4,24 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 export function LiveStatus() {
-  const t = useTranslations("Status");
-  const [time, setTime] = useState("");
+  const tStatus = useTranslations("Status");
+  const [time, setTime] = useState(new Date());
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setTime(
-        now.toLocaleTimeString("en-GB", {
-          hour: "2-digit",
-          minute: "2-digit",
-          timeZone: "Europe/Prague",
-        }) + " CET"
-      );
-    };
-
-    updateTime();
-    const timer = setInterval(updateTime, 60000);
+    setMounted(true);
+    const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="flex items-center gap-10 font-mono text-xs tracking-[0.25em] uppercase leading-none opacity-80">
-      <div className="flex items-center gap-2">
-        <span className="text-muted-foreground/40 text-[10px]">{t("location_label")}</span>
-        <span className="text-foreground/90">{t("location_value")}</span>
-      </div>
-      
-      <span className="text-muted-foreground/20">/</span>
-      
-      <div className="flex items-center gap-2">
-        <span className="text-muted-foreground/40 text-[10px]">{t("time_label")}</span>
-        <span className="text-foreground/90">{time || `--:-- ${t("time_label").includes("TIME") ? "CET" : ""}`}</span>
-      </div>
-
-      <span className="text-muted-foreground/20">/</span>
-
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1.5">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-40"></span>
-            <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
-          </span>
-          <span className="text-primary font-bold tracking-widest text-[10px]">{t("available")}</span>
-        </div>
+    <div className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/40 leading-relaxed uppercase text-right">
+      <p className="flex items-center gap-2 justify-end mb-1">
+        <span className="w-1 h-1 rounded-full bg-primary animate-pulse" />
+        <span>{tStatus("location")}</span>
+      </p>
+      <div className="text-primary/60">
+        {mounted ? time.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "••:••:••"}
       </div>
     </div>
   );

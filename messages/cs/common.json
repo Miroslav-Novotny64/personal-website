@@ -17,7 +17,7 @@
     "linkedin": "LinkedIn"
   },
   "Status": {
-    "location": "Lokalizace: Praha, Česká republika",
+    "location": "Lokace: Praha, Česká republika",
     "location_label": "LOC:",
     "location_value": "PRAHA, CZ",
     "time_label": "TIME:",
@@ -26,5 +26,19 @@
   },
   "Footer": {
     "copyright": "Miroslav Novotný"
+  },
+  "Links": {
+    "github": "https://github.com/Miroslav-Novotny64",
+    "linkedin": "https://www.linkedin.com/in/miroslavnovotny64/",
+    "discord": "https://discordapp.com/users/666281311509545002",
+    "email": "miroslav.novotny64@gmail.com",
+    "projects": {
+      "vyhledavac_adres": "https://github.com/Miroslav-Novotny64/vyhledavac-addres",
+      "impostor_live": "https://simple-impostor-game.fun/",
+      "impostor_repo": "https://github.com/Miroslav-Novotny64/simple-impostor-game",
+      "fractal": "https://github.com/Miroslav-Novotny64/fractal-generator",
+      "flashscore": "https://github.com/Miroslav-Novotny64/FlashscoreScraping",
+      "tree": "https://github.com/Miroslav-Novotny64/Colerful-Tree-Cli"
+    }
   }
 }

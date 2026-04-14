@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { Funnel_Display } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
@@ -9,12 +8,6 @@ const funnelDisplay = Funnel_Display({
   display: "swap",
   fallback: ["Arial", "sans-serif"],
 });
-
-export const metadata: Metadata = {
-  title: "osobní-web",
-  description: "Minimalist space built with Tailwind v4",
-};
-
 
 export default async function RootLayout({
   children,
@@ -40,5 +33,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-

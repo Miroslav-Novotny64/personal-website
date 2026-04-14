@@ -3,6 +3,17 @@ import { setRequestLocale } from "next-intl/server";
 import { getMdxContent } from "@/lib/mdx";
 import { MdxLayout } from "@/components/mdx-layout";
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const { locale, slug } = await params;
+  const mdxData = await getMdxContent(locale, "projects", slug);
+  if (!mdxData) return {};
+  
+  return {
+    title: mdxData.frontmatter.title,
+    description: mdxData.frontmatter.description,
+  };
+}
+
 export default async function ProjectPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { locale, slug } = await params;
   setRequestLocale(locale);

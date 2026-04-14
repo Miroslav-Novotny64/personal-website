@@ -10,6 +10,7 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
   const { getTranslations } = await import('next-intl/server');
   const t = await getTranslations("Projects");
   const tCommon = await getTranslations("Common");
+  const tLinks = await getTranslations("Links");
   return (
     <main className="min-h-screen pt-32 pb-20 px-6 lg:px-24 max-w-[1400px] mx-auto w-full">
       <div className="mb-24">
@@ -41,7 +42,7 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
           slug="vyhledavac-adres"
           video="/videos/vyhledavac-adres_preview.mp4"
           tags={["Rust", "WebAssembly", "Leptos", "Database"]}
-          repoUrl="https://github.com/Miroslav-Novotny64/vyhledavac-addres"
+          repoUrl={tLinks("projects.vyhledavac_adres")}
           className="min-h-0"
         />
 
@@ -51,8 +52,8 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
           description={t("items.impostor.description")}
           slug="impostor"
           video="/videos/impostor-game_preview.mp4"
-          liveUrl="https://simple-impostor-game.fun/"
-          repoUrl="https://github.com/Miroslav-Novotny64/simple-impostor-game"
+          liveUrl={tLinks("projects.impostor_live")}
+          repoUrl={tLinks("projects.impostor_repo")}
           tags={["React", "Tailwind", "PWA"]}
           className="min-h-0"
         />
@@ -63,7 +64,7 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
           description={t("items.fractal.description")}
           slug="fractal"
           video="/videos/fractals_preview.mp4"
-          repoUrl="https://github.com/Miroslav-Novotny64/fractal-generator"
+          repoUrl={tLinks("projects.fractal")}
           tags={["Rust", "Maths"]}
           className="min-h-0"
         />
@@ -73,7 +74,7 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
           title={t("items.flashscore.title")}
           description={t("items.flashscore.description")}
           slug="flashscore"
-          repoUrl="https://github.com/Miroslav-Novotny64/FlashscoreScraping"
+          repoUrl={tLinks("projects.flashscore")}
           tags={["Node.js", "API", "Scraping"]}
           className="min-h-0"
         />
@@ -84,7 +85,7 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
           description={t("items.tree.description")}
           slug="tree"
           image="/tree.png"
-          repoUrl="https://github.com/Miroslav-Novotny64/Colerful-Tree-Cli"
+          repoUrl={tLinks("projects.tree")}
           tags={["C", "CLI"]}
           className="min-h-0"
         />
