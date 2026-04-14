@@ -27,18 +27,18 @@ const ALL_ITEMS: Item[] = [
 ];
 
 export function ExperiencesSection() {
-  const t = useTranslations("Home.experiences");
+  const t = useTranslations("Experiences");
 
   const renderItem = (item: Item) => {
-    const title = t(`${item.id}.title`);
-    const date = t(`${item.id}.date`);
+    const title = t(`items.${item.id}.title`);
+    const date = t(`items.${item.id}.date`);
     // Use t.has() to safely check for translations without throwing MISSING_MESSAGE
-    const orgOrSubtitle = (t as any).has(`${item.id}.org`)
-      ? t(`${item.id}.org` as any)
-      : (t as any).has(`${item.id}.subtitle`)
-        ? t(`${item.id}.subtitle` as any)
+    const orgOrSubtitle = (t as any).has(`items.${item.id}.org`)
+      ? t(`items.${item.id}.org` as any)
+      : (t as any).has(`items.${item.id}.subtitle`)
+        ? t(`items.${item.id}.subtitle` as any)
         : "";
-    const description = t(`${item.id}.description`);
+    const description = t(`items.${item.id}.description`);
 
     const Icon = item.type === "education" ? GraduationCap : item.type === "freelance" ? Code : Briefcase;
     const pathname = item.type === "education" ? "/education/[slug]" : "/experience/[slug]";

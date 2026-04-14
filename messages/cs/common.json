@@ -1,0 +1,30 @@
+{
+  "Navigation": {
+    "home": "Miroslav Novotný",
+    "projects": "[/projekty]",
+    "cv": "[/CV]",
+    "blog": "[/blog]",
+    "contact": "[/kontakt]"
+  },
+  "Common": {
+    "back": "Zpět",
+    "live": "Produkční web",
+    "repo": "Repozitář",
+    "case_study": "Case Study",
+    "details": "Detaily",
+    "no_preview": "Náhled není k dispozici",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "Status": {
+    "location": "Lokalizace: Praha, Česká republika",
+    "location_label": "LOC:",
+    "location_value": "PRAHA, CZ",
+    "time_label": "TIME:",
+    "available": "Dostupný",
+    "sys_online": "SYS ONLINE"
+  },
+  "Footer": {
+    "copyright": "Miroslav Novotný"
+  }
+}

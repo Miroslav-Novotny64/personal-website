@@ -9,6 +9,8 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const t = useTranslations("Home");
+  const tProjects = useTranslations("Projects");
+  const tExperiences = useTranslations("Experiences");
   const tStatus = useTranslations("Status");
   const [time, setTime] = useState(new Date());
   const [mounted, setMounted] = useState(false);
@@ -132,7 +134,7 @@ export default function Home() {
           </div>
 
           <h2 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-12">
-            {t("experiences.title")}
+            {tExperiences("title")}
             <span className="text-primary">.</span>
           </h2>
           <ExperiencesSection />
@@ -143,51 +145,46 @@ export default function Home() {
       <section id="projects" className="px-6 lg:px-24 mb-16">
         <div className="max-w-[1400px] mx-auto w-full">
           <div className="flex items-center gap-4 mb-8">
-            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary/60 font-bold">{t("sections.work")}</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary/60 font-bold">{t("sections.projects")}</span>
             <span className="h-px flex-1 bg-border/20"></span>
           </div>
 
           <h2 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-12">
-            {t("projects.title")}
+            {tProjects("title")}
             <span className="text-primary">.</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <ProjectTile
               index="01"
-              title={t("projects.vyhledavac-adres.title")}
-              description={t("projects.vyhledavac-adres.description")}
-              problem={t("projects.vyhledavac-adres.problem")}
-              solution={t("projects.vyhledavac-adres.solution")}
-              impact={t("projects.vyhledavac-adres.impact")}
+              title={tProjects("items.vyhledavac-adres.title")}
+              description={tProjects("items.vyhledavac-adres.description")}
               slug="vyhledavac-adres"
               video="/videos/vyhledavac-adres_preview.mp4"
               tags={["Rust", "WebAssembly", "Leptos", "Database"]}
+              repoUrl="https://github.com/Miroslav-Novotny64/vyhledavac-addres"
               variant="grid"
             />
 
             <ProjectTile
               index="02"
-              title={t("projects.impostor.title")}
-              description={t("projects.impostor.description")}
-              problem={t("projects.impostor.problem")}
-              solution={t("projects.impostor.solution")}
-              impact={t("projects.impostor.impact")}
+              title={tProjects("items.impostor.title")}
+              description={tProjects("items.impostor.description")}
               slug="impostor"
               video="/videos/impostor-game_preview.mp4"
+              liveUrl="https://simple-impostor-game.fun/"
+              repoUrl="https://github.com/Miroslav-Novotny64/simple-impostor-game"
               tags={["React", "Tailwind", "PWA"]}
               variant="grid"
             />
 
             <ProjectTile
               index="03"
-              title={t("projects.fractal.title")}
-              description={t("projects.fractal.description")}
-              problem={t("projects.fractal.problem")}
-              solution={t("projects.fractal.solution")}
-              impact={t("projects.fractal.impact")}
+              title={tProjects("items.fractal.title")}
+              description={tProjects("items.fractal.description")}
               slug="fractal"
               video="/videos/fractals_preview.mp4"
+              repoUrl="https://github.com/Miroslav-Novotny64/fractal-generator"
               tags={["Rust", "Maths"]}
               variant="grid"
             />
@@ -198,7 +195,7 @@ export default function Home() {
               href="/projects" 
               className="group flex items-center gap-3 font-mono text-[11px] md:text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-all duration-300 border border-border/20 bg-card/10 hover:border-primary/20 px-10 py-6 rounded-sm backdrop-blur-sm"
             >
-              {t("projects.view_all")}
+              {tProjects("view_all")}
               <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
             </Link>
           </div>

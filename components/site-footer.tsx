@@ -1,9 +1,10 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Copyright } from "lucide-react";
 
 export function SiteFooter() {
-  const t = useTranslations("Home");
+  const t = useTranslations("Footer");
   const tCommon = useTranslations("Common");
   const tStatus = useTranslations("Status");
 
@@ -30,8 +31,9 @@ export function SiteFooter() {
         </div>
 
         {/* Right: copyright */}
-        <div className="font-mono text-[10px] tracking-widest text-muted-foreground/30 uppercase">
-          {t("footer")}
+        <div className="flex items-center gap-1.5 font-mono text-[10px] tracking-widest text-muted-foreground/30 uppercase">
+          <Copyright size={10} strokeWidth={1.5} />
+          <span>{t("copyright")} - {new Date().getFullYear()}</span>
         </div>
 
       </div>

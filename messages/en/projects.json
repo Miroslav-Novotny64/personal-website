@@ -1,0 +1,33 @@
+{
+  "Projects": {
+    "page_description": "Projects I've worked on",
+    "title": "Projects",
+    "view_all": "View all projects",
+    "items": {
+        "expertov": {
+        "title": "Expertov",
+        "description": "Production SaaS platform developed based on client requirements developed in Next.js using Trpc, Drizzle ORM, PostgreSQL and Redis."
+      },
+      "vyhledavac-adres": {
+        "title": "RÚIAN Address Search",
+        "description": "Address search engine with Full-text indexing. Developed in Rust using WebAssembly and MariaDB database system."
+      },
+      "impostor": {
+        "title": "Simple Impostor Game",
+        "description": "Modern PWA implementation of the party game. Written in React with Tailwind CSS, optimized for mobile devices with offline support."
+      },
+      "fractal": {
+        "title": "Fractal Generator",
+        "description": "Project from the Programming in Rust course for rendering the mathematical Barnsley fern with zoom functionality."
+      },
+      "tree": {
+        "title": "Colorful Tree Utility",
+        "description": "Visually enhanced version of Unix utilities tree in C with support for colors and icons."
+      },
+      "flashscore": {
+        "title": "Flashscore Scraper microservice",
+        "description": "Fork of a scraper for obtaining data from the Flashscore website - optimized for faster data acquisition and implemented as a microservice."
+      }
+    }
+  }
+}

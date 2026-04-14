@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "@/i18n/navigation";
 import { useTransition } from "react";
+import { useParams } from "next/navigation";
 import { Button } from "./ui/button";
 
 export function LangToggle() {
@@ -10,11 +11,13 @@ export function LangToggle() {
   const router = useRouter();
   const locale = useLocale();
   const pathname = usePathname();
+  const params = useParams();
 
   function toggleLanguage() {
     const nextLocale = locale === "en" ? "cs" : "en";
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      // @ts-expect-error -- Using dynamic pathname and params with typed router
+      router.replace({ pathname, params }, { locale: nextLocale });
     });
   }
 

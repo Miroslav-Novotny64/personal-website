@@ -1,0 +1,33 @@
+{
+  "Projects": {
+    "page_description": "Seznam mých projektů, od školních až po komerční. Většina z nich je open source a najdete je na mém GitHubu.",
+    "title": "Projekty",
+    "view_all": "Zobrazit všechny projekty",
+    "items": {
+        "expertov": {
+        "title": "Expertov",
+        "description": "Produkční SaaS platforma vypracovaná na základě požadavků klienta s důrazem na výkon a škálovatelnost. Vyvinuto v Next.js s využitím Trpc, Drizzle ORM, PostgreSQL a Redis."
+      },
+      "vyhledavac-adres": {
+        "title": "Vyhledávač Adres (RÚIAN)",
+        "description": "Vyhledávač adres s Full-text indexací. Vyvinuto v Rustu s využitím WebAssembly a databázovým systémem MariaDB."
+      },
+      "impostor": {
+        "title": "Simple Impostor Game",
+        "description": "Modern PWA implementace párty hry. Napsáno v Reactu s Tailwind CSS, optimalizováno pro mobily s podporou offline hraní."
+      },
+      "fractal": {
+        "title": "Generator fraktálů",
+        "description": "Projekt z předmětu Programování v Rustu určený pro renderování matematického Barnsley fern s možností zoomování."
+      },
+      "tree": {
+        "title": "Colorful Tree Utility",
+        "description": "Vizuálně vylepšená obdoba Unix utilities tree v C s podporou barev a ikon."
+      },
+      "flashscore": {
+        "title": "Flashscore Scraper microservice",
+        "description": "Fork scraperu pro získávání dat z webu Flashscore - optimalizovaný pro rychlejší získávání dat a implementované jako microservice."
+      }
+    }
+  }
+}

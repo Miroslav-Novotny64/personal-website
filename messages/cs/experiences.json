@@ -1,0 +1,74 @@
+{
+  "Experiences": {
+    "title": "Pracovní zkušenosti",
+    "categories": {
+      "jobs": "Práce & Stáže",
+      "freelance": "Freelance",
+      "education": "Vzdělání"
+    },
+    "tags": {
+      "intern": "STÁŽ",
+      "freelance": "FREELANCE"
+    },
+    "items": {
+      "educanet": {
+        "title": "SPŠ EDUCANET Praha",
+        "subtitle": "Obor IT",
+        "date": "Září 2022 – Květen 2026",
+        "description": "Středoškolské studium se zaměřením na informační technologie. Během studia jsem získal praktické zkušenosti s programováním, tvorbou webů, práce s databázovými systémy, operačními systémy, sítěmi a dalšími IT oblastmi."
+      },
+      "cvut": {
+        "title": "ČVUT FIT",
+        "subtitle": "Vysokoškolské studium",
+        "date": "Září 2026 – Budoucnost",
+        "description": "Studium IT na Fakultě informačních technologií Českého vysokého učení technického v Praze."
+      },
+      "referee": {
+        "title": "Rozhodčí",
+        "org": "Český florbal",
+        "type": "Na částečný úvazek",
+        "date": "Září 2023 – Současnost",
+        "description": "Rozhodování jako rozhodčí v soutěžích Českého florbalu. Tato zkušenost mě naučila rozhodování pod tlakem a následnou komunikaci mého rozhodnutí."
+      },
+      "e55": {
+        "title": "Full stack developer",
+        "org": "E55 - Samuel Kodýtek",
+        "type": "Stáž",
+        "date": "Prosinec 2025 (2 týdny)",
+        "description": "Vývoj e-shopu v Java/Spring Boot a Next.js. Fullstack vývoj od front-endu po back-end až do vytvoření databázového schématu."
+      },
+      "eywo": {
+        "title": "Python Developer",
+        "org": "Eywo",
+        "type": "Stáž",
+        "date": "Květen 2025 (2 týdny)",
+        "description": "Tvorba skriptů v Pythonu pro generování tracerů a posílání těchto testovacích dat do monitorovacího systému." 
+      },
+      "itnetwork": {
+        "title": "Kouč vzdělávání",
+        "org": "ITnetwork s.r.o.",
+        "date": "Červen 2023 – Září 2024",
+        "description": "Koučování studentů v oblasti softwarového inženýrství během prezenčních seminářů."
+      },
+      "tretera": {
+        "title": "Frontend Developer",
+        "org": "Adam Tretera",
+        "type": "Stáž",
+        "date": "Květen 2024 (2 týdny)",
+        "description": "Implementace landing page s animavonými prvky a responzivním designem."
+      },
+      "expertov": {
+        "title": "Expertov",
+        "org": "Freelance / SaaS",
+        "date": "Listopad 2024 – Současnost",
+        "description": "Komplexní produkční SaaS platforma vypracovaná na základě požadavků klienta."
+      },
+      "parot": {
+        "title": "Parot - parot.cz",
+        "org": "Párová a rodinná terapie",
+        "date": "Duben 2026",
+        "description": "Kompletní návrh a vývoj webu pro psychoterapeutickou praxi (Párová a rodinná terapie v Praze). Implementace rezponsivního designu a SEO optimalizace."
+      }
+    }
+  }
+}

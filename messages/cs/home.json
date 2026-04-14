@@ -1,0 +1,15 @@
+{
+  "Home": {
+    "name": "Miroslav Novotný",
+    "role": "Full-stack Developer & Student",
+    "intro": "Student IT směřující na ČVUT FIT s praxí ve full-stack vývoji. Specializuji se na Next.js, Javu (Spring Boot). Ovládám také práci s relačními databázemi (SQL), skriptování v Pythonu, nebo administraci Linuxu.",
+    "bio": "Jsem nadšený student IT, který se snaží vyvíjet zajímavé projekty a učit se nové věci. Pokud hledáte někoho, kdo se nebojí výzev a chce se posunout dál, podívejte se na můj životopis",
+    "sections": {
+      "journey": "01 // PRACOVNÍ ZKUŠENOSTI",
+      "projects": "02 // PROJEKTY",
+      "projects_label": "MÉ PROJEKTY"
+    },
+    "cta": "Kontakt",
+    "see_cv": "Zobrazit CV"
+  }
+}

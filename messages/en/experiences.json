@@ -1,0 +1,74 @@
+{
+  "Experiences": {
+    "title": "Work experience",
+    "categories": {
+      "jobs": "Jobs & Internships",
+      "freelance": "Freelance",
+      "education": "Education"
+    },
+    "tags": {
+      "intern": "INTERN",
+      "freelance": "FREELANCE"
+    },
+    "items": {
+      "educanet": {
+        "title": "SPŠ EDUCANET Prague",
+        "subtitle": "IT focus",
+        "date": "Sept 2022 – May 2026",
+        "description": "High school with a focus on information technology. During my studies, I gained practical experience in programming, web development, working with database systems, operating systems, networks, and other IT areas."
+      },
+      "cvut": {
+        "title": "CTU FIT",
+        "subtitle": "University Studies",
+        "date": "Sept 2026 – Future",
+        "description": "Bachelor's program in computer science"
+      },
+      "referee": {
+        "title": "Referee",
+        "org": "Czech Floorball",
+        "type": "Part-time",
+        "date": "Sept 2023 – Present",
+        "description": "Refereeing floorball matches, making critical decisions under pressure and communicating them clearly to players and coaches."
+      },
+      "e55": {
+        "title": "Full stack developer",
+        "org": "E55 - Samuel Kodýtek",
+        "type": "Internship",
+        "date": "Dec 2025 (2 weeks)",
+        "description": "Building an e-shop in Java/Spring Boot and Next.js. Fullstack development from front-end to back-end to creating a database schema changes."
+      },
+      "eywo": {
+        "title": "Python Developer",
+        "org": "Eywo",
+        "type": "Internship",
+        "date": "May 2025 (2 weeks)",
+        "description": "Creating scripts in Python for generating tracers and sending this test data to a monitoring system."
+      },
+      "itnetwork": {
+        "title": "Education Coach",
+        "org": "ITnetwork s.r.o.",
+        "date": "June 2023 – Sept 2024",
+        "description": "Coaching hundreds of students in software engineering during their in-person seminars."
+      },
+      "tretera": {
+        "title": "Frontend Developer",
+        "org": "Adam Tretera",
+        "type": "Internship",
+        "date": "May 2024 (2 weeks)",
+        "description": "Creating a landing page with animated elements and responsive design."
+      },
+      "expertov": {
+        "title": "Expertov",
+        "org": "Freelance / SaaS",
+        "date": "Nov 2024 – Present",
+        "description": "Production SaaS platform built for a client with a focus on performance and scalability."
+      },
+      "parot": {
+        "title": "Parot - parot.cz",
+        "org": "Couple & Family therapy",
+        "date": "April 2026",
+        "description": "Complete design and development of a website for a psychotherapist practice (Couple & Family therapy in Prague). Implementation of responsive design and SEO optimization."
+      }
+    }
+  }
+}
