@@ -1,4 +1,32 @@
 {
+  "Navigation": {
+    "home": "[/]",
+    "projects": "[/projects]",
+    "cv": "[/cv]",
+    "blog": "[/blog]",
+    "contact": "[/contact]"
+  },
+  "Common": {
+    "back": "Back",
+    "live": "Live",
+    "repo": "Repo",
+    "case_study": "Case Study",
+    "details": "Details",
+    "no_preview": "No preview available",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "Status": {
+    "location": "Location: Prague, Czechia",
+    "location_label": "LOC:",
+    "location_value": "PRAGUE, CZ",
+    "time_label": "TIME:",
+    "available": "Available",
+    "sys_online": "SYS ONLINE"
+  },
+  "ProjectsPage": {
+    "description": "Explore all my side-projects, open-source utilities and platform apps. Each project explores a unique technical challenge. Custom video showcases run on intent."
+  },
   "Home": {
     "name": "Miroslav Novotny",
     "role": "Full-stack Developer & Student",
@@ -6,28 +34,51 @@
     "bio": "Specializing in complex web applications within the React and Next.js ecosystem, with a focus on type safety and efficient infrastructure.",
     "about": "Graduating May 2026 from Educanet Praha (IT focus) and admitted to FIT ČVUT (Computer Engineering). Active Arch Linux user btw🤓.",
     "fiks": "FIKS (12th year): Successful solver (90.5 points).",
+    "sections": {
+      "journey": "01 // JOURNEY",
+      "work": "02 // WORK",
+      "projects_label": "MY PROJECTS"
+    },
     "projects": {
       "title": "Projects",
       "view_all": "View all projects",
+      "problem_label": "Problem",
+      "solution_label": "Solution",
+      "impact_label": "Impact",
       "vyhledavac-adres": {
         "title": "RÚIAN Address Search",
-        "description": "Lighting fast local search engine for gigabytes of Czech real estate data. Entirely built in Rust with WebAssembly and Full-text indexes."
+        "description": "Lighting fast local search engine for gigabytes of Czech real estate data. Entirely built in Rust with WebAssembly and Full-text indexes.",
+        "problem": "Searching through massive RÚIAN data is slow and requires an online connection.",
+        "solution": "Local Rust search engine with WASM that indexes GBs of data into a fast full-text search.",
+        "impact": "Instant results without latency, 100% offline."
       },
       "impostor": {
         "title": "Simple Impostor Game",
-        "description": "Modern PWA implementation of the social deduction party game. Built with React and Tailwind CSS featuring offline mode and smooth animations."
+        "description": "Modern PWA implementation of the social deduction party game. Built with React and Tailwind CSS featuring offline mode and smooth animations.",
+        "problem": "Party games often require paper or expensive apps.",
+        "solution": "Modern PWA in React that works offline on every mobile device.",
+        "impact": "Tons of fun with friends without any installation needed."
       },
       "fractal": {
         "title": "Fractal Generator",
-        "description": "University-level Rust project focused on high-performance rendering of the Barnsley fern fractal with real-time zooming capabilities."
+        "description": "University-level Rust project focused on high-performance rendering of the Barnsley fern fractal with real-time zooming capabilities.",
+        "problem": "Rendering complex fractals in real-time is computationally expensive.",
+        "solution": "Highly parallelized Rust code with efficient mathematical algorithms.",
+        "impact": "Smooth zooming into infinite details without lag."
       },
       "tree": {
         "title": "Colorful Tree Utility",
-        "description": "A visually enhanced C-based directory tree viewer featuring colorful nerd font icons, syntax highlighting and smart folder recognition."
+        "description": "A visually enhanced C-based directory tree viewer featuring colorful nerd font icons, syntax highlighting and smart folder recognition.",
+        "problem": "The standard tree utility is visually boring and hard to read.",
+        "solution": "Implementation in C with Nerd Font support and color coding.",
+        "impact": "Improved orientation in folder structures within the terminal."
       },
       "flashscore": {
         "title": "Flashscore Scraper",
-        "description": "Highly optimized Node.js microservice replacing a linear scraping script with an O(2) parallel execution system."
+        "description": "Highly optimized Node.js microservice replacing a linear scraping script with an O(2) parallel execution system.",
+        "problem": "Linear data scraping is slow and inefficient.",
+        "solution": "O(2) asynchronous system in Node.js for parallel data collection.",
+        "impact": "Significant speedup in real-time data updates."
       }
     },
     "stack": {

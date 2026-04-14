@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const t = useTranslations("Home");
+  const tStatus = useTranslations("Status");
   const [time, setTime] = useState(new Date());
   const [mounted, setMounted] = useState(false);
 
@@ -36,10 +37,10 @@ export default function Home() {
           <div className="absolute top-0 right-0 hidden md:flex flex-col items-end gap-8 group h-fit">
             {/* Status Widget */}
             <div className="font-mono text-[10px] tracking-[0.2em] text-muted-foreground/40 leading-relaxed uppercase text-right">
-              <div className="flex items-center gap-2 justify-end mb-1">
+              <p className="flex items-center gap-2 justify-end mb-1">
                 <span className="w-1 h-1 rounded-full bg-primary animate-pulse" />
-                <span>Location: Prague, Czechia</span>
-              </div>
+                <span>{tStatus("location")}</span>
+              </p>
               <div>{mounted ? time.toLocaleTimeString("cs-CZ", { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "••:••:••"}</div>
             </div>
 
@@ -83,7 +84,7 @@ export default function Home() {
             className="group flex flex-col items-start gap-4 transition-all duration-300 cursor-pointer"
           >
             <span className="font-mono text-xs lg:block hidden tracking-[0.4em] uppercase text-primary font-bold group-hover:scale-105 transition-transform origin-left">
-              MÉ PROJEKTY
+              {t("sections.projects_label")}
             </span>
             <div className="relative">
                <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full scale-0 group-hover:scale-150 transition-transform duration-700" />
@@ -91,35 +92,46 @@ export default function Home() {
             </div>
           </button>
           
-          <div className="relative max-w-sm w-full">
+          <div className="relative max-w-lg w-full">
             <div className="absolute -top-px -left-px w-10 h-[2px] bg-primary" />
             <div className="absolute -top-px -left-px w-[2px] h-10 bg-primary" />
             <div className="absolute -bottom-px -right-px w-10 h-[2px] bg-primary" />
             <div className="absolute -bottom-px -right-px w-[2px] h-10 bg-primary" />
 
-            <div className="border border-dashed border-border/40 p-6 flex flex-col gap-6">
-              <p className="text-sm text-muted-foreground leading-relaxed">
+            <div className="border border-dashed border-border/40 p-8 flex flex-col gap-8">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 {t("bio")}
               </p>
-              <div className="flex flex-wrap items-center gap-3">
-                <button className="group flex items-center gap-2 px-5 py-3 bg-primary text-primary-foreground font-bold uppercase tracking-widest text-xs rounded-sm transition-all duration-200 hover:shadow-[0_0_30px_rgba(244,34,114,0.25)]">
+              <div className="flex items-center gap-10">
+                <button className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-xs rounded-sm transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_50px_rgba(244,34,114,0.3)] overflow-hidden shrink-0">
+                  <span className="relative z-10 flex items-center gap-2">
+                    {t("see_cv")}
+                    <ExternalLink size={16} strokeWidth={2} />
+                  </span>
+                  <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                </button>
+                <a 
+                  href="mailto:miroslav.novotny64@gmail.com"
+                  className="group flex items-center gap-2 text-muted-foreground hover:text-primary font-mono text-xs uppercase tracking-[0.3em] transition-all duration-300 whitespace-nowrap"
+                >
                   {t("cta")}
-                  <ArrowUpRight size={12} className="transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </button>
-                <button className="flex items-center gap-2 px-5 py-3 border border-border/40 text-muted-foreground hover:text-foreground hover:border-primary/40 font-bold uppercase tracking-widest text-xs rounded-sm transition-all duration-200">
-                  {t("see_cv")}
-                  <ExternalLink size={12} />
-                </button>
+                  <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── EXPERIENCES (between fold) ── */}
-      <section className="pt-16 px-6 lg:px-24 mb-40">
+      {/* ── EXPERIENCES ── */}
+      <section className="pt-20 px-6 lg:px-24">
         <div className="max-w-[1400px] mx-auto w-full">
-          <h2 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-12">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary/60 font-bold">{t("sections.journey")}</span>
+            <span className="h-px flex-1 bg-border/20"></span>
+          </div>
+
+          <h2 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-12">
             {t("experiences.title")}
             <span className="text-primary">.</span>
           </h2>
@@ -127,19 +139,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROJECTS — Massive Feature Cards ── */}
-      <section id="projects" className="mt-48 px-6 lg:px-24 mb-60">
+      {/* ── PROJECTS ── */}
+      <section id="projects" className="px-6 lg:px-24 mb-16">
         <div className="max-w-[1400px] mx-auto w-full">
-          <h2 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-12">
+          <div className="flex items-center gap-4 mb-8">
+            <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary/60 font-bold">{t("sections.work")}</span>
+            <span className="h-px flex-1 bg-border/20"></span>
+          </div>
+
+          <h2 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase mb-12">
             {t("projects.title")}
             <span className="text-primary">.</span>
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <ProjectTile
               index="01"
               title={t("projects.vyhledavac-adres.title")}
               description={t("projects.vyhledavac-adres.description")}
+              problem={t("projects.vyhledavac-adres.problem")}
+              solution={t("projects.vyhledavac-adres.solution")}
+              impact={t("projects.vyhledavac-adres.impact")}
               slug="vyhledavac-adres"
               video="/videos/vyhledavac-adres_preview.mp4"
               tags={["Rust", "WebAssembly", "Leptos", "Database"]}
@@ -150,6 +170,9 @@ export default function Home() {
               index="02"
               title={t("projects.impostor.title")}
               description={t("projects.impostor.description")}
+              problem={t("projects.impostor.problem")}
+              solution={t("projects.impostor.solution")}
+              impact={t("projects.impostor.impact")}
               slug="impostor"
               video="/videos/impostor-game_preview.mp4"
               tags={["React", "Tailwind", "PWA"]}
@@ -160,18 +183,20 @@ export default function Home() {
               index="03"
               title={t("projects.fractal.title")}
               description={t("projects.fractal.description")}
+              problem={t("projects.fractal.problem")}
+              solution={t("projects.fractal.solution")}
+              impact={t("projects.fractal.impact")}
               slug="fractal"
               video="/videos/fractals_preview.mp4"
               tags={["Rust", "Maths"]}
               variant="grid"
             />
-
           </div>
 
-          <div className="mt-16 flex justify-center">
+          <div className="flex justify-center mt-8">
             <Link 
               href="/projects" 
-              className="group flex items-center gap-3 font-mono text-[11px] md:text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-all duration-300 border border-border/40 bg-card/10 hover:border-primary/40 px-8 py-5 rounded-full backdrop-blur-sm"
+              className="group flex items-center gap-3 font-mono text-[11px] md:text-xs tracking-[0.3em] uppercase text-muted-foreground hover:text-primary transition-all duration-300 border border-border/20 bg-card/10 hover:border-primary/20 px-10 py-6 rounded-sm backdrop-blur-sm"
             >
               {t("projects.view_all")}
               <ArrowUpRight size={16} className="transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
@@ -179,7 +204,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
     </main>
   );
 }

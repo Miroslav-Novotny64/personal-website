@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 export function LiveStatus() {
+  const t = useTranslations("Status");
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -25,15 +27,15 @@ export function LiveStatus() {
   return (
     <div className="flex items-center gap-10 font-mono text-xs tracking-[0.25em] uppercase leading-none opacity-80">
       <div className="flex items-center gap-2">
-        <span className="text-muted-foreground/40 text-[10px]">LOC:</span>
-        <span className="text-foreground/90">PRAGUE, CZ</span>
+        <span className="text-muted-foreground/40 text-[10px]">{t("location_label")}</span>
+        <span className="text-foreground/90">{t("location_value")}</span>
       </div>
       
       <span className="text-muted-foreground/20">/</span>
       
       <div className="flex items-center gap-2">
-        <span className="text-muted-foreground/40 text-[10px]">TIME:</span>
-        <span className="text-foreground/90">{time || "--:-- CET"}</span>
+        <span className="text-muted-foreground/40 text-[10px]">{t("time_label")}</span>
+        <span className="text-foreground/90">{time || `--:-- ${t("time_label").includes("TIME") ? "CET" : ""}`}</span>
       </div>
 
       <span className="text-muted-foreground/20">/</span>
@@ -44,7 +46,7 @@ export function LiveStatus() {
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-40"></span>
             <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary"></span>
           </span>
-          <span className="text-primary font-bold tracking-widest text-[10px]">Available</span>
+          <span className="text-primary font-bold tracking-widest text-[10px]">{t("available")}</span>
         </div>
       </div>
     </div>

@@ -1,33 +1,81 @@
 {
+  "Navigation": {
+    "home": "[/]",
+    "projects": "[/projekty]",
+    "cv": "[/CV]",
+    "blog": "[/blog]",
+    "contact": "[/kontakt]"
+  },
+  "Common": {
+    "back": "Zpět",
+    "live": "Live",
+    "repo": "Repo",
+    "case_study": "Case Study",
+    "details": "Detaily",
+    "no_preview": "Náhled není k dispozici",
+    "github": "GitHub",
+    "linkedin": "LinkedIn"
+  },
+  "Status": {
+    "location": "Lokalizace: Praha, Česká republika",
+    "location_label": "LOC:",
+    "location_value": "PRAHA, CZ",
+    "time_label": "TIME:",
+    "available": "Dostupný",
+    "sys_online": "SYS ONLINE"
+  },
+  "ProjectsPage": {
+    "description": "Prozkoumejte všechny mé vedlejší projekty, open-source utility a platformové aplikace. Každý projekt zkoumá unikátní technickou výzvu. Ukázky videí se spouští při zájmu."
+  },
   "Home": {
     "name": "Miroslav Novotný",
     "role": "Full-stack Developer & Student",
     "intro": "Student IT směřující na ČVUT FIT s praxí ve full-stack vývoji. Specializuji se na Next.js a Javu (Spring Boot). Ovládám také práci s relačními databázemi (SQL), Redisem a administraci Linuxu.",
-    "bio": "Soustředím se na vývoj komplexních webových aplikací v ekosystému React a Next.js s důrazem na typovou bezpečnost a efektivní infrastrukturu.",
-    "about": "V květnu 2026 maturuji na SOŠ Educanet Praha (obor IT) a jsem přijatý ke studiu na FIT ČVUT (Počítačové inženýrství). Jsem aktivním uživatelem Arch Linuxu btw🤓.",
-    "fiks": "FIKS (12. ročník): Úspěšný řešitel (90.5 bodů).",
+    "bio": "Jsem nadšený student IT, který se snaží vyvíjet zajímavé projekty a učit se nové věci. Pokud hledáte někoho, kdo se nebojí výzev a chce se posunout dál, podívejte se na můj životopis",
+    "sections": {
+      "journey": "01 // PRACOVNÍ ZKUŠENOSTI",
+      "projects_label": "MÉ PROJEKTY"
+    },
     "projects": {
       "title": "Projekty",
       "view_all": "Zobrazit všechny projekty",
+      "problem_label": "Problém",
+      "solution_label": "Řešení",
+      "impact_label": "Dopad",
       "vyhledavac-adres": {
         "title": "Vyhledávač Adres (RÚIAN)",
-        "description": "Bleskový lokální vyhledávač nad gigabajtovými daty RÚIAN s Full-text indexací. Kompletně vyvinuto v Rustu s využitím WebAssembly."
+        "description": "Bleskový lokální vyhledávač nad gigabajtovými daty RÚIAN s Full-text indexací. Kompletně vyvinuto v Rustu s využitím WebAssembly.",
+        "problem": "Hledání v obrovských datech RÚIAN je pomalé a vyžaduje online připojení.",
+        "solution": "Lokální Rust vyhledávač s WASM, který indexuje GB dat do rychlého full-textu.",
+        "impact": "Okamžité výsledky bez latency, 100% offline."
       },
       "impostor": {
         "title": "Simple Impostor Game",
-        "description": "Moderní PWA implementace dedukční párty hry. Napsáno v Reactu s Tailwind CSS, optimalizováno pro mobily s podporou offline hraní."
+        "description": "Moderní PWA implementace dedukční párty hry. Napsáno v Reactu s Tailwind CSS, optimalizováno pro mobily s podporou offline hraní.",
+        "problem": "Párty hry často vyžadují papír nebo drahé aplikace.",
+        "solution": "Moderní PWA v Reactu, která funguje offline na každém mobilu.",
+        "impact": "Desítky hodin zábavy s přáteli bez nutnosti instalace."
       },
       "fractal": {
         "title": "Generator fraktálů",
-        "description": "Projekt z předmětu Programování v Rustu určený pro bleskurychlé renderování matematického Barnsley fern s možností real-time zoomování."
+        "description": "Projekt z předmětu Programování v Rustu určený pro bleskurychlé renderování matematického Barnsley fern s možností real-time zoomování.",
+        "problem": "Renderování komplexních fraktálů v reálném čase je výpočetně náročné.",
+        "solution": "Vysoce paralelizovaný Rust kód s efektivními matematickými algoritmy.",
+        "impact": "Plynulé zoomování do nekonečných detailů bez sekání."
       },
       "tree": {
         "title": "Colorful Tree Utility",
-        "description": "Vizuálně vylepšená obdoba Unix utilities tree v čistém C s podporou barev z Nerd fontů a smart detekcí formátů."
+        "description": "Vizuálně vylepšená obdoba Unix utilities tree v čistém C s podporou barev z Nerd fontů a smart detekcí formátů.",
+        "problem": "Standardní tree utilita je vizuálně nudná a nepřehledná.",
+        "solution": "Implementace v C s podporou Nerd Fontů a barevným odlišením.",
+        "impact": "Lepší orientace v souborových strukturách v terminálu."
       },
       "flashscore": {
         "title": "Flashscore Scraper",
-        "description": "Vysoce optimalizovaná Node.js mikroslužba nahrazující lineární scraper systémem s O(2) spuštěním poskytující živá JSON data."
+        "description": "Vysoce optimalizovaná Node.js mikroslužba nahrazující lineární scraper systémem s O(2) spuštěním poskytující živá JSON data.",
+        "problem": "Lineární scraping dat je pomalý a neefektivní.",
+        "solution": "O(2) asynchronní systém v Node.js pro paralelní sběr dat.",
+        "impact": "Výrazné zrychlení aktualizace dat v reálném čase."
       }
     },
     "stack": {
@@ -38,10 +86,10 @@
       "devops": "Linux (Arch), Docker, GH Actions, Cloudflare",
       "lowlevel": "C, Java, Python"
     },
-    "cta": "Kontakt / GitHub",
+    "cta": "Kontakt",
     "see_cv": "Zobrazit CV",
     "experiences": {
-      "title": "Moje cesta",
+      "title": "Pracovní zkušenosti",
       "categories": {
         "jobs": "Práce & Stáže",
         "freelance": "Freelance",
