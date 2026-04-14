@@ -2,15 +2,33 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { getMdxContent } from "@/lib/mdx";
 import { MdxLayout } from "@/components/mdx-layout";
+import { BreadcrumbsJsonLd } from "@/components/json-ld";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { locale, slug } = await params;
   const mdxData = await getMdxContent(locale, "projects", slug);
   if (!mdxData) return {};
+
+  const title = mdxData.frontmatter.seo_title || mdxData.frontmatter.title;
+  const description = mdxData.frontmatter.seo_description || mdxData.frontmatter.description;
+  const image = mdxData.frontmatter.thumbnail || '/og-image.png';
   
   return {
-    title: mdxData.frontmatter.title,
-    description: mdxData.frontmatter.description,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      images: [{ url: image }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+    },
   };
 }
 
@@ -21,5 +39,19 @@ export default async function ProjectPage({ params }: { params: Promise<{ locale
   const mdxData = await getMdxContent(locale, "projects", slug);
   if (!mdxData) return notFound();
 
-  return <MdxLayout frontmatter={mdxData.frontmatter} content={mdxData.content} backHref="/#projects" />;
+  const tNav = await getTranslations("Navigation");
+  const tProjects = await getTranslations("Projects");
+
+  return (
+    <>
+      <BreadcrumbsJsonLd 
+        items={[
+          { name: tNav("home"), item: "/" },
+          { name: tProjects("title"), item: "/projects" },
+          { name: mdxData.frontmatter.title, item: `/projects/${slug}` },
+        ]}
+      />
+      <MdxLayout frontmatter={mdxData.frontmatter} content={mdxData.content} backHref="/#projects" />
+    </>
+  );
 }

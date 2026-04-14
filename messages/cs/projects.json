@@ -1,6 +1,8 @@
 {
   "Projects": {
     "page_description": "Seznam mých projektů, od školních až po komerční. Většina z nich je open source a najdete je na mém GitHubu.",
+    "seo_title": "Projekty",
+    "seo_description": "Portfolio projektů Miroslava Novotného. Prohlédněte si mé práce v Next.js, Rustu a Javě, včetně open-source nástrojů a SaaS platforem.",
     "title": "Projekty",
     "view_all": "Zobrazit všechny projekty",
     "items": {

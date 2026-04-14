@@ -1,8 +1,10 @@
 {
   "Contact": {
     "title": "Contact",
-    "subtitle": "LET'S COLLABORATE",
-    "intro": "Got an interesting project in mind, or looking for someone to join your team as a programme | software engineer?",
+    "subtitle": "CONTACT DETAILS",
+    "seo_title": "Contact",
+    "seo_description": "Have a project you'd like to talk about? Or want to hire me? Get in touch with me via email, LinkedIn, or Discord.",
+    "intro": "Have a project you'd like to discuss or just want to ask something? Feel free to reach out via the form or my social media channels.",
     "form_disclaimer": "Let me know via email and I'll get back to you as soon as possible.",
     "socials": {
       "title": "Social Networks",

@@ -1,6 +1,8 @@
 {
   "Blog": {
     "title": "Blog",
+    "seo_title": "Blog o Vývoji a IT",
+    "seo_description": "Moé myšlenky, návody a postřehy ze světa full-stack vývoje, programování a nových technologií a všeho možného. (většina ale IT related)",
     "description": "Mé myšlenky o všem možném :)",
     "archive": "Všechny články",
     "no_posts": "Zatím žádné články.",

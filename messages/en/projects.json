@@ -1,6 +1,8 @@
 {
   "Projects": {
-    "page_description": "Projects I've worked on",
+    "page_description": "List of my projects, from school to commercial. Most of them are open source and can be found on my GitHub.",
+    "seo_title": "Projects",
+    "seo_description": "A showcase of projects by Miroslav Novotny. Featuring work in Next.js, Rust, and Java, including open-source tools and SaaS platforms.",
     "title": "Projects",
     "view_all": "View all projects",
     "items": {

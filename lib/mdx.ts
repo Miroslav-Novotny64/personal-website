@@ -11,6 +11,8 @@ export type MdxFrontmatter = {
   link?: string;
   thumbnail?: string;
   readingTime?: string;
+  seo_title?: string;
+  seo_description?: string;
 };
 
 export async function getMdxContent(locale: string, type: 'experience' | 'education' | 'projects' | 'blog', slug: string) {

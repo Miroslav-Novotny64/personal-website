@@ -2,12 +2,14 @@ import { getTranslations } from "next-intl/server";
 import { ExperiencesSection } from "@/components/experiences-section";
 import { ArrowLeft, ExternalLink, FileText, Mail, MapPin } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { BreadcrumbsJsonLd } from "@/components/json-ld";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'CV' });
   return {
-    title: t('title'),
+    title: t('seo_title') || t('title'),
+    description: t('seo_description') || t('subtitle'),
   };
 }
 
@@ -16,9 +18,16 @@ export default async function CVPage() {
   const tHome = await getTranslations("Home");
   const tCommon = await getTranslations("Common");
   const tLinks = await getTranslations("Links");
+  const tNav = await getTranslations("Navigation");
 
   return (
     <main className="min-h-screen pt-24 pb-20 px-6 lg:px-24">
+      <BreadcrumbsJsonLd 
+        items={[
+          { name: tNav("home"), item: "/" },
+          { name: t("title"), item: "/cv" },
+        ]}
+      />
       <div className="max-w-4xl mx-auto space-y-16">
         
         {/* --- Header & Navigation --- */}
@@ -86,7 +95,7 @@ export default async function CVPage() {
             <div className="h-px flex-1 bg-border/20"></div>
           </div>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-            {tHome("bio")} {tHome("intro")}
+            {t("profile_description")}
           </p>
         </section>
 

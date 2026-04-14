@@ -3,6 +3,17 @@ import { Link } from "@/i18n/navigation";
 import { ArrowLeft } from "lucide-react";
 import { getAllMdxContent } from "@/lib/mdx";
 import { BlogCard } from "@/components/blog-card";
+import { BreadcrumbsJsonLd } from "@/components/json-ld";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Blog' });
+
+  return {
+    title: t('seo_title') || t('title'),
+    description: t('seo_description') || t('description'),
+  };
+}
 
 export default async function BlogIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -10,11 +21,18 @@ export default async function BlogIndexPage({ params }: { params: Promise<{ loca
 
   const t = await getTranslations("Blog");
   const tCommon = await getTranslations("Common");
+  const tNav = await getTranslations("Navigation");
   
   const posts = await getAllMdxContent(locale, 'blog');
 
   return (
     <main className="min-h-screen pt-32 pb-24 px-8 lg:px-24">
+      <BreadcrumbsJsonLd 
+        items={[
+          { name: tNav("home"), item: "/" },
+          { name: t("title"), item: "/blog" },
+        ]}
+      />
       <div className="max-w-[1400px] mx-auto w-full">
         {/* Header Section */}
         <div className="mb-20">

@@ -2,7 +2,9 @@
   "Home": {
     "name": "Miroslav Novotny",
     "role": "Full-stack Developer & Student",
-    "intro": "IT student heading to CTU FIT with experience in full-stack development. I specialize in Next.js and Java (Spring Boot). I am also proficient in working with relational databases (SQL), scripting in Python or administration.",
+    "seo_title": "Miroslav Novotný",
+    "seo_description": "IT student with experience in full-stack development. I specialize in Next.js, Java (Spring Boot). I am also proficient in working with relational databases (SQL), Python scripting, and Linux administration.",
+    "intro": "IT student aiming for ČVUT FIT with experience in full-stack development. I specialize in Next.js, Java (Spring Boot). I am also proficient in working with relational databases (SQL), Python scripting, and Linux administration.",
     "bio": "I am an enthusiastic IT student who enjoys developing interesting projects and learning new things. If you are looking for someone who is not afraid of challenges and wants to move forward, take a look at my resume.",
     "sections": {
       "journey": "01 // JOURNEY",

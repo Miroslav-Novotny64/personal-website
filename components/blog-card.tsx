@@ -86,8 +86,8 @@ export function BlogCard({
       </div>
 
       {/* Hover corner highlight */}
-      <div className="absolute top-0 right-0 w-0 h-0 border-t-[1px] border-r-[1px] border-primary/40 group-hover:w-8 group-hover:h-8 transition-all duration-500" />
-      <div className="absolute bottom-0 left-0 w-0 h-0 border-b-[1px] border-l-[1px] border-primary/40 group-hover:w-8 group-hover:h-8 transition-all duration-500" />
+      <div className="absolute top-0 right-0 w-0 h-0 border-t border-r border-primary/40 group-hover:w-8 group-hover:h-8 transition-all duration-500" />
+      <div className="absolute bottom-0 left-0 w-0 h-0 border-b border-l border-primary/40 group-hover:w-8 group-hover:h-8 transition-all duration-500" />
     </Link>
   );
 }

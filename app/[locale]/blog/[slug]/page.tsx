@@ -4,6 +4,34 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { getMdxContent } from "@/lib/mdx";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
+import { BreadcrumbsJsonLd } from "@/components/json-ld";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }) {
+  const { locale, slug } = await params;
+  const data = await getMdxContent(locale, 'blog', slug);
+  if (!data) return {};
+
+  const title = data.frontmatter.seo_title || data.frontmatter.title;
+  const description = data.frontmatter.seo_description || data.frontmatter.description;
+  const image = data.frontmatter.thumbnail || '/og-image.png';
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      images: [{ url: image }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
 
 export default async function BlogPostPage({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { locale, slug } = await params;
@@ -14,9 +42,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
 
   const { frontmatter, content } = data;
   const tCommon = await getTranslations("Common");
+  const tNav = await getTranslations("Navigation");
+  const tBlog = await getTranslations("Blog");
 
   return (
-    <main className="min-h-screen pt-32 pb-24 px-8 lg:px-24">
+    <>
+      <BreadcrumbsJsonLd 
+        items={[
+          { name: tNav("home"), item: "/" },
+          { name: tBlog("title"), item: "/blog" },
+          { name: frontmatter.title, item: `/blog/${slug}` },
+        ]}
+      />
+      <main className="min-h-screen pt-32 pb-24 px-8 lg:px-24">
       <article className="max-w-[1000px] mx-auto w-full">
         {/* Post Navigation */}
         <Link 
@@ -26,7 +64,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           {tCommon("back")}
         </Link>
-
+  
         {/* Post Header */}
         <header className="mb-16">
           <div className="flex items-center gap-4 mb-8">
@@ -62,5 +100,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
         </div>
       </article>
     </main>
+    </>
   );
 }

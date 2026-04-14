@@ -1,7 +1,18 @@
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { ProjectTile } from "@/components/project-tile";
 import { ArrowLeft } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { BreadcrumbsJsonLd } from "@/components/json-ld";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Projects' });
+
+  return {
+    title: t('seo_title') || t('title'),
+    description: t('seo_description') || t('page_description'),
+  };
+}
 
 export default async function ProjectsIndexPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -11,8 +22,16 @@ export default async function ProjectsIndexPage({ params }: { params: Promise<{ 
   const t = await getTranslations("Projects");
   const tCommon = await getTranslations("Common");
   const tLinks = await getTranslations("Links");
+  const tNav = await getTranslations("Navigation");
+
   return (
     <main className="min-h-screen pt-32 pb-20 px-6 lg:px-24 max-w-[1400px] mx-auto w-full">
+      <BreadcrumbsJsonLd 
+        items={[
+          { name: tNav("home"), item: "/" },
+          { name: t("title"), item: "/projects" },
+        ]}
+      />
       <div className="mb-24">
         <Link href="/" className="inline-flex items-center gap-2 text-muted-foreground/60 hover:text-foreground transition-colors mb-8 font-mono text-sm uppercase tracking-widest">
           <ArrowLeft className="w-4 h-4" />

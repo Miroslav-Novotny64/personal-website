@@ -1,8 +1,11 @@
 {
   "CV": {
     "title": "Životopis",
+    "seo_title": "Životopis",
+    "seo_description": "Profesní životopis a přehled dovedností Miroslava Novotného. Zkušenosti s vývojem webových aplikací, backendu a systémového programování.",
     "subtitle": "Informace o mém vzdělání, praxi a dovednostech.",
     "profile": "Profil",
+    "profile_description": "Student IT směřující na ČVUT FIT s praxí ve full-stack vývoji. Specializuji se na Next.js a Javu (Spring Boot). Ovládám také práci s relačními databázemi (SQL), Redisem a administraci Linuxu.",
     "view_pdf": "Zobrazit PDF verzi",
     "history": "Praxe & Vzdělání",
     "skills": {

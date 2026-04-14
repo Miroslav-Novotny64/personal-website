@@ -1,6 +1,18 @@
 import { Mail, MessageSquare, ArrowUpRight, FileText, ExternalLink } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { DiscordIcon } from "@/components/icons";
+import { BreadcrumbsJsonLd } from "@/components/json-ld";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Contact' });
+
+  return {
+    title: t('seo_title') || t('title'),
+    description: t('seo_description') || t('intro'),
+  };
+}
 
 export default async function ContactPage() {
   const t = await getTranslations("Contact");
@@ -42,6 +54,12 @@ export default async function ContactPage() {
 
   return (
     <main className="relative min-h-screen pt-28 lg:px-24 pb-20 overflow-x-hidden">
+      <BreadcrumbsJsonLd 
+        items={[
+          { name: tNav("home"), item: "/" },
+          { name: t("title"), item: "/contact" },
+        ]}
+      />
       <div className="max-w-[1400px] mx-auto px-6 lg:px-0">
         
         {/* Header Section */}
@@ -108,7 +126,7 @@ export default async function ContactPage() {
                 key={social.name}
                 href={social.href}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer me"
                 className="group flex items-center justify-between p-6 bg-card/5 border border-border/10 rounded-sm hover:border-primary/20 hover:bg-card/10 transition-all duration-300"
               >
                 <div className="flex items-center gap-5">

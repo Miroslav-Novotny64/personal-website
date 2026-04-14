@@ -1,8 +1,10 @@
 {
   "Contact": {
     "title": "Kontakt",
-    "subtitle": "POJĎME SPOLUPRACOVAT",
-    "intro": "Máte nějaký zajímavý projekt, nebo hledáte někoho do týmu na pozici programátora | softwarového inženýra?",
+    "subtitle": "KONTAKTNÍ ÚDAJE",
+    "seo_title": "Kontakt",
+    "seo_description": "Máte projekt, o kterém si chcete promluvit? Nebo mě máte zájem zaměstnat? Spojte se se mnou prostřednictvím e-mailu, LinkedInu nebo Discordu.",
+    "intro": "Máte projekt, o kterém byste si chtěli promluvit, nebo se jen chcete na něco zeptat? Neváhejte mě kontaktovat prostřednictvím formuláře nebo sociálních sítí.",
     "form_disclaimer": "Dejte mi vědět pomocí emailu a já se vám co nejdříve ozvu.",
     "socials": {
       "title": "Sociální sítě",

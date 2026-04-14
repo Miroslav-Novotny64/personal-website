@@ -1,7 +1,9 @@
 {
   "Blog": {
     "title": "Blog",
-    "description": "My thoughts on anything and everything :) ",
+    "seo_title": "Development & IT Blog",
+    "seo_description": "My thoughts, tutorials, and insights from the world of full-stack development, programming, and anything and everything. (Mostly IT related though)",
+    "description": "My thoughts on all sorts of things :)",
     "archive": "All Articles",
     "no_posts": "No articles yet.",
     "reading_time": "{minutes} min read"
