@@ -1,0 +1,9 @@
+{
+  "Blog": {
+    "title": "Blog",
+    "description": "My thoughts on anything and everything :) ",
+    "archive": "All Articles",
+    "no_posts": "No articles yet.",
+    "reading_time": "{minutes} min read"
+  }
+}

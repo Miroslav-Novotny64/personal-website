@@ -1,0 +1,9 @@
+{
+  "Blog": {
+    "title": "Blog",
+    "description": "Mé myšlenky o všem možném :)",
+    "archive": "Všechny články",
+    "no_posts": "Zatím žádné články.",
+    "reading_time": "{minutes} minut čtení"
+  }
+}
