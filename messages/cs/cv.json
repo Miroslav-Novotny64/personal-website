@@ -1,0 +1,18 @@
+{
+  "CV": {
+    "title": "Životopis",
+    "subtitle": "Informace o mém vzdělání, praxi a dovednostech.",
+    "profile": "Profil",
+    "view_pdf": "Zobrazit PDF verzi",
+    "history": "Praxe & Vzdělání",
+    "skills": {
+      "title": "Dovednosti",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend & DB",
+        "other": "Ostatní"
+      }
+    },
+    "back_to_home": "Zpět na úvod"
+  }
+}

@@ -105,13 +105,16 @@ export default function Home() {
                 {t("bio")}
               </p>
               <div className="flex items-center gap-10">
-                <button className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-xs rounded-sm transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_50px_rgba(244,34,114,0.3)] overflow-hidden shrink-0">
+                <Link 
+                  href="/cv"
+                  className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-xs rounded-sm transition-all duration-500 hover:scale-[1.01] hover:shadow-[0_0_50px_rgba(244,34,114,0.3)] overflow-hidden shrink-0"
+                >
                   <span className="relative z-10 flex items-center gap-2">
                     {t("see_cv")}
                     <ExternalLink size={16} strokeWidth={2} />
                   </span>
                   <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                </button>
+                </Link>
                 <a 
                   href="mailto:miroslav.novotny64@gmail.com"
                   className="group flex items-center gap-2 text-muted-foreground hover:text-primary font-mono text-xs uppercase tracking-[0.3em] transition-all duration-300 whitespace-nowrap"

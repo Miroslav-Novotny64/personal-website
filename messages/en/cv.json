@@ -1,0 +1,18 @@
+{
+  "CV": {
+    "title": "Curriculum Vitae",
+    "subtitle": "Information about my education, experience, and skills.",
+    "profile": "Profile",
+    "view_pdf": "View PDF version",
+    "history": "Experience & Education",
+    "skills": {
+      "title": "Skills",
+      "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend & DB",
+        "other": "Other"
+      }
+    },
+    "back_to_home": "Back to Home"
+  }
+}
