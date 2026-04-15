@@ -9,13 +9,14 @@ const funnelDisplay = Funnel_Display({
   fallback: ["Arial", "sans-serif"],
 });
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
     <html
+      lang="cs"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
       className={`${funnelDisplay.variable} h-full antialiased transition-colors duration-300`}
