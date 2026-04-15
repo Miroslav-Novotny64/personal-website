@@ -9,13 +9,15 @@ import { DotBackground } from "@/components/dot-background";
 import { JsonLd } from "@/components/json-ld";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { LocaleSync } from "@/components/locale-sync";
 import { routing } from "@/i18n/routing";
 
-export async function generateMetadata({
-  params,
-}: {
+type Props = {
+  children: React.ReactNode;
   params: Promise<{ locale: string }>;
-}) {
+};
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Home" });
   const domain = "https://novotnymiroslav.cz";
@@ -92,13 +94,7 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export default async function LocalizedLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}) {
+export default async function LocalizedLayout({ children, params }: Props) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
@@ -110,6 +106,7 @@ export default async function LocalizedLayout({
 
   return (
     <NextIntlClientProvider messages={messages}>
+      <LocaleSync />
       <div className="relative min-h-screen">
         <JsonLd />
         <DotBackground />

@@ -1,5 +1,8 @@
 import { Funnel_Display } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+
+import { getLocale } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import "./globals.css";
 
 const funnelDisplay = Funnel_Display({
@@ -9,14 +12,18 @@ const funnelDisplay = Funnel_Display({
   fallback: ["Arial", "sans-serif"],
 });
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Safe locale detection for the shell. 
+  // Fallbacks to defaultLocale if called in a restricted context.
+  const locale = await getLocale().catch(() => routing.defaultLocale);
+
   return (
     <html
-      lang="cs"
+      lang={locale}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
       className={`${funnelDisplay.variable} h-full antialiased transition-colors duration-300`}
