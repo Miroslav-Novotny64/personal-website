@@ -6,8 +6,8 @@ export const routing = defineRouting({
   localePrefix: "never",
   pathnames: {
     "/": {
-      en: "/home",
       cs: "/",
+      en: "/home",
     },
     "/projects": {
       en: "/projects",

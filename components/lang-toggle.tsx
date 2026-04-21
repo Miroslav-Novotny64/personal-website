@@ -14,7 +14,7 @@ export function LangToggle() {
   const params = useParams();
 
   function toggleLanguage() {
-    const nextLocale = locale === "en" ? "cs" : "en";
+    const nextLocale = locale === "cs" ? "en" : "cs";
     startTransition(() => {
       // @ts-expect-error -- Using dynamic pathname and params with typed router
       router.replace({ pathname, params }, { locale: nextLocale });
@@ -28,8 +28,8 @@ export function LangToggle() {
       variant="outline"
       className="h-8 px-3 font-mono text-xs tracking-widest"
       aria-label="Toggle language"
-    >
-      {locale === "en" ? "CS" : "EN"}
+    > 
+      {locale === "cs" ? "EN" : "CS"}
     </Button>
   );
 }
