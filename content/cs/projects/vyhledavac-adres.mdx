@@ -25,16 +25,4 @@ Aplikace je napsána kompletně v Rustu, což zaručuje bezpečnost a výkon.
 - **Leptos:** Webový frontend i backend (SSR) běží na frameworku Leptos.
 - **WebAssembly (WASM):** Klientská část aplikace je kompilována do WASM, což umožňuje spouštět Rust kód přímo v prohlížeči. Chtěl jsem zkusit psát front end i v něčem jiném jazyce než Typescriptu, na který jsem zvyklý.
 
-### Jak projekt spustit
-**Požadavky:**
-- Rust & Cargo
-- cargo-leptos (\`cargo install cargo-leptos\`)
-- Docker (pro databázi)
-
-**Spuštění:**
-1. Databáze: \`docker-compose up -d\`
-2. Import dat (Volitelné, pokud máte data v /data z ČÚZK): \`cargo run -p importer\`
-3. Webová aplikace: \`cd app && cargo leptos watch\`
-
-Aplikace bude dostupná na http://localhost:3000.
 Vytvořeno jako školní projekt pro propojení znalostí z databází a programování v Rustu.

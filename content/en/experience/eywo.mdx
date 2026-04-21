@@ -2,7 +2,17 @@
 title: "Python Developer"
 date: "May 2025"
 role: "Eywo"
+tech: ["Python", "YAML", "JSON", "Jaeger", "HTTP API", "OpenTelemetry"]
 ---
 
-## 💡 Tady napíši více...
-Tu je prostor pro vypsání technologií a toho, jak vše probíhalo.
+## About the Internship
+
+During my two-week internship at Eywo, I developed a stress-testing tool for the Jaeger distributed tracing system. My primary objective was to build a test data generator capable of identifying specific system bottlenecks and anomalous behavior under extreme load conditions.
+
+### Trace Data Generator for Jaeger
+
+I developed a Python-based utility to generate complex trace data (spans and traces). This tool was instrumental in investigating a performance issue where the Jaeger dashboard would fail to display more than 60 concurrent traces.
+
+- **YAML-driven Configuration:** The script utilizes YAML files for configuration, allowing users to define the volume of generated traces, their minimum/maximum latency, and overall duration.
+- **Structured Data Modeling:** I implemented logic to generate JSON objects that represent spans with realistic parent-child relationships and logical sequences, ensuring the simulated data remained valid for analysis.
+- **HTTP Integration:** The generator pushes data directly to the Jaeger ingestion service via standard HTTP requests.

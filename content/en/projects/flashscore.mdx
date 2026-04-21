@@ -4,24 +4,25 @@ date: "Personal Project"
 tech: ["Node.js", "Javascript", "API", "Scraping"]
 ---
 
-Tento projekt je modifikovaný fork původního scraperu FlashscoreScraping. Původní logika byla přepracována z lokálního skriptu generujícího soubory na samostatnou mikroslužbu poskytující data prostřednictvím JSON rozhraní.
+This project is a modified fork of the original **FlashscoreScraping** tool. The original logic was refactored from a local script that generated flat files into a standalone microservice that provides real-time data through a JSON interface.
 
-## Klíčové změny a vylepšení
+## Key Changes and Improvements
 
-- **Transformace na API:** Server využívá nativní Node.js \`http\` modul pro poskytování dat přes endpoint \`/api/scrape\`.
-- **Optimalizace výkonu:** Původní implementace vyžadovala lineární počet požadavků v závislosti na počtu zápasů. Tato verze byla optimalizována na pevně konstantní počet paralelních požadavků (Paralelní sběr dat z indexů "results" a "fixtures"), což masivně snižuje čas celkové exekuce.
+- **Transformation into an API:** The server utilizes the native Node.js `http` module to deliver data through a dedicated `/api/scrape` endpoint.
+- **Performance Optimization:** While the original implementation performed a linear number of requests based on the match count, this version is optimized to use a fixed constant number of parallel requests. By collecting data simultaneously from both "results" and "fixtures" indexes, the total execution time has been dramatically reduced.
 
-## Technická specifikace API
-Endpoint: \`GET /api/scrape\`
+## API Specification
 
-Služba očekává tři povinné query parametry pro sestavení validní adresy.
+**Endpoint:** `GET /api/scrape`
 
-**Parametry:**
-- \`sport\`: Typ sportu (např. \`hockey\`)
-- \`country\`: Země (např. \`world\`)
-- \`league\`: Název ligy (např. \`world-championship\`)
+The service requires three query parameters to construct a valid request:
 
-Příklad volání pro zpracování MS v hokeji:
-\`\`\`bash
+- `sport`: Type of sport (e.g., `hockey`)
+- `country`: Country or region (e.g., `world`)
+- `league`: League name (e.g., `world-championship`)
+
+**Example Request:**
+
+```bash
 GET /api/scrape?sport=hockey&country=world&league=world-championship
-\`\`\`
+```

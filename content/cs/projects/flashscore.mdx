@@ -25,3 +25,10 @@ Příklad volání pro zpracování MS v hokeji:
 \`\`\`bash
 GET /api/scrape?sport=hockey&country=world&league=world-championship
 \`\`\`
+
+
+Tato služba byla vytvořena pro účely mého projektu [expertov](/cs/projects/expertov). Aplikace potřebovala získávat data o zápasech nějakým způsobem a jelikož neexistuje žádné veřejné zdarma API pro získávání těchto dat, rozhodl jsem se radši modifikovat již existující scraper pro moje účely.
+
+Zejména jsem optimalizoval výkon tím, že nepotřebuji detailní informace o každém zápase, ale pouze základní informace o zápasech, které jsou dostupné na stránce s přehledem zápasů. Tím pádem dokážu získat data o všech zápasech v lize. Mohu tedy scapnout pouze ze dvou stránek, namísto desítek stránek s detailními informacemi o každém zápase zvlášť.
+
+Zmenšil jsem počet scrapů z lineárního počtu zápasů na konstantní počet dvou scrapů, bez ohledu na počet zápasů v lize.

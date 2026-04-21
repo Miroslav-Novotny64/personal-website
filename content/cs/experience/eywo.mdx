@@ -2,7 +2,17 @@
 title: "Python Developer"
 date: "Květen 2025"
 role: "Eywo"
+tech: ["Python", "YAML", "JSON", "Jaeger", "HTTP API", "OpenTelemetry"]
 ---
 
-## 💡 Tady napíši více...
-Tu je prostor pro vypsání technologií a toho, jak vše probíhalo.
+## O stáži
+
+Během mé dvoutýdenní praxe ve firmě Eywo jsem vyvíjel nástroj pro zátěžové testování monitorovacího systému Jaeger. Mým úkolem bylo vytvořit generátor testovacích dat, který by pomohl identifikovat specifické chování systému při vysokém zatížení.
+
+### Generátor trace dat pro Jaeger
+
+Pracoval jsem na Python skriptu, který sloužil jako generátor trasovacích dat (spany/trace). Tento nástroj byl klíčový pro výzkum problému, kdy Jaeger nezobrazoval více než 60 traců v jeden časový moment.
+
+- **Konfigurace přes YAML:** Skript načítal parametry z YAML souboru, kde bylo možné definovat počet generovaných traců, jejich minimální a maximální latenci a celkovou dobu trvání.
+- **Logická struktura dat:** Implementoval jsem logiku pro generování JSON objektů, které reprezentovaly spany s reálnými vazbami a logickými posloupnostmi, aby simulovaná data dávala smysl pro analytické nástroje.
+- **HTTP Integrace:** Skript odesílal tato vygenerovaná data přímo do Jaeger služby pomocí HTTP požadavků.
