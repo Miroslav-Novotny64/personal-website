@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     openGraph: {
       title: t("name"),
-      description: t("role"),
+      description: t("seo_description"),
       url: domain,
       siteName: t("name"),
       locale: locale === "cs" ? "cs_CZ" : "en_US",
@@ -68,13 +68,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
           alt: t("name"),
         },
       ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: t("name"),
-      description: t("role"),
-      creator: "@Miroslav-Novotny64",
-      images: ["/og-image.png"],
     },
     robots: {
       index: true,

@@ -15,10 +15,12 @@
     "paper": "Graduation Paper",
     "no_preview": "No preview available",
     "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "location_city": "Prague, Czech Republic"
   },
   "Status": {
     "location": "Location: Prague, Czechia",
+    "location_city": "Prague, Czech Republic",
     "location_label": "LOC:",
     "location_value": "PRAGUE, CZ",
     "time_label": "TIME:",

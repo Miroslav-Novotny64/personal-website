@@ -1,0 +1,9 @@
+{
+  "NotFound": {
+    "title": "404 — Page Not Found",
+    "heading": "404",
+    "subheading": "YOU SEEM LOST.",
+    "description": "The page you are looking for either doesn't exist, has been moved, or simply vanished into the digital void.",
+    "back_home": "BACK TO HOME"
+  }
+}

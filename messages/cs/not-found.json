@@ -1,0 +1,9 @@
+{
+  "NotFound": {
+    "title": "404 — Stránka nenalezena",
+    "heading": "404",
+    "subheading": "TUDY CESTA NEVEDE.",
+    "description": "Stránka, kterou hledáte, buď neexistuje, byla přesunuta, nebo se prostě ztratila v digitální nicotě.",
+    "back_home": "ZPĚT NA HLAVNÍ STRÁNKU"
+  }
+}

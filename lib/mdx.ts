@@ -13,6 +13,7 @@ export type MdxFrontmatter = {
   readingTime?: string;
   seo_title?: string;
   seo_description?: string;
+  links?: { type: "live" | "repo" | "paper"; url: string; label?: string }[];
 };
 
 export function parseSafeDate(dateStr: string): Date {

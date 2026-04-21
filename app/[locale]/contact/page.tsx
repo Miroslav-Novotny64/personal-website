@@ -129,7 +129,7 @@ export default async function ContactPage() {
                     className="group relative flex items-center justify-center gap-3 px-6 py-3 bg-primary text-primary-foreground font-bold uppercase tracking-[0.2em] text-[10px] rounded-sm transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(244,34,114,0.2)] overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center gap-2 text-primary-foreground">
-                      NAPSAT E-MAIL
+                      {t("send_email")}
                       <Mail size={14} />
                     </span>
                     <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
@@ -183,10 +183,10 @@ export default async function ContactPage() {
                   </div>
                   <div className="flex flex-col">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-primary font-bold">
-                      PROFESNÍ
+                      {t("cv_card_label")}
                     </span>
                     <span className="text-sm font-bold uppercase tracking-tighter">
-                      Profil
+                      {t("cv_card_title")}
                     </span>
                   </div>
                 </div>
@@ -211,15 +211,15 @@ export default async function ContactPage() {
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                   <span className="font-mono text-[10px] uppercase tracking-widest text-primary/80 font-bold">
-                    LOKACE
+                    {t("location_label")}
                   </span>
                 </div>
                 <div className="space-y-2">
                   <p className="text-sm text-foreground font-bold uppercase tracking-tight">
-                    Praha, ČR
+                    {t("location_value")}
                   </p>
                   <p className="text-xs text-muted-foreground leading-relaxed">
-                    K dispozici pro remote i on-site spolupráci.
+                    {t("availability")}
                   </p>
                 </div>
               </div>

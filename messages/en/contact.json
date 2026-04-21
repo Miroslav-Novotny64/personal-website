@@ -6,6 +6,12 @@
     "seo_description": "Have a project you'd like to talk about? Or want to hire me? Get in touch with me via email, LinkedIn, or Discord.",
     "intro": "Have a project you'd like to discuss or just want to ask something? Feel free to reach out via the form or my social media channels.",
     "form_disclaimer": "Let me know via email and I'll get back to you as soon as possible.",
+    "send_email": "Send email",
+    "cv_card_label": "Professional",
+    "cv_card_title": "Profile",
+    "location_label": "Location",
+    "location_value": "Prague, CZ",
+    "availability": "Available for remote and hybrid collaboration.",
     "socials": {
       "title": "Social Networks",
       "email": "Send me an email",

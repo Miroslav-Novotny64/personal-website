@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, FileText, Globe } from "lucide-react";
+import { FileText, Globe } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -43,57 +43,63 @@ export function ProjectTile({
   const tCommon = useTranslations("Common");
 
   const commonClassName = [
-    "group relative block overflow-hidden",
+    "group relative flex flex-col overflow-hidden",
     "border border-border/50 bg-card/20",
     "transition-all duration-300",
     "hover:border-primary/30 hover:bg-card/40",
-    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+    "focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 focus-within:ring-offset-background",
     className,
   ].join(" ");
 
   const content = (
-    <div
-      className={cn(
-        "grid grid-cols-1",
-        isGrid ? "flex flex-col h-full" : "lg:grid-cols-12",
+    <>
+      {slug && (
+        <Link
+          href={{ pathname: "/projects/[slug]" as any, params: { slug } }}
+          className="absolute inset-0 z-10"
+          aria-label={title}
+        />
       )}
-    >
-      {/* MEDIA: Left in featured, Top in grid */}
-      <div className={cn("relative", isGrid ? "w-full" : "lg:col-span-6")}>
-        <div className="relative w-full bg-muted/30">
-          <div className="relative aspect-video w-full overflow-hidden">
-            {video ? (
-              <video
-                src={video}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                controls={false}
-                className="h-full w-full object-cover transition-all duration-700"
-              />
-            ) : image ? (
-              <Image
-                src={image}
-                alt={title}
-                fill
-                className="object-cover transition-all duration-700"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                priority={priority}
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center text-sm text-muted-foreground">
-                {tCommon("no_preview")}
-              </div>
-            )}
+      <div
+        className={cn(
+          "grid grid-cols-1 w-full",
+          isGrid ? "flex flex-col h-full" : "lg:grid-cols-12",
+        )}
+      >
+      {/* MEDIA: Left in featured, Top in grid — hidden when no media */}
+      {(video || image) && (
+        <div className={cn("relative", isGrid ? "w-full" : "lg:col-span-6")}>
+          <div className="relative w-full bg-muted/30">
+            <div className="relative aspect-video w-full overflow-hidden">
+              {video ? (
+                <video
+                  src={video}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                  controls={false}
+                  className="h-full w-full object-cover transition-all duration-700"
+                />
+              ) : (
+                <Image
+                  src={image!}
+                  alt={title}
+                  fill
+                  className="object-cover transition-all duration-700"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority={priority}
+                />
+              )}
+            </div>
+            <div className="absolute inset-0 bg-linear-to-t from-background/20 to-transparent pointer-events-none" />
           </div>
-          <div className="absolute inset-0 bg-linear-to-t from-background/20 to-transparent pointer-events-none" />
         </div>
-      </div>
+      )}
 
-      {/* TEXT: Right in featured, Bottom in grid */}
-      <div className={cn("relative", isGrid ? "flex-1" : "lg:col-span-6")}>
+      {/* TEXT: Right in featured, Bottom in grid — full width when no media */}
+      <div className={cn("relative", isGrid ? "flex-1" : (video || image) ? "lg:col-span-6" : "lg:col-span-12")}>
         <div
           className={cn(
             "flex h-full flex-col justify-between gap-6",
@@ -136,7 +142,7 @@ export function ProjectTile({
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group/btn flex items-center gap-2 px-3 py-1.5 bg-primary/10 hover:bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
+                className="group/btn relative z-20 flex items-center gap-2 px-3 py-1.5 bg-primary/10 hover:bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
               >
                 {tCommon("live")}
                 <Globe
@@ -150,7 +156,7 @@ export function ProjectTile({
                 href={repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3 py-1.5 border border-border/30 hover:border-primary/40 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
+                className="relative z-20 flex items-center gap-2 px-3 py-1.5 border border-border/30 hover:border-primary/40 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
               >
                 {tCommon("repo")}
                 <svg
@@ -171,7 +177,7 @@ export function ProjectTile({
                 href={fileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-3 py-1.5 border border-border/30 hover:border-primary/40 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
+                className="relative z-20 flex items-center gap-2 px-3 py-1.5 border border-border/30 hover:border-primary/40 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
               >
                 {tCommon("paper")}
                 <FileText
@@ -180,21 +186,12 @@ export function ProjectTile({
                 />
               </a>
             )}
-
-            {slug && (
-              <Link
-                href={{ pathname: "/projects/[slug]" as any, params: { slug } }}
-                className="flex items-center gap-2 px-3 py-1.5 bg-muted/30 hover:bg-primary/20 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
-              >
-                {tCommon("details")}
-                <ArrowUpRight size={11} />
-              </Link>
-            )}
           </div>
         </div>
       </div>
     </div>
-  );
+  </>
+);
 
   return <div className={commonClassName}>{content}</div>;
 }

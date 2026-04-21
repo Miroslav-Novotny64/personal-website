@@ -135,8 +135,8 @@ export default async function Home({
                   </span>
                   <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
                 </Link>
-                <a
-                  href={`mailto:${tLinks("email")}`}
+                <Link
+                  href={"/contact"}
                   className="group flex items-center gap-2 text-muted-foreground hover:text-primary font-mono text-xs uppercase tracking-[0.3em] transition-all duration-300 whitespace-nowrap ml-2 sm:ml-0"
                 >
                   {t("cta")}
@@ -144,7 +144,7 @@ export default async function Home({
                     size={14}
                     className="opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0"
                   />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -210,12 +210,12 @@ export default async function Home({
 
             <ProjectTile
               index="03"
-              title={tProjects("items.fractal.title")}
-              description={tProjects("items.fractal.description")}
-              slug="fractal"
-              video="/videos/fractals_preview.mp4"
-              repoUrl={tLinks("projects.fractal")}
-              tags={["Rust", "Maths"]}
+              title={tProjects("items.expertov.title")}
+              description={tProjects("items.expertov.description")}
+              slug="expertov"
+              image="/expertov-lg.png"
+              fileUrl="/maturitni-prace.pdf"
+              tags={["Next.js", "SaaS", "Full-stack"]}
               variant="grid"
             />
           </div>

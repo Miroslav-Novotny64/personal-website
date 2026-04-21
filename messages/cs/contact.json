@@ -6,6 +6,12 @@
     "seo_description": "Máte projekt, o kterém si chcete promluvit? Nebo mě máte zájem zaměstnat? Spojte se se mnou prostřednictvím e-mailu, LinkedInu nebo Discordu.",
     "intro": "Máte projekt, o kterém byste si chtěli promluvit, nebo se jen chcete na něco zeptat? Neváhejte mě kontaktovat prostřednictvím formuláře nebo sociálních sítí.",
     "form_disclaimer": "Dejte mi vědět pomocí emailu a já se vám co nejdříve ozvu.",
+    "send_email": "Napsat e-mail",
+    "cv_card_label": "Profesní",
+    "cv_card_title": "Profil",
+    "location_label": "Lokace",
+    "location_value": "Praha, ČR",
+    "availability": "K dispozici pro remote i hybrid spolupráci.",
     "socials": {
       "title": "Sociální sítě",
       "email": "Pošlete mi e-mail",

@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { ExperiencesSection } from "@/components/experiences-section";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { Link } from "@/i18n/navigation";
+import { BackButton } from "@/components/back-button";
 
 export async function generateMetadata({
   params,
@@ -36,16 +37,7 @@ export default async function CVPage() {
         {/* --- Header & Navigation --- */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-4">
-            <Link
-              href="/"
-              className="group flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors mb-8"
-            >
-              <ArrowLeft
-                size={14}
-                className="group-hover:-translate-x-1 transition-transform"
-              />
-              {t("back_to_home")}
-            </Link>
+            <BackButton fallback={"/"} />
 
             <h1 className="text-5xl lg:text-7xl font-black tracking-tighter uppercase">
               {tHome("name").split(" ")[0]}
@@ -81,7 +73,7 @@ export default async function CVPage() {
               </a>
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <MapPin size={16} className="text-primary/50" />
-                Praha, Česká republika
+                {tCommon("location_city")}
               </div>
               <div className="flex flex-wrap items-center gap-6 mt-2">
                 <a

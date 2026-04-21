@@ -15,10 +15,12 @@
     "paper": "Maturitní práce",
     "no_preview": "Náhled není k dispozici",
     "github": "GitHub",
-    "linkedin": "LinkedIn"
+    "linkedin": "LinkedIn",
+    "location_city": "Praha, Česká republika"
   },
   "Status": {
     "location": "Lokace: Praha, Česká republika",
+    "location_city": "Praha, Česká republika",
     "location_label": "LOC:",
     "location_value": "PRAHA, CZ",
     "time_label": "TIME:",
