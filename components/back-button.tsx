@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
-import { Link, useRouter } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
+import { Link, useRouter } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 interface BackButtonProps {
@@ -21,17 +21,19 @@ export function BackButton({ fallback, className }: BackButtonProps) {
     if (typeof window !== "undefined" && window.history.length > 2) {
       router.back();
     } else {
+      // biome-ignore lint/suspicious/noExplicitAny: fallback route
       router.push(fallback as any);
     }
   };
 
   return (
     <Link
+      // biome-ignore lint/suspicious/noExplicitAny: fallback route
       href={fallback as any}
       onClick={handleBack}
       className={cn(
         "inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-12 font-mono text-sm uppercase tracking-wider",
-        className
+        className,
       )}
     >
       <ArrowLeft className="w-4 h-4" />

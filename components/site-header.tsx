@@ -20,8 +20,6 @@ const NAV_LINKS = [
   { href: "/contact", key: "contact" },
 ] as const;
 
-type NavKey = (typeof NAV_LINKS)[number]["key"];
-
 export function SiteHeader() {
   const pathname = usePathname();
   const t = useTranslations("Navigation");

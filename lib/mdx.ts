@@ -18,7 +18,7 @@ export type MdxFrontmatter = {
 
 export function parseSafeDate(dateStr: string): Date {
   const date = new Date(dateStr);
-  if (!isNaN(date.getTime())) {
+  if (!Number.isNaN(date.getTime())) {
     return date;
   }
 

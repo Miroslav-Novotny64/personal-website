@@ -33,10 +33,14 @@ export function ExperiencesSection() {
     const title = t(`items.${item.id}.title`);
     const date = t(`items.${item.id}.date`);
     // Use t.has() to safely check for translations without throwing MISSING_MESSAGE
-    const orgOrSubtitle = (t as any).has(`items.${item.id}.org`)
-      ? t(`items.${item.id}.org` as any)
-      : (t as any).has(`items.${item.id}.subtitle`)
-        ? t(`items.${item.id}.subtitle` as any)
+    // biome-ignore lint/suspicious/noExplicitAny: dynamic translation object
+    const tAny = t as any;
+    const orgOrSubtitle = tAny.has(`items.${item.id}.org`)
+      ? // biome-ignore lint/suspicious/noExplicitAny: dynamic translation key
+        t(`items.${item.id}.org` as any)
+      : tAny.has(`items.${item.id}.subtitle`)
+        ? // biome-ignore lint/suspicious/noExplicitAny: dynamic translation key
+          t(`items.${item.id}.subtitle` as any)
         : "";
     const description = t(`items.${item.id}.description`);
 
@@ -52,6 +56,7 @@ export function ExperiencesSection() {
     return (
       <Link
         key={item.id}
+        // biome-ignore lint/suspicious/noExplicitAny: next-intl strict routing
         href={{ pathname: pathname as any, params: { slug: item.id } }}
         className="group relative flex flex-col gap-3 rounded-2xl border border-transparent hover:border-border/40 hover:bg-muted/10 p-5 transition-all duration-300"
       >

@@ -3,10 +3,12 @@ import { NotFoundUI } from "@/components/not-found-ui";
 
 export default function CatchAll() {
   const t = useTranslations("NotFound");
-  
-  return (<NotFoundUI
-        heading={t("heading")}
-        subheading={t("subheading")}
-        description={t("description")}
-      />)
+
+  return (
+    <NotFoundUI
+      heading={t("heading")}
+      subheading={t("subheading")}
+      description={t("description")}
+    />
+  );
 }

@@ -28,6 +28,7 @@ export function BlogCard({
 
   return (
     <Link
+      // biome-ignore lint/suspicious/noExplicitAny: next-intl strict routing
       href={{ pathname: "/blog/[slug]" as any, params: { slug } }}
       className={cn(
         "group relative flex flex-col justify-between p-8 border border-border/50 bg-card/20 hover:border-primary/30 hover:bg-card/40 transition-all duration-500 rounded-sm overflow-hidden min-h-[320px]",

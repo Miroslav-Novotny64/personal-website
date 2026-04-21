@@ -13,7 +13,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       return {
         url,
         lastModified: new Date(),
-        changeFrequency: (route === "" ? "daily" : "weekly") as any,
+        changeFrequency: (route === "" ? "daily" : "weekly") as
+          | "daily"
+          | "weekly",
         priority: route === "" ? 1 : 0.8,
         alternates: {
           languages: {
@@ -36,7 +38,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           return contents.map((content) => ({
             url: `${domain}${locale === "cs" ? "" : `/${locale}`}/${type}/${content.slug}`,
             lastModified: parseSafeDate(content.date),
-            changeFrequency: "monthly" as any,
+            changeFrequency: "monthly" as const,
             priority: 0.6,
             alternates: {
               languages: {

@@ -55,6 +55,7 @@ export function ProjectTile({
     <>
       {slug && (
         <Link
+          // biome-ignore lint/suspicious/noExplicitAny: next-intl strict routing
           href={{ pathname: "/projects/[slug]" as any, params: { slug } }}
           className="absolute inset-0 z-10"
           aria-label={title}
@@ -66,132 +67,142 @@ export function ProjectTile({
           isGrid ? "flex flex-col h-full" : "lg:grid-cols-12",
         )}
       >
-      {/* MEDIA: Left in featured, Top in grid — hidden when no media */}
-      {(video || image) && (
-        <div className={cn("relative", isGrid ? "w-full" : "lg:col-span-6")}>
-          <div className="relative w-full bg-muted/30">
-            <div className="relative aspect-video w-full overflow-hidden">
-              {video ? (
-                <video
-                  src={video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  controls={false}
-                  className="h-full w-full object-cover transition-all duration-700"
-                />
-              ) : (
-                <Image
-                  src={image!}
-                  alt={title}
-                  fill
-                  className="object-cover transition-all duration-700"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority={priority}
-                />
-              )}
+        {/* MEDIA: Left in featured, Top in grid — hidden when no media */}
+        {(video || image) && (
+          <div className={cn("relative", isGrid ? "w-full" : "lg:col-span-6")}>
+            <div className="relative w-full bg-muted/30">
+              <div className="relative aspect-video w-full overflow-hidden">
+                {video ? (
+                  <video
+                    src={video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    controls={false}
+                    className="h-full w-full object-cover transition-all duration-700"
+                  />
+                ) : (
+                  <Image
+                    // biome-ignore lint/style/noNonNullAssertion: image is checked above
+                    src={image!}
+                    alt={title}
+                    fill
+                    className="object-cover transition-all duration-700"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority={priority}
+                  />
+                )}
+              </div>
+              <div className="absolute inset-0 bg-linear-to-t from-background/20 to-transparent pointer-events-none" />
             </div>
-            <div className="absolute inset-0 bg-linear-to-t from-background/20 to-transparent pointer-events-none" />
           </div>
-        </div>
-      )}
+        )}
 
-      {/* TEXT: Right in featured, Bottom in grid — full width when no media */}
-      <div className={cn("relative", isGrid ? "flex-1" : (video || image) ? "lg:col-span-6" : "lg:col-span-12")}>
+        {/* TEXT: Right in featured, Bottom in grid — full width when no media */}
         <div
           className={cn(
-            "flex h-full flex-col justify-between gap-6",
-            isGrid ? "p-6" : "p-6 sm:p-8 xl:p-10",
+            "relative",
+            isGrid
+              ? "flex-1"
+              : video || image
+                ? "lg:col-span-6"
+                : "lg:col-span-12",
           )}
         >
-          <div className="space-y-6">
-            <div className="flex items-center justify-between gap-3">
-              <p className="font-mono text-[10px] tracking-[0.3em] text-primary/80 uppercase">
-                {"//"} project_{index} {"//"}
-              </p>
-              <div className="flex items-center gap-2">
-                {tags.slice(0, 3).map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] font-mono text-muted-foreground/60 uppercase"
-                  >
-                    {tag}
-                  </span>
-                ))}
+          <div
+            className={cn(
+              "flex h-full flex-col justify-between gap-6",
+              isGrid ? "p-6" : "p-6 sm:p-8 xl:p-10",
+            )}
+          >
+            <div className="space-y-6">
+              <div className="flex items-center justify-between gap-3">
+                <p className="font-mono text-[10px] tracking-[0.3em] text-primary/80 uppercase">
+                  {"//"} project_{index} {"//"}
+                </p>
+                <div className="flex items-center gap-2">
+                  {tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-mono text-muted-foreground/60 uppercase"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
+
+              <h3
+                className={cn(
+                  "font-black tracking-tight leading-none uppercase",
+                  isGrid ? "text-xl" : "text-3xl xl:text-4xl",
+                )}
+              >
+                {title}
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                {description}
+              </p>
             </div>
 
-            <h3
-              className={cn(
-                "font-black tracking-tight leading-none uppercase",
-                isGrid ? "text-xl" : "text-3xl xl:text-4xl",
-              )}
-            >
-              {title}
-            </h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              {description}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-border/5">
-            {liveUrl && (
-              <a
-                href={liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group/btn relative z-20 flex items-center gap-2 px-3 py-1.5 bg-primary/10 hover:bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
-              >
-                {tCommon("live")}
-                <Globe
-                  size={11}
-                  className="group-hover/btn:rotate-12 transition-transform"
-                />
-              </a>
-            )}
-            {repoUrl && (
-              <a
-                href={repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative z-20 flex items-center gap-2 px-3 py-1.5 border border-border/30 hover:border-primary/40 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
-              >
-                {tCommon("repo")}
-                <svg
-                  width="11"
-                  height="11"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  role="img"
+            <div className="flex flex-wrap items-center gap-2.5 pt-4 border-t border-border/5">
+              {liveUrl && (
+                <a
+                  href={liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/btn relative z-20 flex items-center gap-2 px-3 py-1.5 bg-primary/10 hover:bg-primary text-primary-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
                 >
-                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-              </a>
-            )}
+                  {tCommon("live")}
+                  <Globe
+                    size={11}
+                    className="group-hover/btn:rotate-12 transition-transform"
+                  />
+                </a>
+              )}
+              {repoUrl && (
+                <a
+                  href={repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-20 flex items-center gap-2 px-3 py-1.5 border border-border/30 hover:border-primary/40 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
+                >
+                  {tCommon("repo")}
+                  <svg
+                    width="11"
+                    height="11"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                    role="img"
+                  >
+                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                  </svg>
+                </a>
+              )}
 
-            {fileUrl && (
-              <a
-                href={fileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="relative z-20 flex items-center gap-2 px-3 py-1.5 border border-border/30 hover:border-primary/40 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
-              >
-                {tCommon("paper")}
-                <FileText
-                  size={11}
-                  className="group-hover/btn:rotate-12 transition-transform"
-                />
-              </a>
-            )}
+              {fileUrl && (
+                <a
+                  href={fileUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-20 flex items-center gap-2 px-3 py-1.5 border border-border/30 hover:border-primary/40 text-muted-foreground hover:text-foreground text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
+                >
+                  {tCommon("paper")}
+                  <FileText
+                    size={11}
+                    className="group-hover/btn:rotate-12 transition-transform"
+                  />
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
 
   return <div className={commonClassName}>{content}</div>;
 }

@@ -7,9 +7,9 @@ import {
 } from "next-intl/server";
 import { DotBackground } from "@/components/dot-background";
 import { JsonLd } from "@/components/json-ld";
+import { LocaleSync } from "@/components/locale-sync";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { LocaleSync } from "@/components/locale-sync";
 import { routing } from "@/i18n/routing";
 
 type Props = {
@@ -17,7 +17,11 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Home" });
   const domain = "https://novotnymiroslav.cz";

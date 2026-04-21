@@ -1,9 +1,8 @@
-import { ArrowLeft, ExternalLink, FileText, Mail, MapPin } from "lucide-react";
+import { ExternalLink, FileText, Mail, MapPin } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { BackButton } from "@/components/back-button";
 import { ExperiencesSection } from "@/components/experiences-section";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
-import { Link } from "@/i18n/navigation";
-import { BackButton } from "@/components/back-button";
 
 export async function generateMetadata({
   params,

@@ -6,6 +6,7 @@ import type * as React from "react";
 // Suppress the React 19 warning for the next-themes script tag in development
 if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
   const orig = console.error;
+  // biome-ignore lint/suspicious/noExplicitAny: overriding console.error dynamically
   console.error = (...args: any[]) => {
     if (
       typeof args[0] === "string" &&

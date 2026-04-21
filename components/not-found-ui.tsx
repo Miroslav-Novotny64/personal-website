@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import { BackButton } from "./back-button";
 
 interface NotFoundUIProps {
@@ -24,7 +23,7 @@ export function NotFoundUI({
           <h1 className="text-[clamp(8rem,30vw,18rem)] font-black leading-none tracking-tighter uppercase select-none transition-all duration-700">
             {heading}
           </h1>
-          
+
           {/* Glitch-like shadow layers */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-20 -z-10 translate-x-2 translate-y-2 text-primary blur-sm">
             <span className="text-[clamp(8rem,30vw,18rem)] font-black tracking-tighter uppercase">
@@ -42,7 +41,7 @@ export function NotFoundUI({
           </p>
         </div>
 
-        <BackButton fallback={"/"}/>
+        <BackButton fallback={"/"} />
       </div>
 
       {/* Footer decorative elements */}
