@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion, LazyMotion, domAnimation } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
@@ -43,7 +43,7 @@ export function SiteHeader() {
   }, [isOpen]);
 
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-10 lg:px-24 h-14 border-b border-border/20 bg-background/70 backdrop-blur-md">
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-10">
@@ -273,6 +273,6 @@ export function SiteHeader() {
           </>
         )}
       </AnimatePresence>
-    </>
+    </LazyMotion>
   );
 }

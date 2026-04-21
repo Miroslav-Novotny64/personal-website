@@ -1,5 +1,3 @@
-"use client";
-
 import { FileText, Globe } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -81,6 +79,7 @@ export function ProjectTile({
                     playsInline
                     preload="metadata"
                     controls={false}
+                    poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
                     className="h-full w-full object-cover transition-all duration-700"
                   />
                 ) : (
