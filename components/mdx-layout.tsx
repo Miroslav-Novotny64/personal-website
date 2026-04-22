@@ -5,6 +5,8 @@ import type { MdxFrontmatter } from "@/lib/mdx";
 import { cn } from "@/lib/utils";
 import { BackButton } from "./back-button";
 
+import Gallery from "./gallery";
+
 interface MdxLayoutProps {
   frontmatter: MdxFrontmatter;
   content: string;
@@ -13,6 +15,7 @@ interface MdxLayoutProps {
 }
 
 const components = {
+  MdxGallery: Gallery,
   Button: ({
     href,
     children,
@@ -69,14 +72,14 @@ export async function MdxLayout({
   const t = await getTranslations("Common");
 
   return (
-    <main className="min-h-screen pt-32 pb-20 px-6 lg:px-24">
+    <main className="min-h-screen pt-26 pb-20 px-6 lg:px-24">
       <BackButton fallback={backHref} />
 
       <article className="max-w-3xl mx-auto">
-        <h1 className="text-4xl lg:text-5xl font-black mb-6 tracking-tighter uppercase">
+        <h1 className="text-4xl lg:text-5xl font-black tracking-tighter uppercase mb-2">
           {frontmatter.title}
         </h1>
-        <div className="flex flex-wrap items-center gap-4 text-muted-foreground font-mono text-sm mb-8 border-b border-border/40 pb-8">
+        <div className="flex flex-wrap items-center gap-4 text-muted-foreground font-mono text-sm mb-4 border-b border-border/40 pb-4">
           <span className="text-primary/80">{frontmatter.date}</span>
           {frontmatter.role && (
             <>
@@ -102,7 +105,7 @@ export async function MdxLayout({
         </div>
 
         {frontmatter.links && frontmatter.links.length > 0 && (
-          <div className="flex flex-wrap items-center gap-2.5 mb-16">
+          <div className="flex flex-wrap items-center gap-2.5 mb-8">
             {frontmatter.links.map((link) => (
               <a
                 key={link.url}
@@ -144,7 +147,7 @@ export async function MdxLayout({
           </div>
         )}
 
-        <div className="prose prose-invert prose-p:text-muted-foreground prose-h2:text-foreground prose-h2:font-bold prose-a:text-primary max-w-none">
+        <div className="prose prose-invert prose-p:text-muted-foreground prose-p:text-justify prose-h2:text-foreground prose-h2:font-bold prose-a:text-primary max-w-none">
           <MDXRemote source={content} components={components} />
         </div>
       </article>

@@ -32,7 +32,7 @@ export function BackButton({ fallback, className }: BackButtonProps) {
       href={fallback as any}
       onClick={handleBack}
       className={cn(
-        "inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-12 font-mono text-sm uppercase tracking-wider",
+        "inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors mb-4 font-mono text-sm uppercase tracking-wider",
         className,
       )}
     >

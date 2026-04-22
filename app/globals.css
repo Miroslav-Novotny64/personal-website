@@ -197,4 +197,7 @@
     color: var(--foreground);
     @apply selection:bg-primary selection:text-primary-foreground;
   }
+  p {
+    text-align: justify;
+  }
 }

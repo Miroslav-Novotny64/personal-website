@@ -5,6 +5,7 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { Link } from "@/i18n/navigation";
 import { getMdxContent } from "@/lib/mdx";
+import Gallery from "@/components/gallery";
 
 export async function generateMetadata({
   params,
@@ -109,8 +110,8 @@ export default async function BlogPostPage({
           </header>
 
           {/* Post Content */}
-          <div className="prose prose-invert prose-p:text-muted-foreground prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter prose-a:text-primary hover:prose-a:opacity-80 transition-all max-w-none prose-lg">
-            <MDXRemote source={content} />
+          <div className="prose prose-invert prose-p:text-muted-foreground prose-p:text-justify prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter prose-a:text-primary hover:prose-a:opacity-80 transition-all max-w-none prose-lg">
+            <MDXRemote source={content} components={{ MdxGallery: Gallery }} />
           </div>
         </article>
       </main>

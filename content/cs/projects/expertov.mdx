@@ -10,13 +10,48 @@ links:
 ## O projektu
 
 Expertov, neboli aplikace pro tipování sportovních výsledků je má maturitní práce. Komplexní SaaS platforma určená pro tipování sportovních výsledků (tzv. "tipovačka"). Projekt vznikl na základě reálného zadání od klienta, který potřeboval moderní a škálovatelnou náhradu za stávající, již nevyhovující řešení.
+Ale o jakou aplikaci se přímo jedná? Klient několikrát do roka pořádá tipovací soutěže během mistrovstvích světa ve fotbale a v hokeji pro své známé a předhánějí sí v tom, kdo zvládne tipnout co nejlépe výsledky zápasů.
 
-Aplikace je postavena na moderním **T3 Stacku** neboli **Next.js, tRPC, Drizzle ORM, Clerk, Tailwind CSS, TypeScript, PostgreSQL**.
+## Problémy s původním řešením
+
+Předchozí aplikace, kterou klient využíval byla jednoduchá aplikace postavená na editaci google tabulek. To s sebou neslo několik problémů.
+
+### Problém č. 1: Ruční zadávání výsledků
+
+Jelikož detaily zápasů (názvy týmů, datum a čas utkání) musel klient zadávat ručně, byla pro klienta časově náročná administrace celého eventu.
+S tím se pojí i ruční zadávání výsledků, což vedlo ke zpoždění při vyhodnocování jednotlivých tipů.
+
+#### řešení
+
+Klient ve většině případů bral informace o zápasech z webu livesport.cz. Proto jsem se rozhodl, že by bylo ideální, kdyby aplikace uměla data o zápasech stahovat automaticky z tohoto webu. Livesport, neboli Flashscore anglicky, nepodporuje přímé API pro stahování dat, proto jsem se rozhodl pro řešení pomocí web scrapingu.
+
+Modifikoval jsem tedy již existující scraper napsaný pro tento web a upravil jsem si ho pro své potřeby. Více o tomto řešení se můžete dočíst v [samostatném článku](/projects/flashscore-scraper).
+
+### Problém č. 2: Design Aplikace
+
+Design aplikace byl problémový nejenom vzhledově, ale i z hlediska použitelnosti. V aplikaci sice šlo dělat vše potřebné, ale ne intuitivním způsobem a používání aplikace působilo, jako práce v excelu,
+než jako moderní aplikace.
+
+### Problém č. 3: Nemožnost přidat nové funkce
+
+Původní autor aplikace ji dělal v rámci volného času a neměl čas ji rozšiřovat o nové funkce, které klient měl vymyšlené. Jmenovitě možnost vytvářet bonusové otázky. (Například: Jaký hráč dosáhne nejvíce kanadských bodů?, atd.)
+
+### Problém č. 4: Historické eventy
+
+Klient tuto svou "tipovačku" provozuje již přes 10 let a původně používal k jejímu provozu čistě Excel. Chtěl tedy mít možnost zobrazit statisticky z těchto historických eventů v rámci aplikace.
+
+## Mé řešení
+
+Rozhodl jsem se tedy v rámci mé maturitní práce postavit rozsáhlou platformu přímo na míru klientovi, kterou vyvíjím již druhým rokem.
+
+<MdxGallery images='[{"src":"/expertov/showcase1.png","caption":"Hlavní přehled eventů v aplikaci"},{"src":"/expertov/showcase2.png","caption":"Přehled statistik v rámci eventu"},{"src":"/expertov/showcase3.png","caption":"Seznam zápasů v eventu"},{"src":"/expertov/showcase4.png","caption":"Hromadné tipování na více zápasů najednou"},{"src":"/expertov/showcase5.png","caption":"Globální uživatelský profil"},{"src":"/expertov/showcase6.png","caption":"Import dat z Livesport/Flashscore"}]' />
+
+Klient je s aplikací velmi spokojen a pokud byste měli zájem mou platformu využít i pro své tipovačky, neváhejte mě kontaktovat. Rád se s vámi spojím a ukáži Vám aplikaci blíže.
 
 ### Hlavní funkce
 
 - **Kompletní správa eventů:** Administrátoři mohou vytvářet sportovní události, spravovat týmy a jednotlivé zápasy.
-- **Automatické vyhodnocování:** Systém po zadání výsledku zápasu automaticky přepočítá body všem tipujícím a aktualizuje celkový žebříček.
+- **Automatické vyhodnocování:** Systém po skončení zápasu automaticky přepočítá body všem tipujícím a aktualizuje celkový žebříček.
 - **Role a oprávnění:** Integrovaný systém rolí (Admin, Helper, User) spravovaný přes platformu Clerk.
 - **Statistiky a Historie:** Možnost procházet minulé eventy a sledovat podrobné statistiky úspěšnosti tipování.
 - **Mobile-first Design:** Aplikace je plně responzivní a optimalizovaná pro pohodlné tipování z mobilních zařízení.
