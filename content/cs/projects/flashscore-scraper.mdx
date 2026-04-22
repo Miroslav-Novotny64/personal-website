@@ -1,0 +1,35 @@
+---
+title: "Flashscore API Scraper"
+date: "Personal Project"
+tech: ["Node.js", "Javascript", "API", "Scraping"]
+links:
+  - { type: "github", url: "https://github.com/Miroslav-Novotny64/FlashscoreScraping" }
+---
+
+Tento projekt je mnou modifikovaná verze již existujícího [flashscore scraperu](https://github.com/gustavofariaa/FlashscoreScraping). Tento scraper má solidní základ, ale plně nevyhovoval mým potřebám pro můj projekt [expertov](/projekty/expertov). Proto jsem ho forknul a modifikoval pro své potřeby.
+
+Zejména jsem modifikoval aplikaci na REST API, která se jednodušeji napojovala na můj backend v Node.js.
+
+Dále jsem optimalizoval rychlost scraperu tím, že místo detailního scrapování každého zápasu zvlášť, jsem se rozhodl pro sběr dat použít pouze stránku nadcházejích zápasů a již skončených zápasů. Přišel jsem tím o možnost získat detailní informace o zápasu (například kdo je rozhodčí), ale pro mé potřeby jsem tyto informace stejně nepotřeboval.
+
+Efektivně jsem tím snížil počet scrapů z lineárního počtu zápasů na konstantní počet dvou scrapů, bez ohledu na počet zápasů v lize.
+
+## Klíčové změny a vylepšení
+
+- **Transformace na API:** Server využívá nativní Node.js ```http``` modul pro poskytování dat přes endpoint ```/api/scrape```.
+- **Optimalizace výkonu:** Původní implementace vyžadovala lineární počet požadavků v závislosti na počtu zápasů. Tato verze byla optimalizována na pevně konstantní počet paralelních požadavků. (Z O(n) na O(1), kde n je počet zápasů)
+
+## Technická specifikace API
+Endpoint: ```GET /api/scrape```
+
+Služba očekává tři povinné query parametry pro sestavení validní adresy.
+
+**Parametry:**
+- ```sport```: Typ sportu (např. ```hockey```)
+- ```country```: Země (např. ```world```)
+- ```league```: Název ligy (např. ```world-championship```)
+
+Příklad volání pro zpracování MS v hokeji:
+```bash
+GET /api/scrape?sport=hockey&country=world&league=world-championship
+```

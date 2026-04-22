@@ -9,7 +9,7 @@ links:
 
 ## About the Project
 
-Expertov is a sports prediction application developed as my graduation thesis. It is a comprehensive SaaS platform designed for predicting sports results (a so-called "prediction game"). The project was born from a real-world client requirement for a modern, scalable replacement for an existing, outdated solution.
+Expertov is a sports game application developed as my graduation thesis. It is a comprehensive SaaS platform designed for predicting sports results and compering with friends on how right your predictions are. The project was born from a real-world client requirement for a modern, scalable replacement for an existing, outdated solution.
 But what exactly is the application? The client organizes prediction competitions several times a year during football and ice hockey world championships for his friends, competing to see who can predict match results most accurately.
 
 ## Problems with the Original Solution
@@ -19,21 +19,21 @@ The previous application the client used was a simple tool built around editing 
 ### Problem #1: Manual Result Entry
 
 Since match details (team names, date and time of the match) had to be entered manually by the client, administering the entire event was very time-consuming.
-This also meant manual entry of results, which led to delays when evaluating individual predictions.
+This also meant manual entry of results, which led to delays when evaluating individual matches.
 
 #### Solution
 
-The client typically sourced match information from livesport.cz. I therefore decided it would be ideal if the application could automatically fetch match data from this website. Livesport, known internationally as Flashscore, does not offer a public API for data retrieval, so I opted for a web scraping approach.
+The client typically sourced match information from Flashscore. I therefore decided it would be ideal if the application could automatically fetch match data from this website. Flashscore does not offer a public API for data retrieval, so I opted for a web scraping approach.
 
 I modified an existing scraper written for this website and adapted it for my own needs. You can read more about this solution in a [dedicated article](/projects/flashscore-scraper).
 
 ### Problem #2: Application Design
 
-The application's design was problematic not only visually, but also in terms of usability. While everything necessary could be done within the app, it was not done in an intuitive way — using it felt more like working in Excel than using a modern application.
+The application's design was problematic not only visually, but also in terms of user experience. While everything necessary could be done within the app, it was not done in an intuitive way, using it felt more like working in Excel than using a modern web application.
 
 ### Problem #3: Inability to Add New Features
 
-The original author developed the application in their spare time and had no bandwidth to extend it with new features the client had in mind — most notably the ability to create bonus questions (e.g., Which player will score the most points?, etc.).
+The original author developed the application in their spare time and had no bandwidth to extend it with new features the client had in mind, most notably the ability to create bonus questions (e.g., Which player will score the most points?, etc.).
 
 ### Problem #4: Historical Events
 
@@ -45,7 +45,7 @@ For my graduation thesis, I decided to build a comprehensive platform tailored s
 
 <MdxGallery images='[{"src":"/expertov/showcase1.png","caption":"Main event overview in the app"},{"src":"/expertov/showcase2.png","caption":"Match statistics within an event"},{"src":"/expertov/showcase3.png","caption":"List of matches in an event"},{"src":"/expertov/showcase4.png","caption":"Bulk prediction for multiple matches at once"},{"src":"/expertov/showcase5.png","caption":"Global user profile"},{"src":"/expertov/showcase6.png","caption":"Data import from Livesport/Flashscore"}]' />
 
-The client is very satisfied with the application. If you are interested in using my platform for your own prediction games, feel free to reach out — I would be happy to connect and show you the application in more detail.
+The client is very satisfied with the application. If you are interested in using my platform for your own prediction games, feel free to reach out, I would be happy to connect and show you the application in more detail.
 
 ### Main Features
 
@@ -53,7 +53,7 @@ The client is very satisfied with the application. If you are interested in usin
 - **Automatic Scoring:** Once a match ends, the system automatically recalculates points for all participants and updates the overall leaderboard.
 - **Roles and Permissions:** An integrated role system (Admin, Helper, User) managed through the Clerk platform.
 - **Statistics and History:** Users can browse past events and track their prediction success with detailed statistics.
-- **Mobile-first Design:** The application is fully responsive and optimized for comfortable predicting on mobile devices.
+- **Mobile Design:** The application is fully responsive and optimized for comfortable predicting on mobile devices.
 
 ### Technical Solution
 
@@ -65,3 +65,5 @@ The client is very satisfied with the application. If you are interested in usin
 ### Graduation Thesis
 
 The entire development of the application, including the database schema design, competitor analysis, and results from beta testing (2025 IIHF World Championship), is thoroughly documented in my graduation thesis.
+
+<Button href="/maturitni-prace.pdf" icon="file">Read the Graduation Thesis</Button>

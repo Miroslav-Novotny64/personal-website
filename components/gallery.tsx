@@ -102,7 +102,7 @@ export default function Gallery({ images, autoScrollInterval = 5000 }: GalleryPr
 
   const currentItem = items[currentIndex];
 
-  const slide = (index: number, dir: number) => (
+  const slide = (index: number, dir: number, fullscreen = false) => (
     <AnimatePresence initial={false} custom={dir} mode="popLayout">
       <motion.div
         key={index}
@@ -122,7 +122,7 @@ export default function Gallery({ images, autoScrollInterval = 5000 }: GalleryPr
           alt={items[index].caption || `Gallery image ${index + 1}`}
           fill
           className="object-contain"
-          sizes="100vw"
+          sizes={fullscreen ? "100vw" : "(max-width: 768px) calc(100vw - 48px), (max-width: 1280px) calc(100vw - 192px), 768px"}
           priority={index === 0}
         />
       </motion.div>
@@ -164,7 +164,7 @@ export default function Gallery({ images, autoScrollInterval = 5000 }: GalleryPr
   return (
     <>
       {mounted && isFullscreen && createPortal(
-        <div className="fixed inset-0 z-[9999] bg-black flex flex-col">
+        <div className="fixed inset-0 z-9999 bg-black flex flex-col">
           <div className="absolute top-4 right-4 z-20">
             <button
               onClick={() => setIsFullscreen(false)}
@@ -180,7 +180,7 @@ export default function Gallery({ images, autoScrollInterval = 5000 }: GalleryPr
             onTouchStart={handleTouchStart}
             onTouchEnd={(e) => handleTouchEnd(e, next, prev)}
           >
-            {slide(currentIndex, direction)}
+            {slide(currentIndex, direction, true)}
 
             {items.length > 1 && (
               <>

@@ -108,7 +108,7 @@ export default async function ProjectsIndexPage({
           index="05"
           title={t("items.flashscore.title")}
           description={t("items.flashscore.description")}
-          slug="flashscore"
+          slug="flashscore-scraper"
           repoUrl={tLinks("projects.flashscore")}
           tags={["Node.js", "API", "Scraping"]}
           className="min-h-0"

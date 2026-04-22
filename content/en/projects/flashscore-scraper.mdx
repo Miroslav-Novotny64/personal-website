@@ -1,0 +1,35 @@
+---
+title: "Flashscore API Scraper"
+date: "Personal Project"
+tech: ["Node.js", "Javascript", "API", "Scraping"]
+links:
+  - { type: "github", url: "https://github.com/Miroslav-Novotny64/FlashscoreScraping" }
+---
+
+This project is my modified version of an existing [flashscore scraper](https://github.com/gustavofariaa/FlashscoreScraping). The original scraper had a solid foundation, but didn't fully suit my needs for the [expertov](/projects/expertov) project. I forked it and modified it to fit my requirements.
+
+Most notably, I refactored the application into a REST API that integrates more easily with my Node.js backend.
+
+I also optimized the scraper's speed. Instead of scraping each match individually in detail, I decided to collect data only from the upcoming fixtures page and the results page. This meant losing access to detailed match information (such as who the referee was), but I didn't need that data for my purposes anyway.
+
+This effectively reduced the number of scrapes from a linear count based on the number of matches to a constant count of two scrapes, regardless of how many matches are in the league.
+
+## Key Changes and Improvements
+
+- **Transformation into an API:** The server uses the native Node.js ```http``` module to serve data through a ```/api/scrape``` endpoint.
+- **Performance Optimization:** The original implementation required a linear number of requests depending on the match count. This version is optimized to a fixed constant number of parallel requests. (From O(n) to O(1), where n is the number of matches)
+
+## API Specification
+Endpoint: ```GET /api/scrape```
+
+The service expects three required query parameters to construct a valid URL.
+
+**Parameters:**
+- ```sport```: Type of sport (e.g., ```hockey```)
+- ```country```: Country (e.g., ```world```)
+- ```league```: League name (e.g., ```world-championship```)
+
+Example request for the Ice Hockey World Championship:
+```bash
+GET /api/scrape?sport=hockey&country=world&league=world-championship
+```
