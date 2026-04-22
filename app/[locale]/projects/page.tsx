@@ -69,7 +69,6 @@ export default async function ProjectsIndexPage({
           priority={true}
         />
 
-        {/* All projects stacked */}
         <ProjectTile
           index="02"
           title={t("items.vyhledavac-adres.title")}
@@ -95,22 +94,22 @@ export default async function ProjectsIndexPage({
 
         <ProjectTile
           index="04"
+          title={t("items.flashscore.title")}
+          description={t("items.flashscore.description")}
+          slug="flashscore-scraper"
+          repoUrl={tLinks("projects.flashscore")}
+          tags={["Node.js", "API", "Scraping"]}
+          className="min-h-0"
+        />
+
+        <ProjectTile
+          index="05"
           title={t("items.fractal.title")}
           description={t("items.fractal.description")}
           slug="fractal"
           video="/videos/fractals_preview.mp4"
           repoUrl={tLinks("projects.fractal")}
           tags={["Rust", "Maths"]}
-          className="min-h-0"
-        />
-
-        <ProjectTile
-          index="05"
-          title={t("items.flashscore.title")}
-          description={t("items.flashscore.description")}
-          slug="flashscore-scraper"
-          repoUrl={tLinks("projects.flashscore")}
-          tags={["Node.js", "API", "Scraping"]}
           className="min-h-0"
         />
 
