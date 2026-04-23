@@ -1,4 +1,4 @@
-import { FileText, Globe } from "lucide-react";
+import { ArrowRight, FileText, Globe } from "lucide-react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -195,6 +195,16 @@ export function ProjectTile({
                     className="group-hover/btn:rotate-12 transition-transform"
                   />
                 </a>
+              )}
+              {slug && (
+                <Link
+                  // biome-ignore lint/suspicious/noExplicitAny: next-intl strict routing
+                  href={{ pathname: "/projects/[slug]" as any, params: { slug } }}
+                  className="relative z-20 flex items-center gap-2 px-3 py-1.5 ml-auto border border-primary/30 hover:border-primary hover:bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-widest rounded-sm transition-all duration-300"
+                >
+                  {tCommon("details")}
+                  <ArrowRight size={11} className="transition-transform group-hover:translate-x-0.5" />
+                </Link>
               )}
             </div>
           </div>
