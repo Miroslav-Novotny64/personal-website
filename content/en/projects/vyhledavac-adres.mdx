@@ -1,5 +1,6 @@
 ---
 title: "Address Search (RÚIAN)"
+description: "Fast and efficient address search across the Czech Republic using Rust and custom full-text optimization on top of RÚIAN data."
 date: "School Project"
 tech: ["Rust", "Leptos", "WebAssembly", "Docker"]
 links:
@@ -8,20 +9,30 @@ links:
 
 <video src="/videos/vyhledavac-adres_preview.mp4" autoPlay loop muted playsInline className="w-full my-8 border border-dashed border-border/40 rounded-sm" />
 
-This project is my implementation of a task assigned during a database course in high school. The goal was to create a fast and efficient search tool for addresses in the Czech Republic, utilizing data from the official RÚIAN (Register of Territorial Identification, Addresses and Real Estate) database.
+## Why I Built This
 
-## Technical Highlights
+This project was developed as a final project for a database course in high school.
 
-### Database & Full-text Search
-The core of the application lies in its database optimization. The primary challenge was to ensure near-instant search results across millions of records.
+## Goal
 
-- **Full-text Indexing:** I implemented a `FULLTEXT` index on a specially prepared `search` column. This enables flexible searching for partial addresses or terms in any order (e.g., both "Praha Roztylská" and "Roztylská Praha" will return the correct result).
-- **Data Normalization:** During the CSV import process, data is normalized by removing diacritics, converting to lowercase, and padding numbers. this preparation is crucial for maximizing the efficiency of the full-text search.
+The goal was to build an address search engine for the Czech Republic on top of RÚIAN data. The application should respond in under 500ms per request, ideally under 60ms. It also needs to find every address in the country, including all edge cases.
 
-### Rust & WebAssembly
-The entire application is built with Rust, ensuring both memory safety and high performance.
+## Solution
 
-- **Leptos Framework:** Both the frontend and the backend (utilizing SSR) are powered by the Leptos framework.
-- **WebAssembly (WASM):** The client-side logic is compiled to WebAssembly, allowing Rust to run natively in the browser. This project served as an opportunity to explore frontend development outside of the traditional TypeScript ecosystem.
+I built a web application in Rust connected to MariaDB, using Leptos for the frontend and sqlx for the database layer.
 
-*Created as a school project to bridge database theory with high-performance Rust programming.*
+The most complex part of the project was the database design. The key decision was to use a `FULLTEXT INDEX` on a dedicated helper column called `search`.
+
+### The resulting query looks like this:
+
+```sql
+SELECT <address>
+FROM addresses
+WHERE MATCH(search) AGAINST('+praha*' '+hlavn*' '+xxx138*' IN BOOLEAN MODE)
+ORDER BY house_number = 138 DESC, orientation_number = 138 DESC
+LIMIT 20;
+```
+
+All words and numbers are stripped of diacritics, and numbers are prefixed with `xxx` so they get picked up by the full-text search. For example, `138` becomes `xxx138`.
+
+The `ORDER BY` clause ensures that addresses with an exact match for the number `138` rank higher than those that merely start with `138`.

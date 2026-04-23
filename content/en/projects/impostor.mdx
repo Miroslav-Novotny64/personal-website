@@ -1,6 +1,6 @@
 ---
-title: "Simple Impostor Game"
-description: "Modern PWA implementation of the social deduction game Impostor, built with React for a premium experience on both mobile and web."
+title: "Impostor Game"
+description: "A modern implementation of the Impostor social deduction game, built in React for the best experience on both mobile and web."
 date: "Personal Project"
 tech: ["React 18", "Vite", "Tailwind CSS", "Framer Motion", "PWA"]
 links:
@@ -10,20 +10,11 @@ links:
 
 <video src="/videos/impostor-game_preview.mp4" autoPlay loop muted playsInline className="w-full my-8 border border-dashed border-border/40 rounded-sm" />
 
-Modern PWA implementation of the classic "Impostor" social deduction game. Didn't want to pay for an app, so I built my own.
+A modern implementation of the Impostor social deduction game. The game works on a simple premise. All players learn one word from the app — except one.
+Players take turns saying a word or phrase that relates to that word.
+After a few rounds, everyone votes on who the impostor is. The impostor wins if they stay hidden, or the other players win if they expose them.
 
-## Tech Stack
+## Why didn't I use an existing app?
 
-- **Frontend:** React 18 + Vite
-- **Styling:** Tailwind CSS (Custom Cream & Yellow Theme)
-- **Animations:** Framer Motion (3D Card Flips & Micro-interactions)
-- **Icons:** Lucide React
-- **State:** React Hooks + LocalStorage Persistence
-
-## Functionalities
-
-- **Dark Mode:** Full support for dark mode with a native-feeling toggle.
-- **PWA Ready:** Installable on iOS and Android for a full-screen experience.
-- **Persistent State:** Your players and category selections stay saved between sessions.
-- **Modularity:** Easily extensible category system.
-- **Strategic Hints:** Unique hints for the impostor to keep the game balanced.
+There are already several apps that implement this game. However, all of them either have ads or lock words behind a paywall.
+So rather than paying or watching ads, I decided to build my own version. I also wanted full control over the design, features, and word lists.

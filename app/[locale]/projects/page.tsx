@@ -82,6 +82,16 @@ export default async function ProjectsIndexPage({
 
         <ProjectTile
           index="03"
+          title={t("items.flashscore.title")}
+          description={t("items.flashscore.description")}
+          slug="flashscore-scraper"
+          repoUrl={tLinks("projects.flashscore")}
+          tags={["Node.js", "API", "Scraping"]}
+          className="min-h-0"
+        />
+
+        <ProjectTile
+          index="04"
           title={t("items.impostor.title")}
           description={t("items.impostor.description")}
           slug="impostor"
@@ -89,16 +99,6 @@ export default async function ProjectsIndexPage({
           liveUrl={tLinks("projects.impostor_live")}
           repoUrl={tLinks("projects.impostor_repo")}
           tags={["React", "Tailwind", "PWA"]}
-          className="min-h-0"
-        />
-
-        <ProjectTile
-          index="04"
-          title={t("items.flashscore.title")}
-          description={t("items.flashscore.description")}
-          slug="flashscore-scraper"
-          repoUrl={tLinks("projects.flashscore")}
-          tags={["Node.js", "API", "Scraping"]}
           className="min-h-0"
         />
 

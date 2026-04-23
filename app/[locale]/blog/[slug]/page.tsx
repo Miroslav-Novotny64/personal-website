@@ -2,6 +2,7 @@ import { ArrowLeft, Calendar, Clock } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { Link } from "@/i18n/navigation";
 import { getMdxContent } from "@/lib/mdx";
@@ -111,7 +112,17 @@ export default async function BlogPostPage({
 
           {/* Post Content */}
           <div className="prose prose-invert prose-p:text-muted-foreground prose-p:text-justify prose-headings:uppercase prose-headings:font-black prose-headings:tracking-tighter prose-a:text-primary hover:prose-a:opacity-80 transition-all max-w-none prose-lg">
-            <MDXRemote source={content} components={{ MdxGallery: Gallery }} />
+            <MDXRemote
+              source={content}
+              components={{ MdxGallery: Gallery }}
+              options={{
+                mdxOptions: {
+                  rehypePlugins: [
+                    [rehypePrettyCode, { theme: "github-dark-dimmed" }],
+                  ],
+                },
+              }}
+            />
           </div>
         </article>
       </main>

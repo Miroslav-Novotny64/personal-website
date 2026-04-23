@@ -1,6 +1,7 @@
 import { Download, ExternalLink, FileText, Globe } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import rehypePrettyCode from "rehype-pretty-code";
 import type { MdxFrontmatter } from "@/lib/mdx";
 import { cn } from "@/lib/utils";
 import { BackButton } from "./back-button";
@@ -148,7 +149,17 @@ export async function MdxLayout({
         )}
 
         <div className="prose prose-invert prose-p:text-muted-foreground prose-p:text-justify prose-h2:text-foreground prose-h2:font-bold prose-a:text-primary max-w-none">
-          <MDXRemote source={content} components={components} />
+          <MDXRemote
+            source={content}
+            components={components}
+            options={{
+              mdxOptions: {
+                rehypePlugins: [
+                  [rehypePrettyCode, { theme: "github-dark-dimmed" }],
+                ],
+              },
+            }}
+          />
         </div>
       </article>
     </main>
