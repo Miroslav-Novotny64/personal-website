@@ -22,7 +22,7 @@ export default async function Home({
   return (
     <main className="relative min-h-screen overflow-x-hidden">
       {/* ── CONSOLIDATED HERO + BIO ── */}
-      <section className="min-h-[95vh] flex flex-col justify-between pt-20 lg:pt-28 px-10 lg:px-24 pb-12 relative">
+      <section className="min-h-[95vh] flex flex-col justify-between pt-20 lg:pt-28 px-4 lg:px-8 pb-12 relative">
         {/* Top: Name & Right Sidebar */}
         <div className="flex flex-col gap-10">
           {/* Identity Group */}
@@ -152,7 +152,7 @@ export default async function Home({
       </section>
 
       {/* ── EXPERIENCES ── */}
-      <section className="pt-20 px-8 lg:px-24">
+      <section className="pt-20 px-4 lg:px-8">
         <div className="max-w-[1400px] mx-auto w-full">
           <div className="flex items-center gap-4 mb-6 sm:mb-8">
             <span className="font-mono text-[10px] uppercase tracking-[0.5em] text-primary/60 font-bold">
