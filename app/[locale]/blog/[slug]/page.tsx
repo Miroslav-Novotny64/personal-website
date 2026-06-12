@@ -6,6 +6,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { Link } from "@/i18n/navigation";
 import { getMdxContent } from "@/lib/mdx";
+import { getSeoAlternates } from "@/lib/seo";
 import Gallery from "@/components/gallery";
 
 export async function generateMetadata({
@@ -25,6 +26,10 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: getSeoAlternates(locale, {
+      pathname: "/blog/[slug]",
+      params: { slug },
+    }),
     openGraph: {
       title,
       description,

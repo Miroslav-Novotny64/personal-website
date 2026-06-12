@@ -4,6 +4,8 @@ import { BackButton } from "@/components/back-button";
 import { ExperiencesSection } from "@/components/experiences-section";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 
+import { getSeoAlternates } from "@/lib/seo";
+
 export async function generateMetadata({
   params,
 }: {
@@ -14,6 +16,7 @@ export async function generateMetadata({
   return {
     title: t("seo_title") || t("title"),
     description: t("seo_description") || t("subtitle"),
+    alternates: getSeoAlternates(locale, "/cv"),
   };
 }
 

@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { MdxLayout } from "@/components/mdx-layout";
 import { getMdxContent } from "@/lib/mdx";
+import { getSeoAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -21,6 +22,10 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: getSeoAlternates(locale, {
+      pathname: "/projects/[slug]",
+      params: { slug },
+    }),
     openGraph: {
       title,
       description,

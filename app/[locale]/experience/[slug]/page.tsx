@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { MdxLayout } from "@/components/mdx-layout";
 import { getMdxContent } from "@/lib/mdx";
+import { getSeoAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -17,6 +18,10 @@ export async function generateMetadata({
     title: mdxData.frontmatter.seo_title || mdxData.frontmatter.title,
     description:
       mdxData.frontmatter.seo_description || mdxData.frontmatter.role,
+    alternates: getSeoAlternates(locale, {
+      pathname: "/experience/[slug]",
+      params: { slug },
+    }),
   };
 }
 

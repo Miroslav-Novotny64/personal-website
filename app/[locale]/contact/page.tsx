@@ -9,6 +9,8 @@ import { getTranslations } from "next-intl/server";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { Link } from "@/i18n/navigation";
 
+import { getSeoAlternates } from "@/lib/seo";
+
 export async function generateMetadata({
   params,
 }: {
@@ -20,6 +22,7 @@ export async function generateMetadata({
   return {
     title: t("seo_title") || t("title"),
     description: t("seo_description") || t("intro"),
+    alternates: getSeoAlternates(locale, "/contact"),
   };
 }
 

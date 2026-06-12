@@ -2,6 +2,17 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import matter from "gray-matter";
 
+import fsSync from "node:fs";
+
+export function getFallbackDate(filePath: string): Date {
+  try {
+    const stat = fsSync.statSync(filePath);
+    return stat.birthtime || stat.mtime || new Date();
+  } catch (_error) {
+    return new Date();
+  }
+}
+
 export type MdxFrontmatter = {
   title: string;
   description?: string;
@@ -16,20 +27,49 @@ export type MdxFrontmatter = {
   links?: { type: "live" | "repo" | "paper"; url: string; label?: string }[];
 };
 
-export function parseSafeDate(dateStr: string): Date {
-  const date = new Date(dateStr);
+const czechMonths: Record<string, string> = {
+  leden: "January",
+  unor: "February",
+  "únor": "February",
+  brezen: "March",
+  "březen": "March",
+  duben: "April",
+  kveten: "May",
+  "květen": "May",
+  cerven: "June",
+  "červen": "June",
+  cervenec: "July",
+  "červenec": "July",
+  srpen: "August",
+  zari: "September",
+  "září": "September",
+  rijen: "October",
+  "říjen": "October",
+  listopad: "November",
+  prosinec: "December",
+};
+
+export function parseSafeDate(dateStr: string, fallbackDate?: Date): Date {
+  let cleanStr = dateStr.toLowerCase().split(/[-–]/)[0].trim();
+
+  for (const [cz, en] of Object.entries(czechMonths)) {
+    if (cleanStr.includes(cz)) {
+      cleanStr = cleanStr.replace(cz, en);
+      break;
+    }
+  }
+
+  const date = new Date(cleanStr);
   if (!Number.isNaN(date.getTime())) {
     return date;
   }
 
-  // Fallback for strings like "Sep 2022 – May 2026"
-  // Try to find the first 4-digit year
   const yearMatch = dateStr.match(/\d{4}/);
   if (yearMatch) {
     return new Date(yearMatch[0]);
   }
 
-  return new Date(0); // Epoch fallback
+  return fallbackDate || new Date();
 }
 
 export async function getMdxContent(
@@ -43,9 +83,15 @@ export async function getMdxContent(
   try {
     const rawContent = await fs.readFile(filePath, "utf-8");
     const { data: frontmatter, content } = matter(rawContent);
-    return { frontmatter: frontmatter as MdxFrontmatter, content };
+    const fallbackDate = getFallbackDate(filePath);
+    const parsedDate = parseSafeDate(frontmatter.date, fallbackDate);
+    return {
+      frontmatter: frontmatter as MdxFrontmatter,
+      content,
+      parsedDate,
+    };
   } catch (_error) {
-    return null; // Return null if file not found
+    return null;
   }
 }
 
@@ -67,6 +113,7 @@ export async function getAllMdxContent(
         if (!data) return null;
         return {
           slug,
+          parsedDate: data.parsedDate,
           ...data.frontmatter,
         };
       }),
@@ -74,11 +121,11 @@ export async function getAllMdxContent(
 
     return posts
       .filter(
-        (post): post is MdxFrontmatter & { slug: string } => post !== null,
+        (post): post is MdxFrontmatter & { slug: string; parsedDate: Date } => post !== null,
       )
       .sort((a, b) => {
-        const dateA = parseSafeDate(a.date).getTime();
-        const dateB = parseSafeDate(b.date).getTime();
+        const dateA = a.parsedDate.getTime();
+        const dateB = b.parsedDate.getTime();
         return dateB - dateA;
       });
   } catch (_error) {

@@ -5,6 +5,18 @@ import { LiveStatus } from "@/components/live-status";
 import { ProjectTile } from "@/components/project-tile";
 import { ScrollDownButton } from "@/components/scroll-down-button";
 import { Link } from "@/i18n/navigation";
+import { getSeoAlternates } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return {
+    alternates: getSeoAlternates(locale, "/"),
+  };
+}
 
 export default async function Home({
   params,

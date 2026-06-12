@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { ProjectTile } from "@/components/project-tile";
 import { Link } from "@/i18n/navigation";
+import { getSeoAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -15,6 +16,7 @@ export async function generateMetadata({
   return {
     title: t("seo_title") || t("title"),
     description: t("seo_description") || t("page_description"),
+    alternates: getSeoAlternates(locale, "/projects"),
   };
 }
 

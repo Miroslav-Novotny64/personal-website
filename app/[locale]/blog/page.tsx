@@ -4,6 +4,7 @@ import { BlogCard } from "@/components/blog-card";
 import { BreadcrumbsJsonLd } from "@/components/json-ld";
 import { Link } from "@/i18n/navigation";
 import { getAllMdxContent } from "@/lib/mdx";
+import { getSeoAlternates } from "@/lib/seo";
 
 export async function generateMetadata({
   params,
@@ -16,6 +17,7 @@ export async function generateMetadata({
   return {
     title: t("seo_title") || t("title"),
     description: t("seo_description") || t("description"),
+    alternates: getSeoAlternates(locale, "/blog"),
   };
 }
 

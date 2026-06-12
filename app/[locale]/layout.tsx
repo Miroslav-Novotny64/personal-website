@@ -50,13 +50,6 @@ export async function generateMetadata({
     ],
     authors: [{ name: "Miroslav Novotný" }],
     creator: "Miroslav Novotný",
-    alternates: {
-      canonical: locale === "cs" ? "/" : `/${locale}`,
-      languages: {
-        "cs-CZ": "/",
-        "en-US": "/en",
-      },
-    },
     openGraph: {
       title: t("name"),
       description: t("seo_description"),

@@ -1,33 +1,36 @@
 import type { MetadataRoute } from "next";
-import { getAllMdxContent, parseSafeDate } from "@/lib/mdx";
+import { getAllMdxContent } from "@/lib/mdx";
+import { getPathname } from "@/i18n/navigation";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const domain = "https://novotnymiroslav.cz";
-  const locales = ["cs", "en"];
-  const baseRoutes = ["", "/projects", "/cv", "/contact", "/blog"];
+  const locales = ["cs", "en"] as const;
+  const baseRoutes = ["/", "/projects", "/cv", "/contact", "/blog"] as const;
 
-  // Static routes for all locales
   const routes = locales.flatMap((locale) =>
     baseRoutes.map((route) => {
-      const url = `${domain}${locale === "cs" ? "" : `/${locale}`}${route}`;
+      const pathname = getPathname({ locale, href: route });
+      const url = `${domain}${pathname}`;
+      const csPathname = getPathname({ locale: "cs", href: route });
+      const enPathname = getPathname({ locale: "en", href: route });
+
       return {
         url,
         lastModified: new Date(),
-        changeFrequency: (route === "" ? "daily" : "weekly") as
+        changeFrequency: (route === "/" ? "daily" : "weekly") as
           | "daily"
           | "weekly",
-        priority: route === "" ? 1 : 0.8,
+        priority: route === "/" ? 1 : 0.8,
         alternates: {
           languages: {
-            cs: `${domain}${route}`,
-            en: `${domain}/en${route}`,
+            cs: `${domain}${csPathname}`,
+            en: `${domain}${enPathname}`,
           },
         },
       };
     }),
   );
 
-  // Dynamic Content
   const contentTypes = ["projects", "blog", "experience", "education"] as const;
 
   const dynamicRoutes = await Promise.all(
@@ -35,25 +38,53 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const typeResults = await Promise.all(
         contentTypes.map(async (type) => {
           const contents = await getAllMdxContent(locale, type);
-          return contents.map((content) => ({
-            url: `${domain}${locale === "cs" ? "" : `/${locale}`}/${type}/${content.slug}`,
-            lastModified: parseSafeDate(content.date),
-            changeFrequency: "monthly" as const,
-            priority: 0.6,
-            alternates: {
-              languages: {
-                cs: `${domain}/${type}/${content.slug}`,
-                en: `${domain}/en/${type}/${content.slug}`,
+          return contents.map((content) => {
+            const routePattern = `/${type}/[slug]` as const;
+            const pathname = getPathname({
+              locale,
+              href: {
+                pathname: routePattern as any,
+                params: { slug: content.slug },
               },
-            },
-          }));
+            });
+            const url = `${domain}${pathname}`;
+
+            const csPathname = getPathname({
+              locale: "cs",
+              href: {
+                pathname: routePattern as any,
+                params: { slug: content.slug },
+              },
+            });
+
+            const enPathname = getPathname({
+              locale: "en",
+              href: {
+                pathname: routePattern as any,
+                params: { slug: content.slug },
+              },
+            });
+
+            return {
+              url,
+              lastModified: content.parsedDate,
+              changeFrequency: "monthly" as const,
+              priority: 0.6,
+              alternates: {
+                languages: {
+                  cs: `${domain}${csPathname}`,
+                  en: `${domain}${enPathname}`,
+                },
+              },
+            };
+          });
         }),
       );
       return typeResults.flat();
     }),
   );
 
-  const flatDynamicRoutes = (await Promise.all(dynamicRoutes)).flat();
+  const flatDynamicRoutes = dynamicRoutes.flat();
 
   return [...routes, ...flatDynamicRoutes];
 }
