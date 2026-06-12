@@ -1,0 +1,34 @@
+---
+title: "Work Time Tracker"
+description: "A web application for efficient work time tracking on projects using a weekly calendar grid view, complemented by clear statistics and charts."
+date: "Personal Project"
+tech: ["Next.js", "tRPC", "Drizzle ORM", "Better Auth", "Tailwind CSS", "TypeScript", "PostgreSQL"]
+links:
+  - { type: "live", url: "https://time-tracker.novotnymiroslav.cz/" }
+  - { type: "repo", url: "https://github.com/Miroslav-Novotny64/time-tracker" }
+---
+
+## About the Project
+
+This application is used for clear and quick tracking of worked time. Users can create their own projects (with a description and a color) and simply write down 1 hour time intervals they worked on by clicking in the grid in a weekly calendar view. The results are clearly visualized using interactive charts divided by month.
+
+<MdxGallery images='[{"src":"/time-tracker/calednar.png","caption":"Weekly calendar view with quick logging"},{"src":"/time-tracker/result.png","caption":"Statistics and charts of worked time"}]' />
+
+## Main Features
+
+- **Calendar with Quick Log:** Displays 7 days of the current week and 24 hourly rows (from `00:00` to `23:00`). Clicking on a grid cell triggers a tRPC mutation. If the slot was not logged, a record is created for the selected project. If it was already logged for the same project, it is deleted. If it was logged for a different project, it is overwritten.
+- **Results and Statistics:** Aggregates time records for the selected month and recalculates them into worked hours (each time block corresponds to 30 minutes / 0.5 h).
+  - *PieChart (PieChart)* shows the share of time spent on individual projects. Slice colors correspond to colors set for the projects.
+  - *BarChart (BarChart)* shows daily activity throughout the month (hours worked on individual days).
+
+## Technical Architecture
+
+- **Next.js 16 (App Router)** utilizing Server and Client Components.
+- **Bun** as the package manager and runtime for rapid dependency installation and script execution.
+- **tRPC v11** and **TypeScript** ensuring full end-to-end type safety.
+- **Drizzle ORM** with PostgreSQL (running in Docker) for structured database queries and Drizzle Kit migrations.
+- **Better Auth** as a modern authentication library with a configured GitHub OAuth provider.
+- **Tailwind CSS v4** and **next-themes** for advanced visual layouts and smooth theme transitions.
+- **Radix UI ScrollArea** for smooth scrolling controls and **Lucide React** for icons.
+- **Recharts** powering the interactive Pie and Bar charts.
+- **SEO & Search Engines:** Dynamically generated `robots.ts` and `sitemap.ts`.

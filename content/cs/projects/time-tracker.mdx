@@ -1,0 +1,31 @@
+---
+title: "Work Time Tracker"
+description: "Webová aplikace pro logování odpracovaného času v týdenním kalendářním zobrazení, doplněná o přehledné statistiky a grafy."
+date: "Osobní Projekt"
+tech: ["Next.js", "tRPC", "Drizzle ORM", "Better Auth", "Tailwind CSS", "TypeScript", "PostgreSQL"]
+links:
+  - { type: "live", url: "https://time-tracker.novotnymiroslav.cz/" }
+  - { type: "repo", url: "https://github.com/Miroslav-Novotny64/time-tracker" }
+---
+
+## O projektu
+
+Tato aplikace slouží k přehledné a rychlé evidenci odpracovaného času. Uživatelé si mohou zakládat vlastní projekty (s popisem a barvou) a v týdenním kalendářním zobrazení si jednoduše klikáním do mřížky zapisovat hodinové časové úseky, na kterých pracovali. Výsledky jsou přehledně vizualizovány pomocí interaktivních grafů rozdělených po měsících.
+
+<MdxGallery images='[{"src":"/time-tracker/calednar.png","caption":"Týdenní kalendářní zobrazení s rychlým zápisem"},{"src":"/time-tracker/result.png","caption":"Statistiky a grafy odpracovaného času"}]' />
+
+## Hlavní funkce
+
+- **Kalendář s rychlým zápisem:** Zobrazuje 7 dní aktuálního týdne a 24 hodinových řádků (od `00:00` do `23:00`). Kliknutím na buňku mřížky se spustí tRPC mutace. Pokud úsek logován nebyl, vytvoří se záznam pro vybraný projekt. Pokud již byl zalogován pro stejný projekt, smaže se. Pokud byl zalogován pro jiný projekt, přepíše se.
+- **Výsledky a statistiky:** Agreguje časové záznamy za vybraný měsíc a přepočítává je na odpracované hodiny (každý časový blok odpovídá jedné hodině).
+  - *Koláčový graf (PieChart)* zobrazuje podíl času stráveného na jednotlivých projektech. Barvy řezů odpovídají barvám nastaveným u projektů.
+  - *Sloupcový graf (BarChart)* ukazuje denní aktivitu v průběhu celého měsíce (odpracované hodiny v jednotlivé dny).
+
+## Technické řešení
+
+- **Next.js 16 (App Router)** s využitím Serverových a Klientských komponent.
+- **Bun** jako balíčkovací manažer a runtime pro rychlou instalaci závislostí a spouštění skriptů.
+- **tRPC v11** a **TypeScript** zajišťující kompletní typovou bezpečnost napříč celou aplikací.
+- **Drizzle ORM** s PostgreSQL běžícím v Dockeru pro dotazování s plnou typovou bezpečností a migračním nástrojem Drizzle Kit.
+- **Better Auth** jako moderní autentizační knihovna s nakonfigurovaným GitHub OAuth poskytovatelem.
+- **Tailwind CSS v4** a **next-themes** pro stylování a dynamický dark mode bez problikávání.

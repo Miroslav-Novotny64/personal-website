@@ -71,6 +71,18 @@ export default async function ProjectsIndexPage({
 
         <ProjectTile
           index="02"
+          title={t("items.time-tracker.title")}
+          description={t("items.time-tracker.description")}
+          slug="time-tracker"
+          image="/time-tracker/calednar.png"
+          liveUrl={tLinks("projects.time_tracker_live")}
+          repoUrl={tLinks("projects.time_tracker_repo")}
+          tags={["Next.js", "TypeScript", "tRPC", "PostgreSQL"]}
+          className="min-h-0"
+        />
+
+        <ProjectTile
+          index="03"
           title={t("items.vyhledavac-adres.title")}
           description={t("items.vyhledavac-adres.description")}
           slug="vyhledavac-adres"
@@ -81,7 +93,7 @@ export default async function ProjectsIndexPage({
         />
 
         <ProjectTile
-          index="03"
+          index="04"
           title={t("items.flashscore.title")}
           description={t("items.flashscore.description")}
           slug="flashscore-scraper"
@@ -91,7 +103,7 @@ export default async function ProjectsIndexPage({
         />
 
         <ProjectTile
-          index="04"
+          index="05"
           title={t("items.impostor.title")}
           description={t("items.impostor.description")}
           slug="impostor"
@@ -103,7 +115,7 @@ export default async function ProjectsIndexPage({
         />
 
         <ProjectTile
-          index="05"
+          index="06"
           title={t("items.fractal.title")}
           description={t("items.fractal.description")}
           slug="fractal"
@@ -114,7 +126,7 @@ export default async function ProjectsIndexPage({
         />
 
         <ProjectTile
-          index="06"
+          index="07"
           title={t("items.tree.title")}
           description={t("items.tree.description")}
           slug="tree"

@@ -198,6 +198,18 @@ export default async function Home({
 
             <ProjectTile
               index="02"
+              title={tProjects("items.time-tracker.title")}
+              description={tProjects("items.time-tracker.description")}
+              slug="time-tracker"
+              image="/time-tracker/calednar.png"
+              liveUrl={tLinks("projects.time_tracker_live")}
+              repoUrl={tLinks("projects.time_tracker_repo")}
+              tags={["Next.js", "TypeScript", "tRPC", "PostgreSQL"]}
+              variant="grid"
+            />
+
+            <ProjectTile
+              index="03"
               title={tProjects("items.impostor.title")}
               description={tProjects("items.impostor.description")}
               slug="impostor"
@@ -209,7 +221,7 @@ export default async function Home({
             />
 
             <ProjectTile
-              index="03"
+              index="04"
               title={tProjects("items.expertov.title")}
               description={tProjects("items.expertov.description")}
               slug="expertov"

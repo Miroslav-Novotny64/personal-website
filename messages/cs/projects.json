@@ -10,6 +10,10 @@
         "title": "Expertov",
         "description": "Produkční SaaS platforma vypracovaná na základě požadavků klienta s důrazem na výkon a škálovatelnost. Vyvinuto v Next.js s využitím Trpc, Drizzle ORM, PostgreSQL a Redis."
       },
+      "time-tracker": {
+        "title": "Work Time Tracker",
+        "description": "Webová aplikace pro logování odpracovaného času s týdenním kalendářním zobrazením, doplněná o přehledné statistiky a grafy."
+      },
       "vyhledavac-adres": {
         "title": "Vyhledávač Adres (RÚIAN)",
         "description": "Vyhledávač adres s Full-text indexací. Vyvinuto v Rustu s využitím WebAssembly a databázovým systémem MariaDB."

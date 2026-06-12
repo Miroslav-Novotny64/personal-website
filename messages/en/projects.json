@@ -10,6 +10,10 @@
         "title": "Expertov",
         "description": "Production SaaS platform developed based on client requirements developed in Next.js using Trpc, Drizzle ORM, PostgreSQL and Redis."
       },
+      "time-tracker": {
+        "title": "Work Time Tracker",
+        "description": "A web application for work time tracking with a weekly calendar grid view, complemented by clear statistics and charts."
+      },
       "vyhledavac-adres": {
         "title": "RÚIAN Address Search",
         "description": "Address search engine with Full-text indexing. Developed in Rust using WebAssembly and MariaDB database system."
